@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "InstructorDetail";
+    int[] aTest = { 1, 2, 3 };
+    int[] bTest = { 1, 2, 3, 4, 5 };
+}
+
+<section class="section instructor-list">
+    <div class="container">
+        <div class="clearfix-row">
+            <div class="title-subtitle-block col-sm-8 col-sm-offset-2">
+                <h2 class="title">Meet your instructors.</h2>
+                <p class="subtitle">
+                    <i>
+                        Egghead instructors are industry veterans with years of practical, from-the-trenches experience building
+                        real software at all scales.
+                    </i>
+                </p>
+            </div><!-- title-subtitle-block -->
+        </div>
+        <div class="row block-lessons-series">
+            @foreach (var a in aTest)
+            {<div class="taught-by-leaders__cards-holder">
+                @foreach (var b in bTest)
+                {<div class="taught-by-leaders__card">
+                    <a href="https://egghead.io/instructors/dan-abramov">
+                        <img class="instructor__photo" src="https://d2eip9sf3oo6c2.cloudfront.net/instructors/avatars/000/000/032/bio/9VsY9i09.jpeg?1444932586" alt="">
+                    </a>
+                    <div class="instructor__info-holder">
+                        <div class="instructor__title_box">
+                            <a href="https://egghead.io/instructors/dan-abramov">
+
+                                <h4 class="instructor__title">Dan Abramov</h4>
+                            </a>
+                        </div>
+                        <div class="instructor__about">Working at Facebook on React. Creator of Redux.</div>
+                    </div>
+                    <div class="instructor__teaching-technologies">
+                        <span>Teaching Redux</span>
+                    </div>
+                </div>}
+            </div>}
+
+        </div>
+    </div>
+</section>
+

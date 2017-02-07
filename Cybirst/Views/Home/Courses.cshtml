@@ -1,0 +1,150 @@
+﻿
+@{
+    ViewBag.Title = "Courses";
+    int[] aTest = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    int[] bTest = { 1, 2, 3 };
+    int[] cTest = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+}
+
+
+
+<div class="technology-pages-wrapper">
+    <div class="page-title-holder">
+        <h1 class="title">
+            All of our courses are listed below.
+        </h1>
+    </div>
+
+    <section class="search-input-container">
+        <div id="AutoCompleteSearch-react-component-5172dc93-cc04-41b9-8e1f-230feac7f854">
+            <div class="SearchBar__search_bar_wrapper__1z4Oi">
+                <div class="SearchBar__search_bar_field__3kicx">
+                    <input type="text" class="SearchBar__search_bar_input__wldfQ" maxlength="100" autocapitalize="none" autocomplete="off" autocorrect="off" value="" placeholder="search 'react redux'"><!-- react-text: 4 --><!-- /react-text -->
+                    <input type="submit" class="SearchBar__icon___zsxQ SearchBar__search_bar_submit__2XSOl" value="search">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-jump-into-technologies">
+        <div class="jump-into-technologies">
+            <div class="section-content-holder"> 
+                <ul class="technologies-list">
+                    @foreach (var a in aTest)
+                    {
+                        <li class="item-wrapper">
+                            <a class="anchor-to-technology" data-technology="react" href="/technologies/react">
+                                <div class="item">
+                                    <div class="tech-logo-holder">
+                                        <img class="tech-logo" src="//d1xwtr0qwr70yv.cloudfront.net/assets/tech/react-fb48758e2d13fbbbbfcb6d73281e2814.png" alt="React">
+                                    </div>
+                                    <div class="description">
+                                        <div class="title-holder">
+                                            <h4 class="title">
+                                                React
+                                            </h4>
+                                            <span class="badge badge-info">12</span>
+                                        </div>
+                                        <div class="text-holder">Lots of people use React as the V in MVC. Since React makes no...</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="section-technology-details">
+        <div class="section-inner">
+            @foreach (var b in bTest)
+            {
+                <div class="technology-set">
+                    <div class="section-titles-holder">
+                        <div class="title-holder">
+                            <a href="#" class="anchor-to-the-top">
+                                <i class="fa fa-caret-up icon"></i>
+                                <span>all</span>
+                            </a>
+                            <img class="tech-logo" src="//d1xwtr0qwr70yv.cloudfront.net/assets/tech/react-7b90239e805d8b06ca263be745f8ad5f.svg" alt="React">
+                        </div>
+                        <div class="subtitle-holder">
+                            <h4 class="title">
+                                react Courses
+                                <span class="badge badge-info">12</span>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="subsection subsection-courses">
+                        <div class="grid-row">
+                            @foreach (var c in cTest)
+                            {
+                                <div class="grid-item">
+                                    <div class="card-course">
+                                        <img src="https://d2eip9sf3oo6c2.cloudfront.net/instructors/avatars/000/000/032/thumb/9VsY9i09.jpeg?1444932586" class="course-author-avatar" alt="">
+                                        <div class="card-course-inner">
+                                            <div class="expanded-card-only">
+                                                <h4 class="course-subtitle">WATCH Dan Abramov’s COURSE</h4>
+                                                <h3 class="course-title">
+                                                    <span>Getting Started with Redux</span>
+                                                </h3>
+                                            </div>
+                                            <div class="card-content">
+                                                <div class="course-image-holder">
+                                                    <img src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/025/thumb/EGH_Redux-New.png?1461772196" class="course-image">
+                                                </div>
+                                                <div class="course-description-holder">
+                                                    <div class="condensed-card-only">
+                                                        <h4 class="course-subtitle">WATCH Dan Abramov’s COURSE</h4>
+                                                        <h3 class="course-title">
+                                                            <span>Getting Started with Redux</span>
+                                                        </h3>
+                                                    </div>
+                                                    <div class="description-text">
+                                                        <p>&gt; I had no idea why I'd want to use Redux when I started this course. This course really made it easy to understand the how &amp; why of redux. Thanks ...</p>
+
+                                                    </div>
+                                                    <div class="lessons-in-course-number-holder">
+                                                        <div class="progress-bar-row">
+                                                            <div class="progress-bar-holder">
+                                                                <div class="progress-bar">
+                                                                    <div class="inner" style="width: 0%;"></div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="value-holder">
+                                                                0 of <span class="total">30</span> lessons
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <a class="link-overlay" href="https://egghead.io/courses/getting-started-with-redux"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function(){
+    $('.anchor-to-the-top').on('click', function(e) {
+      e.preventDefault();
+      $('html, body').animate({scrollTop: 0}, 100);
+    })
+    $('.anchor-to-technology').on('click', function(e) {
+      e.preventDefault();
+      var anchorID = $(this).data('technology');
+      $('html, body').scrollTo('#technology-' + anchorID);
+    })
+  });
+</script>

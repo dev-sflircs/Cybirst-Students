@@ -1,0 +1,197 @@
+﻿
+@{
+    ViewBag.Title = "Instructor";
+    int[] aTest = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+}
+
+<section class="hero">
+    <div class="container">
+        <img src="https://d2eip9sf3oo6c2.cloudfront.net/instructors/avatars/000/000/011/bio/photo-512.png?1469949786" alt="Egghead Instructor Kent C. Dodds" class="avatar">
+
+        <h2 class="title">Kent C. Dodds</h2>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <p class="text-left"></p><p>a JavaScript developer who likes open source and teaching.</p>
+                <p></p>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <ul class="list-inline list-unstyled">
+
+                <li><a class="underlined hero-bottom-link" rel="me" target="_blank" href="https://twitter.com/kentcdodds">@@kentcdodds</a></li>
+                <li><a class="underlined hero-bottom-link" rel="me" target="_blank" href="https://plus.google.com/+kentcdodds?rel=author">Google+</a></li>
+                <li><a class="underlined hero-bottom-link" target="_blank" rel="me" itemprop="url" href="http://kentcdodds.com">http://kentcdodds.com</a></li>
+
+            </ul>
+        </div>
+        <br>
+        <a id="hero-signup" href="/pricing?from=instructor-kentcdodds" class="custom-btn custom-btn-red custom-btn-primary get-pro">
+            Unlock all of Kent C.'s PRO Lessons
+            <br> <small><i>click for instant access!</i></small>
+        </a>
+    </div>
+    <!-- container -->
+</section>
+
+<section class="section section-browse-all-lessons">
+    <div class="container">
+        <div class="title-subtitle-block">
+            <h2 class="title">Browse Kent C. Dodds's lessons.</h2>
+            <p class="subtitle"><i>showing 110 lessons...</i></p>
+        </div><!-- title-subtitle-block -->
+        <div class="browse-all-lessons-holder">
+            <div class="tool-bar">
+
+                <ul class="list-unstyled list-inline actions-list">
+                    <li>
+                        <small>
+                            <a class="filter-trigger active" href="#">Latest first</a>
+                        </small>
+                    </li>
+                    <li>
+                        <small>
+                            <a class="filter-trigger" href="/instructors/kentcdodds?order=ASC">Oldest first</a>
+                        </small>
+                    </li>
+                </ul>
+                <!-- actions-list -->
+
+                <div class="btn-group view-switchers-holder">
+                    <a id="select-list" role="tab" data-toggle="tab" class="btn btn-default btn-view-switcher">
+                        <i class="icon icon-list-ol"></i>
+                    </a>
+                    <a id="select-thumbs" role="tab" data-toggle="tab" class="btn btn-default btn-view-switcher active">
+                        <i class="icon icon-th"></i>
+                    </a>
+                </div>
+
+                <!-- view-switchers-holder -->
+                <div class="lessons-to-show-holder hidden">
+                    <small class="hidden-xs">Lessons to show...</small>
+                    <select name="" id="select-lessons-to-show" class="chosen-select chosen-select-small" style="display: none;">
+                        <option value="12">12</option>
+                        <option value="24">24</option>
+                        <option value="48">48</option>
+                        <option value="96">96</option>
+                    </select>
+                    <div class="chosen-container chosen-container-single chosen-select chosen-select-small chosen-container-single-nosearch" style="width: 0px;" title="" id="select_lessons_to_show_chosen"><a class="chosen-single chosen-default"><span> </span><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off" readonly=""></div><ul class="chosen-results"></ul></div></div>
+                </div>
+            </div>
+            <!-- tool-bar -->
+
+            <div class="tab-content view-tabs-holder">
+                <div class="tab-pane tab-view-list" id="lesson-list">
+                    <div class="series-lessons-holder" style="display: none;">
+                        <ul class="series-lessons-list">
+                            @foreach (var a in aTest)
+                            {
+                                <a class="" href="https://egghead.io/lessons/javascript-public-class-fields-with-react-components">
+                                    <li class="item  ">
+                                        <div class="part-left"><i class="pseudo-checkbox"></i></div>
+                                        <div class="part-right"></div>
+                                        <div class="lesson-content">
+                                            <h5 class="title">Public Class Fields with React Components </h5>
+                                            <div class="info-line"><small class="duration">js - <i class="icon-time"></i> 4:52</small></div>
+                                        </div>
+                                    </li><!-- item -->
+                                </a>
+                            }
+                        </ul>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-condensed">
+                            <tbody>
+                                @foreach (var a in aTest)
+                                {
+                                    <tr id="lesson-row-1763" class="lesson-row ">
+                                        <td class="cell cell-pseudo-checkbox">
+                                            <span class="pseudo-checkbox-holder">
+                                                <i id="completed-icon-1763-true" class="pseudo-checkbox" style="display: none"></i>
+                                                <i id="uncompleted-icon-1763-true" class="pseudo-checkbox" style=""></i>
+                                            </span>
+                                        </td>
+                                        <td class="cell cell-category-logo">
+                                            <a href="https://egghead.io/technologies/js">
+                                                <img class="category-logo" src="//d1xwtr0qwr70yv.cloudfront.net/assets/tech/js-5e02473095281c2062c08e6a8d499936.svg" alt="Js">
+                                            </a>
+                                        </td>
+                                        <td class="cell cell-lesson-title">
+                                            <h4 class="title"><a href="https://egghead.io/lessons/javascript-public-class-fields-with-react-components">Public Class Fields with React Components</a> <span class="text-muted"></span></h4>
+
+                                        </td>
+                                        <td class="cell cell-lesson-category hidden-xs hidden-sm">
+                                            <div class="info-line">
+                                                <small class="folder">
+                                                    <i class="icon-folder-open-alt"></i> <a href="https://egghead.io/technologies/js">js</a>
+                                                </small>
+                                            </div>
+                                        </td>
+                                        <td class="cell cell-pro"></td>
+                                        <td class="cell cell-duration hidden-xs hidden-sm">
+                                            <div class="info-line">
+                                                <small class="duration"><i class="icon-time"></i> 4:52</small>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                <!-- tab-view-list -->
+
+                <div class="tab-pane tab-view-tiles active" id="lesson-thumbs">
+                    <div class="row block-lessons">
+                        @foreach (var a in aTest)
+                        {
+                            <div class="col-sm-4 item-holder ">
+                                <div id="lesson-tile-1763" class="item ">
+                                    <a href="/lessons/javascript-public-class-fields-with-react-components">
+                                        <div class="media-holder">
+                                            <div class="overlay"></div>
+                                            <img src="https://dcv19h61vib2d.cloudfront.net/thumbs/egghead-js-public-class-fields-with-react-components/egghead-js-public-class-fields-with-react-components.jpg" alt="js tutorial about Public Class Fields with React Components" class="img-responsive">
+                                        </div>
+                                    </a>      <!-- video-holder -->
+
+                                    <div class="media-subscription-holder">
+                                        <h4 class="title">
+                                            <span class="pseudo-checkbox-holder">
+                                                <i id="completed-icon-1763-false" class="pseudo-checkbox" style="display: none"></i>
+                                                <i id="uncompleted-icon-1763-false" class="pseudo-checkbox" style=""></i>
+                                            </span>
+                                            Public Class Fields with React Components
+                                        </h4>
+
+                                        <div class="info-line">
+                                            <small class="duration"><i class="icon-time"></i> 4:52</small>
+                                            <small class="folder"><i class="icon-folder-open-alt"></i> js</small>
+
+                                        </div>
+                                        <!-- info-line -->
+                                        <small class="description">
+                                            <p><a href="https://tc39.github.io/proposal-class-public-fields/">Public Class Fields</a> allow you to add instance properties to the class definition with the assignment operator (<code>=</code>). In this lesson, we'll look at their use case for simplifying event callbacks and state initialization with a React component.</p>
+                                        </small>
+                                    </div>
+                                    <!-- video-subscription-holder -->
+                                </div>
+                                <!-- item -->
+                                <div class="cs-items-separator"></div>
+                            </div>
+                        }
+                    </div>
+                    <!-- block-lessons -->
+                </div>
+                <!-- tab-view-tiles -->
+                <div class="pagination-holder text-center">
+                    <ul class="pagination pagination"><li class="prev disabled"><span>← Previous</span></li> <li class="active"><span>1</span></li> <li><a rel="next" href="/instructors/kentcdodds?order=desc&amp;page=2">2</a></li> <li><a href="/instructors/kentcdodds?order=desc&amp;page=3">3</a></li> <li class="next"><a rel="next" href="/instructors/kentcdodds?order=desc&amp;page=2">Next →</a></li></ul>
+                </div>
+                <!-- pagination-holder -->
+            </div>
+            <!-- view-tabs-holder -->
+        </div><!-- browse-all-lessons-holder -->
+    </div><!-- container -->
+</section>

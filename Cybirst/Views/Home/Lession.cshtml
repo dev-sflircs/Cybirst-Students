@@ -1,0 +1,407 @@
+﻿@{
+    ViewBag.Title = "About";
+    int[] aTest = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+}
+
+<section class="hero">
+    <div class="lesson-video-container">
+        <div>
+            <div class="lesson-with-playlist-holder">
+                <div ng-class="{'lesson-frame-column': !playlist.theaterMode, 'lesson-frame-column-theater': playlist.theaterMode}" class="lesson-frame-column">
+                    <div class="lessons-frame-holder">
+                        <div class="enter-email-overlay">
+                            <!-- ngIf: !emailCapture.validated && emailCapture.enabled -->
+                        </div>
+                        <div class="lessons-frame">
+                            <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                                <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                                    <div class="wistia_video_foam_dummy" data-source-container-id="wistia_2k6pmqelty" style="border: 0px; display: block; height: 0px; margin: 0px; padding: 0px; position: static; visibility: hidden; width: auto;"></div><div id="wistia_2k6pmqelty" class="wistia_embed wistia_embed_initialized" style="width: 730px; height: 411px;">
+                                        <div id="wistia_chrome_12" class="w-chrome" style="display: inline-block; height: 411px; margin: 0px; padding: 0px; position: relative; vertical-align: top; width: 730px; zoom: 1; outline: none; overflow: hidden; box-sizing: content-box;" tabindex="0" aria-label="Wistia Video Player - egghead-create-a-graphql-schema.mp4">
+                                            <div id="wistia_grid_22_wrapper" style="display: block; height: 411px; width: 730px;">
+                                                <div id="wistia_grid_22_above" style="height: 0px; font-size: 0px; line-height: 0px;"> </div><div id="wistia_grid_22_main" style="width: 730px; height: 411px; left: 0px; margin-top: 0px;">
+                                                    <div id="wistia_grid_22_behind"></div><div id="wistia_grid_22_center" style="width: 100%; height: 100%;">
+                                                        <div id="wistia_video_wrapper_44" style="display: inline-block; height: 100%; margin: 0px; padding: 0px; position: relative; vertical-align: top; width: 100%; zoom: 1; overflow: hidden;">
+                                                            <div id="wistia_21_vulcan" class="bp-640" style="background: rgb(0, 0, 0); display: block; height: 100%; overflow: hidden; position: relative; width: 100%;">
+                                                                <video id="wistia_simple_video_25" crossorigin="anonymous" preload="metadata" type="video/m3u8" poster="https://fast.wistia.com/assets/images/blank.gif" src="blob:https://egghead.io/9a7c7fac-5f47-416b-94b5-61d5667476fc" style="background: transparent; display: block; height: 100%; position: static; visibility: visible; width: 100%; object-fit: contain;"><source src="https://embedwistia-a.akamaihd.net/deliveries/7b8e75e16108c2e5d4e2f117c741ed8dc9c5a439/file.mp4" type="video/m3u8"></video><div class="w-control-bar w-is-visible">
+                                                                    <div class="w-control-bar__region w-control-bar__region--left">
+                                                                        <button id="wistia_smallPlayButton_84" class="w-control w-control--play w-is-visible paused" alt="Click to play" tabindex="0" aria-label="Play" title="Play" style="position: relative;">
+                                                                            <div class="w-control--icon">
+                                                                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 10 14.3" enable-background="new 0 0 10 14.3" xml:space="preserve" class="wistia_vulcan_svg_icon wistia_vulcan_svg_icon_play wistia_vulcan_svg_icon_play_small">
+                                                                                <polygon points="0,0 0,14.3 10,7.5 "></polygon>
+                                                                                </svg>
+                                                                            </div>
+                                                                        </button>
+                                                                    </div><div class="w-control-bar__region w-control-bar__region--center"><div class="w-control-bar__region w-control-bar__region--thumbscrubber"><div class="w-chapter-title" style="left: 0px;"></div></div><div id="wistia_playbarControl_101" class="w-control wistia_playbar w-control--playbar w-is-visible" alt="Playbar - click to seek"><div class="w-control--icon"></div><div id="wistia_playbar_mask_103" class="wistia_playbar_mask" tabindex="0" role="slider" aria-label="playbar" aria-valuenow="0:00"><div id="time_positioner_110" class="wistia_time_positioner" style="width: 2.95839px;"><div id="time_111" class="wistia_time" style="right: auto; left: 9px;">0:01</div></div><div id="wistia_playbar_slider_104" class="wistia_playbar_slider" style="transform: translateX(-49.7344%);"><div id="wistia_playbar_completed_105" class="wistia_playbar_completed"></div><div id="wistia_playbar_unplayed_mask_106" class="wistia_playbar_unplayed_mask"><div id="wistia_playbar_unplayed_slider_107" class="wistia_playbar_unplayed_slider" style="transform: translateX(-37.9874%);"><div id="wistia_playbar_buffered_108" class="wistia_playbar_buffered"></div><div id="wistia_playbar_background_109" class="wistia_playbar_background"></div></div></div></div><div id="wistia_hover_line112" class="wistia_playbar_hover_line" style="left: 65.8887%;"></div></div></div></div><div class="w-control-bar__region w-control-bar__region--centerMobile"><div id="wistia_playbarPlaceholder_116" class="w-control wistia_playbar_placeholder w-control--playbar-placeholder w-playbar-placeholder w-is-visible"><div class="w-control--icon"></div><div class="wistia_placeholder_time_element wistia_time">0:01</div></div></div><div class="w-control-bar__region w-control-bar__region--right">
+                                                                        <div class="w-control-bar__region w-control-bar__region--captions"></div><div class="w-control-bar__region w-control-bar__region--volume">
+                                                                            <div id="wistia_volume2_86" class="w-control w-control--volume w-is-visible number-active-2" style="position: relative;" alt="Volume (100%) - click and drag horizontally to change">
+                                                                                <button class="w-control--icon" tabindex="0" aria-label="Mute" title="Mute" style="background: none; cursor: pointer;">
+                                                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="wistia_vulcan_svg wistia_vulcan_svg_volume" x="0px" y="0px" viewBox="0 0 20.3 17.3" style="enable-background:new 0 0 20.3 17.3;" xml:space="preserve">
+                                                                                    <g class="wistia_vulcan_svg_volume_speaker_group">
+                                                                                    <g class="wistia_vulcan_svg_volume_speaker_group_inner">
+                                                                                    <polygon class="wistia_vulcan_svg_volume_speaker" fill="#FFFFFF" points="4,7 0,7 0,11 4,11 8,15 8,3"></polygon>
+                                                                                    <g class="wistia_vulcan_svg_volume_waves">
+                                                                                    <path class="wistia_vulcan_svg_volume_wave wistia_vulcan_svg_wave_1" stroke-width="2px" stroke-linecap="round" stroke-miterlimit="10" d="M13.2,3.5c0,0,1.1,2.5,1.1,5s-1.1,5-1.1,5" fill="none" stroke="#ffffff"></path>
+                                                                                    <path class="wistia_vulcan_svg_volume_wave wistia_vulcan_svg_wave_2" stroke-width="2px" stroke-linecap="round" stroke-miterlimit="10" d="M17,1c0,0,1.7,3.8,1.7,7.5S17,16,17,16" fill="none" stroke="#ffffff"></path>
+                                                                                    <g class="wistia_vulcan_svg_volume_x wistia_vulcan_svg_volume_wave">
+                                                                                    <path fill="#ffffff" stroke-width="2px" stroke-linecap="round" stroke-miterlimit="10" d="M11.4,11.4c-0.1,0-0.3,0-0.4-0.1c-0.2-0.2-0.2-0.5,0-0.7l4.3-4.3c0.2-0.2,0.5-0.2,0.7,0 c0.2,0.2,0.2,0.5,0,0.7l-4.3,4.3C11.6,11.4,11.5,11.4,11.4,11.4z"></path>
+                                                                                    <path fill="#ffffff" stroke-width="2px" stroke-linecap="round" stroke-miterlimit="10" d="M15.7,11.4c-0.1,0-0.3,0-0.4-0.1L11,7c-0.2-0.2-0.2-0.5,0-0.7s0.5-0.2,0.7,0l4.3,4.3c0.2,0.2,0.2,0.5,0,0.7,C15.9,11.4,15.8,11.4,15.7,11.4z"></path>
+                                                                                    </g></g></g></g></svg>
+                                                                                </button><div class="wistia_vulcan_volume_slider" tabindex="0" aria-label="Volume Slider" aria-valuemin="0" aria-valuemax="100" role="slider"><div class="wistia_vulcan_volume_track_hit"><div class="wistia_vulcan_volume_track"><div class="wistia_vulcan_volume_level"><div class="wistia_vulcan_volume_grabber_hit"><div class="wistia_vulcan_volume_grabber"><div class="wistia_vulcan_volume_dot_grabber"></div></div></div></div></div></div></div>
+                                                                            </div>
+                                                                        </div><div class="w-control-bar__region w-control-bar__region--share"></div><div class="w-control-bar__region w-control-bar__region--settings"><div class="w-component w-component--settings"><div><div class="w-menu w-menu--share" style="left: -40px;"><ul class="w-menu__list"><li class="w-menu__list-item w-menu__list-item--Quality"><button tabindex="-1" class="w-menu__section-title" title="Quality" alt="Quality" aria-label="Quality"><div class="w-menu__section-title_label">Quality</div><div class="w-menu__section-title_value">720p</div></button><div class="w-menu__collapsable-wrapper" style="height: 0px;"><ul class="w-menu__list w-menu__list--collapsable w-is-transitioned"><li class="w-menu__list-item"><button tabindex="-1" class="w-menu__list-link w-menu__list-link--checkable" data-optionkey="Auto" title="Auto" alt="Auto" aria-label="Auto">Auto</button></li><li class="w-menu__list-item"><button tabindex="-1" class="w-menu__list-link w-menu__list-link--checkable" data-optionkey="720p" title="720p" alt="720p" aria-label="720p">720p</button></li><li tabindex="-1" data-tabto=".w-menu__list-item--close-settings" class="w-menu__list-item"></li></ul></div></li><li tabindex="-1" data-tabto=".w-control--settings" class="w-menu__list-item w-menu__list-item--close-settings"></li></ul></div><button class="w-control w-control--settings w-is-visible" title="Settings" alt="Settings" tabindex="0" aria-label="Settings"><div class="w-control--icon"><svg x="0px" y="0px" viewBox="0 0 19 19" enable-background="new 0 0 19 19" class="wistia_vulcan_svg_icon wistia_vulcan_svg_icon_settings"><path d="M17.8,8.8h-2c-0.2-1-0.5-2-1-2.7l1.4-1.5c0.5-0.5,0.5-1.3,0-1.7c-0.5-0.5-1.2-0.5-1.7,0l-1.5,1.4 c-0.7-0.5-1.5-0.8-2.5-1v-2c0-0.7-0.3-1.2-1-1.2s-1,0.5-1,1.2v2.1c-1,0.2-1.8,0.5-2.5,1L4.5,2.8c-0.5-0.5-1.2-0.5-1.7,0 S2.3,4,2.8,4.5l1.5,1.8c-0.5,0.7-0.8,1.6-1,2.6H1.2C0.5,8.8,0,9.2,0,9.8s0.5,1,1.2,1h2.1c0.2,1,0.5,1.6,1,2.3l-1.5,1.4 c-0.5,0.5-0.5,1.2,0,1.7c0.2,0.2,0.5,0.3,0.8,0.3s0.6-0.1,0.8-0.4l1.6-1.5c0.7,0.5,1.5,0.8,2.5,1v2.1c0,0.7,0.3,1.2,1,1.2 s1-0.5,1-1.2v-2c1-0.2,1.8-0.5,2.5-1l1.4,1.4c0.2,0.2,0.5,0.3,0.9,0.3s0.6-0.1,0.8-0.3c0.5-0.5,0.5-1.2,0-1.7l-1.4-1.3 c0.5-0.7,0.9-1.4,1-2.4h2c0.7,0,1.2-0.3,1.2-1S18.5,8.8,17.8,8.8z M9.6,14.1C7,14.1,5,12,5,9.5S7,4.9,9.6,4.9s4.6,2.1,4.6,4.6 S12.1,14.1,9.6,14.1z"></path></svg></div></button></div></div></div><div class="w-control-bar__region w-control-bar__region--airplay">
+                                                                            <button id="wistia_airplayButton_87" class="w-control w-control--fullscreen" alt="Airplay" tabindex="0" aria-label="Airplay" title="Airplay" style="position: relative; user-select: none;">
+                                                                                <div class="w-control--icon">
+                                                                                    <svg width="40px" height="34px" viewBox="0 0 40 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="wistia_vulcan_svg_icon wistia_vulcan_svg_icon_airplay">
+                                                                                        <g stroke="none" fill="none">
+                                                                                            <polyline stroke="#000000" stroke-width="2" points="14.52 23 9 23 9 10 32 10 32 23 26.48 23"></polyline>
+                                                                                            <polygon fill="#000000" points="20.5 20 25.5 26 15.5 26"></polygon>
+                                                                                        </g>
+                                                                                    </svg>
+                                                                                </div>
+                                                                            </button>
+                                                                        </div><div class="w-control-bar__region w-control-bar__region--chromecast">
+                                                                            <div id="wistia_undefined_94" class="w-control w-control--fullscreen" alt="Chromecast" tabindex="0" aria-label="Chromecast" title="Chromecast" style="position: relative; user-select: none;">
+                                                                                <div class="w-control--icon">
+                                                                                    <svg class="wistia_vulcan_svg_icon_chromecast" width="40px" height="34px" viewBox="0 0 40 34" version="1.1">
+                                                                                        <defs></defs>
+                                                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                                            <g>
+                                                                                                <g transform="translate(8.000000, 5.000000)">
+                                                                                                    <path d="M1,18 L1,21 L4,21 C4,19.34 2.66,18 1,18 L1,18 Z M1,14 L1,16 C3.76,16 6,18.24 6,21 L8,21 C8,17.13 4.87,14 1,14 L1,14 Z M1,10 L1,12 C5.97,12 10,16.03 10,21 L12,21 C12,14.92 7.07,10 1,10 L1,10 Z M21,3 L3,3 C1.9,3 1,3.9 1,5 L1,8 L3,8 L3,5 L21,5 L21,19 L14,19 L14,21 L21,21 C22.1,21 23,20.1 23,19 L23,5 C23,3.9 22.1,3 21,3 L21,3 Z" fill="#FFFFFF"></path>
+                                                                                                    <rect x="0" y="0" width="24" height="24"></rect>
+                                                                                                </g>
+                                                                                            </g>
+                                                                                        </g>
+                                                                                    </svg>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div><div class="w-control-bar__region w-control-bar__region--chapters"><div><nothing></nothing></div></div><div class="w-control-bar__region w-control-bar__region--fullscreen">
+                                                                            <button id="wistia_fullscreenButton_95" class="w-control w-control--fullscreen w-is-visible" alt="Fullscreen - click to toggle" tabindex="0" aria-label="Fullscreen" title="Fullscreen" style="position: relative; user-select: none;">
+                                                                                <div class="w-control--icon">
+                                                                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 27.5 19.5" enable-background="new 0 0 27.5 19.5" xml:space="preserve" class="wistia_vulcan_svg_icon wistia_vulcan_svg_icon_fullscreen">
+                                                                                    <g>
+                                                                                    <polyline fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="26.8,5.1 26.8,0.8 20.5,0.8"></polyline>
+                                                                                    <polyline fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="7,0.8 0.7,0.8 0.7,5.1"></polyline>
+                                                                                    <polyline fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="20.5,18.8 26.8,18.8 26.8,14.4	"></polyline>
+                                                                                    <polyline fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="0.7,14.4 0.7,18.8 7,18.8"></polyline></g>
+                                                                                    <rect x="5.8" y="4.8" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="16" height="10"></rect>
+</svg>
+                                                                                </div>
+                                                                            </button>
+                                                                        </div><div class="w-control-bar__region w-control-bar__region--branding"></div><div></div>
+                                                                    </div>
+                                                                </div><div class="w-menu-bar w-is-visible"></div><div class="w-icon-rail"><div class="w-control-bar__region w-control-bar__region--iconRail"><nothing></nothing></div></div><div id="wistia_66.thumbnail" tabindex="-1" class="" style="cursor: default; display: none; height: 411px; overflow: hidden; outline: none; position: absolute; width: 730px; left: 0px; top: 0px;"><img id="wistia_66.thumbnail_img" alt="Wistia video thumbnail - egghead-create-a-graphql-schema.mp4" src="https://embedwistia-a.akamaihd.net/deliveries/1f263a5d77c4a1c72db9f9341a7185f408d58e03.jpg?image_crop_resized=960x540" style="border: 0px solid rgb(0, 0, 0); display: block; float: none; height: 411px; margin: 0px; max-height: none; max-width: none; padding: 0px; position: absolute; width: 730px; left: 0px; top: 0px;"></div><div id="wistia_loading_118" class="w-control wistia-loading" style="top: 0px;">
+                                                                    <div class="wistia-loading__mask"></div>
+                                                                    <div class="wistia-loading__svg-position">
+                                                                        <svg class="wistia-loading__svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 127 80" enable-background="new 0 0 127 80" xml:space="preserve">
+                                                                        <polygon class="wistia-loading__polygon wl-d" points="63,30.3 63,49.7 66,47.7 66,32.3 "></polygon>
+                                                                        <polygon class="wistia-loading__polygon wl-c" points="63,30.3 60,28.2 60,51.8 62,50.4 63,49.7 63,30.3 "></polygon>
+                                                                        <polygon class="wistia-loading__polygon wl-b" points="57,26.1 57,53.9 60,51.8 60,28.2 "></polygon>
+                                                                        <polygon class="wistia-loading__polygon wl-a" points="54,24 54,56 57,53.9 57,26.1 "></polygon>
+                                                                        <polygon class="wistia-loading__polygon wl-g" points="73,37.2 72,36.5 72,43.5 73,42.8 75,41.4 75,38.6 "></polygon>
+                                                                        <polygon class="wistia-loading__polygon wl-e" points="66,32.3 66,47.7 69,45.6 69,34.4 "></polygon>
+                                                                        <polygon class="wistia-loading__polygon wl-h" points="75,38.6 75,41.4 77,40 "></polygon>
+                                                                        <polygon class="wistia-loading__polygon wl-f" points="69,34.4 69,45.6 72,43.5 72,36.5 "></polygon>
+  </svg>
+                                                                    </div>
+                                                                </div><div id="wistia_context_menu_121" class="w-control w-control--context-menu w-context-menu" style="background-color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 10px; left: 369px; line-height: 1.5em; position: absolute; text-shadow: none; top: 135px; width: 200px; z-index: 100000; zoom: 1;"><a href="https://wistia.com/about-wistia?about=91975" target="_blank" class="w-context-menu__item w-is-visible aboutWistia w-context-menu__item--aboutWistia" style="display: block; text-decoration: none;">About Wistia</a><a href="#" class="w-context-menu__item w-is-visible reportAProblem w-context-menu__item--reportAProblem" style="display: block; text-decoration: none;">Report a problem</a></div><div class="w-tooltip w-tooltip--wistia_vulcan_storyboard" style="position: absolute; overflow: hidden; z-index: 13; width: 0px; height: 0px; bottom: 56px; right: 0px; left: 420px;"><div class="wistia_vulcan_storyboard_view" style="position: absolute; color: rgb(255, 255, 255); overflow: hidden; width: 150px; height: 84px;"><div class="wistia_vulcan_storyboard_time" style="position: absolute; background: rgba(0, 0, 0, 0.34902); font-family: WistiaPlayerOverpass, sans-serif; padding: 2px 4px; color: rgb(255, 255, 255); z-index: 10; bottom: 0px; width: 100%; text-align: center;">2:49</div><div style="display: block; position: absolute; overflow: hidden; top: 0px; right: 0px; bottom: 0px; left: 0px;"><div class="w-storyboard-viewer" style="position: relative; overflow: hidden; width: 150px; height: 84px;"><div class="w-storyboard-viewer__storyboard" style="position: absolute; top: 0px; left: 0px; width: 200px; height: 112px; background-position: -150px -1092px; background-size: 1500px 1764px; background-image: url(&quot;https://embedwistia-a.akamaihd.net/deliveries/a6bc1dc48800c393a78c31282ad3b63b8c911d0c/file.jpg&quot;);"></div></div></div></div></div><div class="w-report-a-problem w-is-transparent w-is-hidden"><div class="w-report-a-problem__centered-content"><div class="w-report-a-problem__form-content"><p>Thanks for reporting a problem. We'll attach technical data about this session to help us figure out the issue. Which of these best describes the problem?</p><select class="w-report-a-problem__category" title="Problem Category" aria-label="Problem Category"><option value="">Choose one</option><option value="stuttering">Video plays but frequently stutters</option><option value="low_quality">Video has poor quality</option><option value="fails_to_play">Video fails to play</option><option value="other">Other</option></select><p>Any other details or context?</p><textarea class="w-report-a-problem__description" title="Problem Description" aria-label="Problem Description"></textarea></div><div class="w-report-a-problem__button-row"><div class="w-report-a-problem__form-feedback w-report-a-problem__form-feedback--blank"></div><a href="#" class="w-report-a-problem__cancel">Cancel</a><button class="w-report-a-problem__send">Send</button></div></div></div><div class="w-status-bar">message</div><div data-testid="big-play-button"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <div id="wistia_grid_22_front"></div>
+                                                <div id="wistia_grid_22_top_inside">
+                                                    <div id="wistia_grid_22_top" style="height: 0px; font-size: 0px; line-height: 0px;"> </div>
+                                                </div>
+                                                <div id="wistia_grid_22_bottom_inside">
+                                                    <div id="wistia_grid_22_bottom" style="height: 0px; font-size: 0px; line-height: 0px;"> </div>
+                                                </div>
+                                                <div id="wistia_grid_22_left_inside">
+                                                    <div id="wistia_grid_22_left" style="height: 0px; font-size: 0px; line-height: 0px;"> </div>
+                                                </div>
+                                                <div id="wistia_grid_22_right_inside">
+                                                    <div id="wistia_grid_22_right" style="height: 0px; font-size: 0px; line-height: 0px;"> </div>
+                                                </div>
+                                                </div>
+                                                <div id="wistia_grid_22_below" style="height: 0px; font-size: 0px; line-height: 0px;"> </div>
+                                                <style id="wistia_23_style" type="text/css" class="wistia_injected_style">
+                                                    #wistia_grid_22_wrapper {
+                                                        -moz-box-sizing: content-box;
+                                                        -webkit-box-sizing: content-box;
+                                                        box-sizing: content-box;
+                                                        font-family: Arial,sans-serif;
+                                                        font-size: 14px;
+                                                        height: 100%;
+                                                        position: relative;
+                                                        text-align: left;
+                                                        width: 100%;
+                                                    }
+
+                                                        #wistia_grid_22_wrapper * {
+                                                            -moz-box-sizing: content-box;
+                                                            -webkit-box-sizing: content-box;
+                                                            box-sizing: content-box;
+                                                        }
+
+                                                    #wistia_grid_22_above {
+                                                        position: relative;
+                                                    }
+
+                                                    #wistia_grid_22_main {
+                                                        display: block;
+                                                        height: 100%;
+                                                        position: relative;
+                                                    }
+
+                                                    #wistia_grid_22_behind {
+                                                        height: 100%;
+                                                        left: 0;
+                                                        position: absolute;
+                                                        top: 0;
+                                                        width: 100%;
+                                                    }
+
+                                                    #wistia_grid_22_center {
+                                                        height: 100%;
+                                                        overflow: hidden;
+                                                        position: relative;
+                                                        width: 100%;
+                                                    }
+
+                                                    #wistia_grid_22_front {
+                                                        display: none;
+                                                        height: 100%;
+                                                        left: 0;
+                                                        position: absolute;
+                                                        top: 0;
+                                                        width: 100%;
+                                                    }
+
+                                                    #wistia_grid_22_top_inside {
+                                                        position: absolute;
+                                                        left: 0;
+                                                        top: 0;
+                                                        width: 100%;
+                                                    }
+
+                                                    #wistia_grid_22_top {
+                                                        width: 100%;
+                                                        position: absolute;
+                                                        bottom: 0;
+                                                        left: 0;
+                                                    }
+
+                                                    #wistia_grid_22_bottom_inside {
+                                                        position: absolute;
+                                                        left: 0;
+                                                        bottom: 0;
+                                                        width: 100%;
+                                                    }
+
+                                                    #wistia_grid_22_bottom {
+                                                        width: 100%;
+                                                        position: absolute;
+                                                        top: 0;
+                                                        left: 0;
+                                                    }
+
+                                                    #wistia_grid_22_left_inside {
+                                                        height: 100%;
+                                                        position: absolute;
+                                                        left: 0;
+                                                        top: 0;
+                                                    }
+
+                                                    #wistia_grid_22_left {
+                                                        height: 100%;
+                                                        position: absolute;
+                                                        right: 0;
+                                                        top: 0;
+                                                    }
+
+                                                    #wistia_grid_22_right_inside {
+                                                        height: 100%;
+                                                        right: 0;
+                                                        position: absolute;
+                                                        top: 0;
+                                                    }
+
+                                                    #wistia_grid_22_right {
+                                                        height: 100%;
+                                                        left: 0;
+                                                        position: absolute;
+                                                        top: 0;
+                                                    }
+
+                                                    #wistia_grid_22_below {
+                                                        position: relative;
+                                                    }
+                                                </style>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script charset="ISO-8859-1" src="//fast.wistia.com/assets/external/E-v1.js"></script>
+                            <script>
+                                wistiaEmbed = Wistia.embed("2k6pmqelty", {
+                                  videoFoam: "true",
+                                  playerPreference: "html5"
+                                });
+                            </script>
+                        </div>
+                    </div><!-- lessons-frame-holder -->
+
+                    <div class="lesson-action-holder">
+                        <div class="buttons-holder">
+                            <div class="lesson-controls-container">
+                                <a id="playbackSpeed" title="" class="custom-btn square-btn-grey replay-speed-btn hidden-xs" data-original-title="GO PRO to control playback speed!">
+                                    <i class="icon-double-angle-right"></i>
+                                    1x
+                                </a>
+                                <a id="2e3c9c92ff3f2d" title="" class="custom-btn" data-original-title="GO PRO for downloads!">
+                                    <i class="fa fa-download"></i>
+                                    <span class="hidden-xs">
+                                        Download in HD
+                                    </span>
+                                </a>
+                                <a id="quick-rewind" title="" class="custom-btn" data-original-title="GO PRO to quick rewind!">
+                                    <i class="fa fa-angle-double-left"></i>
+                                    <span class="hidden-xs">
+                                        10s
+                                    </span>
+                                </a>
+                                <a id="quick-skip" title="" class="custom-btn" data-original-title="GO PRO to skip forward!">
+                                    <i class="fa fa-angle-double-right"></i>
+                                    <span class="hidden-xs">
+                                        25s
+                                    </span>
+                                </a>
+                            </div>
+                            <!--<a class="custom-btn custom-btn-blue custom-btn-secondary" href="#">Add to Playlist...</a>-->
+                            <!--<br class="visible-xs">-->
+                        </div><!-- buttons-holder --><!-- end DownloadTrackerController -->
+
+                    </div>
+                </div><!-- lesson-frame-column -->
+
+                <div id="NextUpLessonList-react-component-f3a1c247-2b2a-44e0-9bb6-806abe559969">
+                    <div data-reactroot="" class="playlist-column">
+                        <div class="playlist-actions-holder">
+                            <div class="left" hidden="">
+                                <div class="autoplay-switch">
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" value="on">
+                                        <label class="onoffswitch-label" for="myonoffswitch">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="autoplay-label">
+                                    <small>autoplay</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="scrollable-holder" hidden>
+                            <div class="pad-bottom-10 playlist-description">
+                                <div class="pad-10">
+                                    <div class="pad-bottom-10 text-subtle">
+                                        <small><!-- react-text: 20 -->this lesson is part of a <!-- /react-text --><!-- react-text: 21 -->course<!-- /react-text --><!-- react-text: 22 -->:<!-- /react-text --></small>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="https://egghead.io/courses/build-a-graphql-server"><i class="fa fa-caret-square-o-right"></i></a>
+                                    </div>
+                                    <h4 class="series-title">Build a GraphQL Server</h4>
+                                </div>
+                            </div>
+                            <div class="inner">
+                                <div class="playlist-lessons-holder">
+                                    <ul class="playlist-lessons-list">
+                                        <li class="x-item">
+                                            <div id="next-<%= lesson.slug %>" class="current-scroll text-left pad-5">
+                                                <small>Now Playing:</small>
+                                            </div>
+                                            <div class="up-next-list-item current">
+                                                <div class="series-number">
+                                                    <i class="icon-play"></i>
+                                                </div>
+                                                <div class="technology-icon-holder">
+                                                    <img class="technology-icon hidden-md " src="//d1xwtr0qwr70yv.cloudfront.net/assets/tech/js-5e02473095281c2062c08e6a8d499936.svg">
+                                                </div>
+                                                <div class="lesson-info">
+                                                    <div class="list-item-title">Create a GraphQL Schema</div>
+                                                    <span>
+                                                        <svg x="0px" y="0px" viewBox="0 0 8 11.2" class="egg-icon"><path d="M4.2,11.2c-0.7,0-1.4-0.2-2.1-0.7c-1-0.7-1.7-1.8-2-3c-0.5-2.7,0.1-7,2.6-7.5c0.7-0.1,1.4,0,2.1,0.5 c1.6,1.1,2.7,3.6,3,5.5c0.4,2.4-1,4.7-3.1,5.2C4.6,11.2,4.4,11.2,4.2,11.2z M3.3,1.5c-0.1,0-0.1,0-0.2,0l0,0C1.8,1.8,1.2,5,1.6,7.3 c0.2,0.8,0.6,1.6,1.3,2c0.4,0.2,0.9,0.5,1.6,0.4c1.3-0.3,2.2-1.9,1.9-3.4C6.2,4.7,5.2,2.5,4.1,1.8C3.8,1.6,3.5,1.5,3.3,1.5z"></path></svg>
+                                                    </span>
+                                                    <span class="additional">Josh Black</span>
+                                                    <span class="icon-time"></span><!-- react-text: 42 -->4:16<!-- /react-text -->
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <div class="text-left pad-5">
+                                            <small>Next up:</small>
+                                        </div>
+                                        @foreach (var a in aTest)
+                                        {
+                                            <li>
+                                                <div class="up-next-list-item">
+                                                    <div class="series-number">2</div>
+                                                    <div class="technology-icon-holder">
+                                                        <img class="technology-icon hidden-md " src="//d1xwtr0qwr70yv.cloudfront.net/assets/tech/js-5e02473095281c2062c08e6a8d499936.svg">
+                                                    </div>
+                                                    <div class="lesson-info">
+                                                        <div class="list-item-title">Use GraphQL Primitive Types</div>
+                                                        <span>
+                                                            <svg x="0px" y="0px" viewBox="0 0 8 11.2" class="egg-icon">
+                                                                <path d="M4.2,11.2c-0.7,0-1.4-0.2-2.1-0.7c-1-0.7-1.7-1.8-2-3c-0.5-2.7,0.1-7,2.6-7.5c0.7-0.1,1.4,0,2.1,0.5 c1.6,1.1,2.7,3.6,3,5.5c0.4,2.4-1,4.7-3.1,5.2C4.6,11.2,4.4,11.2,4.2,11.2z M3.3,1.5c-0.1,0-0.1,0-0.2,0l0,0C1.8,1.8,1.2,5,1.6,7.3 c0.2,0.8,0.6,1.6,1.3,2c0.4,0.2,0.9,0.5,1.6,0.4c1.3-0.3,2.2-1.9,1.9-3.4C6.2,4.7,5.2,2.5,4.1,1.8C3.8,1.6,3.5,1.5,3.3,1.5z"></path>
+                                                            </svg>
+                                                        </span>
+                                                        <span class="additional">Josh Black</span>
+                                                        <span class="icon-time"></span><!-- react-text: 57 -->1:57<!-- /react-text -->
+                                                        <span class="lesson-pro-tag">P</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- lesson-with-playlist-holder -->
+        </div>
+    </div><!-- container -->
+</section>
+
+
+<section class="section section-lesson">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 part-left">
+                <div class="lesson-description-holder">
+                    <h1 class="title">
+                        Create a GraphQL Schema
+                    </h1>
+                    <div class="info-line">
+                        <small class="duration"><i class="icon-time"></i> 4:16</small>
+                        <small class="folder"><i class="icon-folder-open-alt"></i> <a class="underlined" href="/technologies/js">JavaScript</a></small>
+                        <small> lesson by <a rel="author" class="underlined" href="/instructors/josh-black">Josh Black</a></small>
+                    </div>
+                    <div class="description-text-holder">
+                        <p>In this video, we’ll take a look at the GraphQL Language and write out our first GraphQL Schema. We’ll use the <code>graphql</code> package available to us through <code>npm</code> to parse our <code>graphql</code> language file and resolve our initial query.</p>
+                    </div>
+                    <div class="share-lesson-holder">
+                        <ul class="social-likes">
+                            <li><small>Share this lesson:</small></li>
+                            <li class="social-likes__widget social-likes__widget_facebook" title="Share link on Facebook"><span class="social-likes__button social-likes__button_facebook"><span class="social-likes__icon social-likes__icon_facebook"></span>Facebook</span></li>
+                            <li class="social-likes__widget social-likes__widget_twitter" title="Share link on Twitter"><span class="social-likes__button social-likes__button_twitter"><span class="social-likes__icon social-likes__icon_twitter"></span>Twitter</span></li>
+                            <li class="social-likes__widget social-likes__widget_plusone" title="Share link on Google+"><span class="social-likes__button social-likes__button_plusone"><span class="social-likes__icon social-likes__icon_plusone"></span>Google+</span></li>
+                        </ul>
+                    </div><!-- share-lesson-holder -->
+                </div><!-- lesson-description-holder -->
+                <!-- tabs-holder -->
+            </div><!-- part-left -->
+        </div>
+    </div>
+</section>

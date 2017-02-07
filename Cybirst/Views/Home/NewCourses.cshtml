@@ -1,0 +1,129 @@
+﻿
+@{
+    ViewBag.Title = "NewCourse";
+    int[] aTest = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    int[] bTest = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+}
+
+<div class="technology-pages-wrapper">
+    <section class="section-jump-into-technologies">
+        <div class="jump-into-technologies">
+            <section class="search-input-container">
+                <div id="AutoCompleteSearch-react-component-5172dc93-cc04-41b9-8e1f-230feac7f854">
+                    <div class="SearchBar__search_bar_wrapper__1z4Oi">
+                        <div class="SearchBar__search_bar_field__3kicx">
+                            <input type="text" class="SearchBar__search_bar_input__wldfQ" maxlength="100" autocapitalize="none" autocomplete="off" autocorrect="off" value="" placeholder="search 'react redux'"><!-- react-text: 4 --><!-- /react-text -->
+                            <input type="submit" class="SearchBar__icon___zsxQ SearchBar__search_bar_submit__2XSOl" value="search">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="section-content-holder">
+                <ul class="technologies-list">
+                    @foreach (var a in aTest)
+                    {
+                        <li class="item-wrapper">
+                            <a href="/technologies/react">
+                                <div class="item">
+                                    <div class="tech-logo-holder">
+                                        <img class="tech-logo" src="//d1xwtr0qwr70yv.cloudfront.net/assets/tech/react-fb48758e2d13fbbbbfcb6d73281e2814.png" alt="React">
+                                    </div>
+                                    <div class="description">
+                                        <div class="title-holder">
+                                            <h4 class="title">
+                                                React
+                                            </h4>
+                                            <span class="badge badge-info">239</span>
+                                        </div>
+                                        <div class="text-holder">Lots of people use React as the V in MVC. Since React makes no...</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <section class="section">
+                <div class="container">
+                    <div class="title-subtitle-block">
+                        <h2 class="title">The Knowledge Firehose 🔥</h2>
+                        <h4><em>Every Lesson &amp; Course</em></h4>
+                    </div>
+
+                    <div class="browse-all-lessons-holder">
+                        <div class="tool-bar">
+                            <ul class="list-unstyled list-inline actions-list">
+                                <li>
+                                    <small>
+                                        <a class="filter-trigger active" href="#">Latest first</a>
+                                    </small>
+                                </li>
+                                <li>
+                                    <small>
+                                        <a class="filter-trigger" href="/lessons?order=ASC">Oldest first</a>
+                                    </small>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- tool-bar -->
+
+                        <div class="table-responsive">
+                            <table class="table table-condensed">
+                                <tbody>
+                                    @foreach (var b in bTest)
+                                    {
+                                        <tr id="lesson-row-100" class="lesson-row">
+                                            <td class="cell cell-category-logo">
+                                                <a href="https://egghead.io/courses/how-to-use-npm-scripts-as-your-build-tool">
+                                                    <img class="category-logo" src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/100/thumb/EGH_NPM_Build_Final.png?1485897772" alt="Egh npm build final">
+                                                </a>
+                                            </td>
+                                            <td class="cell cell-lesson-title">
+                                                <h4 class="title">
+                                                    <a href="https://egghead.io/courses/how-to-use-npm-scripts-as-your-build-tool">[Course] How to Use npm Scripts as Your Build Tool</a>
+                                                    <span class="text-muted"></span>
+                                                </h4>
+                                            </td>
+                                            <td class="cell cell-lesson-category hidden-xs hidden-sm">
+                                                <div class="info-line">
+                                                    <small class="folder">
+                                                        <i class="icon-folder-open-alt"></i>
+                                                        <a href="https://egghead.io/technologies/otherjs">otherjs</a>
+                                                    </small>
+                                                </div>
+                                            </td>
+                                            <td class="cell cell-duration hidden-xs hidden-sm">
+                                                <div class="info-line">
+                                                    <small class="duration"><i class="icon-time"></i> 52:32</small>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="pagination-holder text-center">
+                            <ul class="pagination pagination">
+                                <li class="prev disabled"><span>← Previous</span></li>
+                                <li class="active"><span>1</span></li>
+                                <li><a rel="next" href="/lessons?page=2">2</a></li>
+                                <li><a href="/lessons?page=3">3</a></li>
+                                <li><a href="/lessons?page=4">4</a></li>
+                                <li><a href="/lessons?page=5">5</a></li>
+                                <li><a href="/lessons?page=6">6</a></li>
+                                <li><a href="/lessons?page=7">7</a></li>
+                                <li><a href="/lessons?page=8">8</a></li>
+                                <li><a href="/lessons?page=9">9</a></li>
+                                <li class="disabled"><span>…</span></li>
+                                <li><a href="/lessons?page=12">12</a></li>
+                                <li><a href="/lessons?page=13">13</a></li>
+                                <li class="next"><a rel="next" href="/lessons?page=2">Next →</a></li>
+                            </ul>
+                        </div>
+                    </div><!-- browse-all-lessons-holder -->
+                </div>
+            </section>
+        </div>
+    </section>
+</div>
