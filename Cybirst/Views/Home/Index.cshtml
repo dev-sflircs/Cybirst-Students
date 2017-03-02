@@ -1,5 +1,9 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    ViewBag.Title = "Home-Index";
+    int[] aTest = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    int[] bTest = { 1, 2, 3, 4 };
+    int[] cTest = { 1, 2, 3, 4, 5, 6};
 }
 
 <!--Home first-->
@@ -35,48 +39,15 @@
         <div class="we-teach__carousel" id="we-teach-carousel">
             <div class="we-teach__carousel-inner">
                 <div class="" id="we-teach__carousel-list">
-                    <div>
-                        <a href="/technologies/react" class="we-teach__carousel-item">
-                            <img class="we-teach__carousel-item__logo" src="~/Images/icons/react-7b90239e805d8b06ca263be745f8ad5f.svg" alt="React" />
-                            <span class="we-teach__carousel-item__title">React</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="/technologies/js" class="we-teach__carousel-item">
-                            <img class="we-teach__carousel-item__logo" src="~/Images/icons/js-5e02473095281c2062c08e6a8d499936.svg" alt="Js" />
-                            <span class="we-teach__carousel-item__title">JavaScript</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="/technologies/angular2" class="we-teach__carousel-item">
-                            <img class="we-teach__carousel-item__logo" src="~/Images/icons/angular2-119739556a386494031ce4ad024f8de9.svg" alt="Angular2" />
-                            <span class="we-teach__carousel-item__title">Angular 2</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="/technologies/rx" class="we-teach__carousel-item">
-                            <img class="we-teach__carousel-item__logo" src="~/Images/icons/rx-1fc88ef9d05f37e70e323050da3397f0.svg" alt="Rx" />
-                            <span class="we-teach__carousel-item__title">RxJs</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="/technologies/node" class="we-teach__carousel-item">
-                            <img class="we-teach__carousel-item__logo" src="~/Images/icons/node-48eacec51baa2fa9215f271df5b2afd5.svg" alt="Node" />
-                            <span class="we-teach__carousel-item__title">NodeJS</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="/technologies/elm" class="we-teach__carousel-item">
-                            <img class="we-teach__carousel-item__logo" src="~/Images/icons/elm-85f2a1272f115fce345db32f14f46379.svg" alt="Elm" />
-                            <span class="we-teach__carousel-item__title">Elm</span>
-                        </a>
-                    </div>
-                    <div>
-                        <a href="/technologies/d3" class="we-teach__carousel-item">
-                            <img class="we-teach__carousel-item__logo" src="~/Images/icons/d3-d1310b8d819e261d3a7ed3a5c371496b.svg" alt="D3" />
-                            <span class="we-teach__carousel-item__title">D3</span>
-                        </a>
-                    </div>
+                    @foreach (var a in aTest)
+                    {
+                        <div>
+                            <a href="@Url.Action("TechnologyDetail", "Home")" class="we-teach__carousel-item">
+                                <img class="we-teach__carousel-item__logo" src="~/Images/icons/react-7b90239e805d8b06ca263be745f8ad5f.svg" alt="React" />
+                                <span class="we-teach__carousel-item__title">React</span>
+                            </a>
+                        </div>
+                    }                    
                 </div>
 
                 <a href="#" class="slick-control-arrow slick-prev"></a>
@@ -176,7 +147,7 @@
             </ul>
         </div>
         <div class="hundreds-free-videos__animation-holder">
-            <img class="hundreds-free-videos__animation" src="https://d1xwtr0qwr70yv.cloudfront.net/assets/elements/hundreds-of-free-video-tutorials-fa61f8b47bda3fc6ba02b683ce682bd9.gif" alt="Hundreds of free video tutorials" />
+            <img class="hundreds-free-videos__animation" src="~/Images/hundreds-of-free-video-tutorials-fa61f8b47bda3fc6ba02b683ce682bd9.gif" alt="Hundreds of free video tutorials" />
         </div>
     </div>
 </div>
@@ -190,7 +161,7 @@
             <div class="most-popular-courses__course">
                 <div class="course__logo-holder">
                     <a href='@Url.Action("Course", "Home")'>
-                        <img src='https://d2eip9sf3oo6c2.cloudfront.net/tech/defaults/course_image_full_angular2.png' class='course__logo' alt='' />
+                        <img src='~/Images/course_image_full_angular2.png' class='course__logo' alt='' />
                     </a>
                 </div>
                 <div class="course__description">
@@ -202,7 +173,7 @@
                             <h5 class="videos-amount">13&nbsp;<span class="hide-mobile-landscape"> lessons in 26 minutes</span></h5>
                         </div>
                         <a class="course__button--start"  href='@Url.Action("Course", "Home")'>
-                            <img src="https://d1xwtr0qwr70yv.cloudfront.net/assets/elements/course-start-button-674d59aa3fe77a6dabe027bfb5a60762.png" alt="Course start button" />
+                            <img src="~/Images/course-start-button-674d59aa3fe77a6dabe027bfb5a60762.png" alt="Course start button" />
                         </a>
                     </div>
                 </div>
@@ -232,7 +203,7 @@
                             <h5 class="videos-amount">30&nbsp;<span class="hide-mobile-landscape"> lessons in 121 minutes</span></h5>
                         </div>
                         <a href='@Url.Action("Course", "Home")' class="course__button--start">
-                            <img src="https://d1xwtr0qwr70yv.cloudfront.net/assets/elements/course-start-button-674d59aa3fe77a6dabe027bfb5a60762.png" alt="Course start button" />
+                            <img src="~/Images/course-start-button-674d59aa3fe77a6dabe027bfb5a60762.png" alt="Course start button" />
                         </a>
                     </div>
                 </div>
@@ -255,7 +226,7 @@
                             <h5 class="videos-amount">16&nbsp;<span class="hide-mobile-landscape"> lessons in 64 minutes</span></h5>
                         </div>
                         <a href='@Url.Action("Course", "Home")' class="course__button--start">
-                            <img src="https://d1xwtr0qwr70yv.cloudfront.net/assets/elements/course-start-button-674d59aa3fe77a6dabe027bfb5a60762.png" alt="Course start button" />
+                            <img src="~/Images/course-start-button-674d59aa3fe77a6dabe027bfb5a60762.png" alt="Course start button" />
                         </a>
                     </div>
                 </div>
@@ -270,13 +241,13 @@
 <div class="join-elite">
     <div class="join-elite__inner">
         <div class="join-elite__thingies">
-            <img src="https://d1xwtr0qwr70yv.cloudfront.net/assets/elements/join-elite-thingies-9881d780bf9db149cae0841dbf40f51c.png" alt="Join elite thingies" />
+            <img src="~/Images/join-elite-thingies-9881d780bf9db149cae0841dbf40f51c.png" alt="Join elite thingies" />
         </div>
         <h2 class="join-elite__title">Join the Programming Elite</h2>
         <ul class="join-elite__benefits">
             <li class="join-elite__benefit">
                 <div class="benefit__image-holder">
-                    <img class="benefit__image" src="https://d1xwtr0qwr70yv.cloudfront.net/assets/elements/join-elite-better-career-opportunities-ff27552ddd5873eb35f45ba7f7910c5f.png" alt="Join elite better career opportunities" />
+                    <img class="benefit__image" src="~/Images/join-elite-better-career-opportunities-ff27552ddd5873eb35f45ba7f7910c5f.png" alt="Join elite better career opportunities" />
                 </div>
                 <div class="benefit__description-holder">
                     <h3 class="description-title">Better career opportunities</h3>
@@ -285,7 +256,7 @@
             </li>
             <li class="join-elite__benefit">
                 <div class="benefit__image-holder">
-                    <img class="benefit__image" src="https://d1xwtr0qwr70yv.cloudfront.net/assets/elements/join-elite-stay-up-to-date-c19144be82dcb894c41bf2c8075436e2.png" alt="Join elite stay up to date" />
+                    <img class="benefit__image" src="~/Images/join-elite-stay-up-to-date-c19144be82dcb894c41bf2c8075436e2.png" alt="Join elite stay up to date" />
                 </div>
                 <div class="benefit__description-holder">
                     <h3 class="description-title">Stay up-to-date</h3>
@@ -294,7 +265,7 @@
             </li>
             <li class="join-elite__benefit">
                 <div class="benefit__image-holder">
-                    <img class="benefit__image" src="https://d1xwtr0qwr70yv.cloudfront.net/assets/elements/join-elite-confidence-and-expertise-8ff40c6b941115fb54f5ad91f98bf5dd.png" alt="Join elite confidence and expertise" />
+                    <img class="benefit__image" src="~/Images/join-elite-confidence-and-expertise-8ff40c6b941115fb54f5ad91f98bf5dd.png" alt="Join elite confidence and expertise" />
                 </div>
                 <div class="benefit__description-holder">
                     <h3 class="description-title">Confidence & expertise</h3>
@@ -312,110 +283,36 @@
         <h2 class="taught-by-leaders__title">Taught by Industry Leaders</h2>
         <h3 class="taught-by-leaders__subtitle">Learn cutting-edge practices from working engineers</h3>
         <div class="taught-by-leaders__cards-holder">
-
-
-            <div class="taught-by-leaders__card">
-                <a href="https://egghead.io/instructors/dan-abramov">
-                    <img class="instructor__photo" src="https://d2eip9sf3oo6c2.cloudfront.net/instructors/avatars/000/000/032/bio/9VsY9i09.jpeg?1444932586" alt="">
-                </a>
-                <div class="instructor__info-holder">
-                    <div class="instructor__title_box">
-                        <a href="https://egghead.io/instructors/dan-abramov">
-
-                            <h4 class="instructor__title">Dan Abramov</h4>
-                        </a>
+            @foreach (var b in bTest)
+            {
+                <div class="taught-by-leaders__card">
+                    <a href="https://egghead.io/instructors/dan-abramov">
+                        <img class="instructor__photo" src="~/Images/people/9VsY9i09.jpeg" alt="">
+                    </a>
+                    <div class="instructor__info-holder">
+                        <div class="instructor__title_box">
+                            <a href="https://egghead.io/instructors/dan-abramov">
+                                <h4 class="instructor__title">Dan Abramov</h4>
+                            </a>
+                        </div>
+                        <div class="instructor__about">Working at Facebook on React. Creator of Redux.</div>
                     </div>
-                    <div class="instructor__about">Working at Facebook on React. Creator of Redux.</div>
-                </div>
-                <div class="instructor__teaching-technologies">
-                    <span>Teaching Redux</span>
-                </div>
-            </div>
-            <div class="taught-by-leaders__card">
-                <a href="https://egghead.io/instructors/andre-staltz">
-                    <img class="instructor__photo" src="https://d2eip9sf3oo6c2.cloudfront.net/instructors/avatars/000/000/024/bio/andre_500.jpg?1435599944" alt="">
-                </a>
-                <div class="instructor__info-holder">
-                    <div class="instructor__title_box">
-                        <a href="https://egghead.io/instructors/andre-staltz">
-
-                            <h4 class="instructor__title">André Staltz</h4>
-                        </a>
+                    <div class="instructor__teaching-technologies">
+                        <span>Teaching Redux</span>
                     </div>
-                    <div class="instructor__about">Creator of CycleJS and Rx Marbles. Reactive Programming Expert and RxJS Contributor.</div>
                 </div>
-                <div class="instructor__teaching-technologies">
-                    <span>Teaching RxJS</span>
-                </div>
-            </div>
-            <div class="taught-by-leaders__card">
-                <a href="https://egghead.io/instructors/kentcdodds">
-                    <img class="instructor__photo" src="https://d2eip9sf3oo6c2.cloudfront.net/instructors/avatars/000/000/011/bio/photo-512.png?1469949786" alt="">
-                </a>
-                <div class="instructor__info-holder">
-                    <div class="instructor__title_box">
-                        <a href="https://egghead.io/instructors/kentcdodds">
-
-                            <h4 class="instructor__title">Kent C. Dodds</h4>
-                        </a>
-                    </div>
-                    <div class="instructor__about">Open-source contibutor. Host of the JavascriptAir podcast. Engineering at PayPal.</div>
-                </div>
-                <div class="instructor__teaching-technologies">
-                    <span>Teaching JavaScript</span>
-                </div>
-            </div>
-            <div class="taught-by-leaders__card">
-                <a href="https://egghead.io/instructors/marcy-sutton">
-                    <img class="instructor__photo" src="https://d2eip9sf3oo6c2.cloudfront.net/instructors/avatars/000/000/057/bio/marcy-max-headshot-sq.jpg?1470675610" alt="">
-                </a>
-                <div class="instructor__info-holder">
-                    <div class="instructor__title_box">
-                        <a href="https://egghead.io/instructors/marcy-sutton">
-
-                            <h4 class="instructor__title">Marcy Sutton</h4>
-                        </a>
-                    </div>
-                    <div class="instructor__about">Senior Front-End Engineer at Deque Systems working on accessibility tools with axe-core.</div>
-                </div>
-                <div class="instructor__teaching-technologies">
-                    <span>Teaching a11y</span>
-                </div>
-            </div>
-
+            }
         </div>
         <div class="taught-by-leaders__more-instructors">
             <div class="more-instructors__instructors-photos">
-                <div class="item">
-                    <a href="https://egghead.io/instructors/jafar-husain">
-                        <img src='https://d2eip9sf3oo6c2.cloudfront.net/instructors/avatars/000/000/012/thumb/image1.jpeg?1420665163' class='instructor__photo' alt='' />
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="https://egghead.io/instructors/michel-weststrate">
-                        <img src='https://d2eip9sf3oo6c2.cloudfront.net/instructors/avatars/000/000/071/thumb/avatar.jpg?1463470224' class='instructor__photo' alt='' />
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="https://egghead.io/instructors/tyler-mcginnis">
-                        <img src='https://d2eip9sf3oo6c2.cloudfront.net/instructors/avatars/000/000/017/thumb/tylermcginnis-2016.jpg?1468915449' class='instructor__photo' alt='' />
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="https://egghead.io/instructors/iheanyi-ekechukwu">
-                        <img src='https://d2eip9sf3oo6c2.cloudfront.net/instructors/avatars/000/000/037/thumb/956631.jpeg?1474994568' class='instructor__photo' alt='' />
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="https://egghead.io/instructors/bonnie-eisenman">
-                        <img src='https://d2eip9sf3oo6c2.cloudfront.net/instructors/avatars/000/000/046/thumb/mu_cumbria_square.jpeg?1484926144' class='instructor__photo' alt='' />
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="https://egghead.io/instructors/shane-osbourne">
-                        <img src='https://d2eip9sf3oo6c2.cloudfront.net/instructors/avatars/000/000/030/thumb/Untitled-1.jpg?1441957411' class='instructor__photo' alt='' />
-                    </a>
-                </div>
+                @foreach (var c in cTest)
+                {
+                    <div class="item">
+                        <a href="https://egghead.io/instructors/jafar-husain">
+                            <img src='~/Images/people/image1.jpeg' class='instructor__photo' alt='' />
+                        </a>
+                    </div>
+                }                
             </div>
             <div class="more-instructors__see-all">
                 <div class="plus-more__box">+ 61 More</div>
@@ -471,325 +368,48 @@
             <div class="tab-view-list">
                 <div class="series-lessons-holder visible-xs visible-sm">
                     <ul class="series-lessons-list">
-                        <li class="item">
-                            <div class="lesson-content">
-                                <h5 class="title">Build a Server Rendered Vue.js App with Nuxt and Vuex</h5>
-                                <div class="info-line"><small class="duration">vue</small></div>
-                            </div>
-                        </li>
-                        <!-- item -->
-                        <li class="item">
-                            <div class="lesson-content">
-                                <h5 class="title">Build a Vue.js app with Vuex</h5>
-                                <div class="info-line"><small class="duration">js</small></div>
-                            </div>
-                        </li>
-                        <!-- item -->
-                        <li class="item">
-                            <div class="lesson-content">
-                                <h5 class="title">Building apps with Ionic 2</h5>
-                                <div class="info-line"><small class="duration">angular2</small></div>
-                            </div>
-                        </li>
-                        <!-- item -->
-                        <li class="item">
-                            <div class="lesson-content">
-                                <h5 class="title">Craft Awesome Page Layouts with CSS Grid</h5>
-                                <div class="info-line"><small class="duration">css</small></div>
-                            </div>
-                        </li>
-                        <!-- item -->
-                        <li class="item">
-                            <div class="lesson-content">
-                                <h5 class="title">Getting Started with Elasticsearch</h5>
-                                <div class="info-line"><small class="duration">otherjs</small></div>
-                            </div>
-                        </li>
-                        <!-- item -->
-
-                        <li class="item">
-                            <div class="lesson-content">
-                                <h5 class="title">How to Use npm Scripts as Your Build Tool</h5>
-                                <div class="info-line"><small class="duration">otherjs</small></div>
-                            </div>
-                        </li>
-                        <!-- item -->
-
-                        <li class="item">
-                            <div class="lesson-content">
-                                <h5 class="title">Integrate libraries into NativeScript for Angular apps using CocoaPods and Android Arsenal</h5>
-                                <div class="info-line"><small class="duration">angular2</small></div>
-                            </div>
-                        </li>
-                        <!-- item -->
-
-                        <li class="item">
-                            <div class="lesson-content">
-                                <h5 class="title">Learn the Best and Most Useful SCSS</h5>
-                                <div class="info-line"><small class="duration">css</small></div>
-                            </div>
-                        </li>
-                        <!-- item -->
-
-                        <li class="item">
-                            <div class="lesson-content">
-                                <h5 class="title">NativeScript Layout Basics</h5>
-                                <div class="info-line"><small class="duration">js</small></div>
-                            </div>
-                        </li>
-                        <!-- item -->
-
-                        <li class="item">
-                            <div class="lesson-content">
-                                <h5 class="title">Querying Power with Intermediate Postgres</h5>
-                                <div class="info-line"><small class="duration">otherjs</small></div>
-                            </div>
-                        </li>
-                        <!-- item -->
-
-                        <li class="item">
-                            <div class="lesson-content">
-                                <h5 class="title">Real World React Native Animations</h5>
-                                <div class="info-line"><small class="duration">react</small></div>
-                            </div>
-                        </li>
-                        <!-- item -->
-
-                        <li class="item">
-                            <div class="lesson-content">
-                                <h5 class="title">Styling an Application from Start to Finish</h5>
-                                <div class="info-line"><small class="duration">css</small></div>
-                            </div>
-                        </li>
-                        <!-- item -->
-
-                        <li class="item">
-                            <div class="lesson-content">
-                                <h5 class="title">Understand the Basics of HTTP</h5>
-                                <div class="info-line"><small class="duration">otherjs</small></div>
-                            </div>
-                        </li>
-                        <!-- item -->
-
-                        <li class="item">
-                            <div class="lesson-content">
-                                <h5 class="title">Using Postgres Window Functions</h5>
-                                <div class="info-line"><small class="duration">postgres</small></div>
-                            </div>
-                        </li>
-                        <!-- item -->
-
-                        <li class="item">
-                            <div class="lesson-content">
-                                <h5 class="title">Wrangle your terminal with tmux</h5>
-                                <div class="info-line"><small class="duration">otherjs</small></div>
-                            </div>
-                        </li>
-                        <!-- item -->
-
-                        <li class="item">
-                            <div class="lesson-content">
-                                <h5 class="title">Write simple asynchronous code with JavaScript generators</h5>
-                                <div class="info-line"><small class="duration">js</small></div>
-                            </div>
-                        </li>
-                        <!-- item -->
+                        @foreach (var a in aTest)
+                        {
+                            <li class="item">
+                                <div class="lesson-content">
+                                    <h5 class="title">Build a Server Rendered Vue.js App with Nuxt and Vuex</h5>
+                                    <div class="info-line"><small class="duration">vue</small></div>
+                                </div>
+                            </li>
+                        }
                     </ul>
                 </div>
 
                 <div class="table-responsive hidden-xs hidden-sm">
                     <table class="table table-condensed">
-                        <tr id="pending-lesson-row-103" class="lesson-row---hoverless">
-
-                            <td class="cell cell-category-logo">
-                                <a href="https://egghead.io/technologies/js">
-                                    <img class="category-logo" src="https://d2eip9sf3oo6c2.cloudfront.net/tech/defaults/course_image_thumb_js.png" alt="Course image thumb js" />
-                                </a>
-                            </td>
-                            <td class="cell cell-lesson-title">
-                                <h4 class="title">NativeScript Layout Basics</h4>
-                            </td>
-                            <td class="cell cell-lesson-category">
-                                <div class="info-line">
-                                    <small class="folder"><i class="icon-folder-open-alt"></i> js</small>
-                                </div>
-                            </td>
-                            <td class="cell cell-duration">
-                                <div class="info-line">
-                                    <small>Brad Martin</small>
-                                </div>
-                            </td>
-                            <td class="cell">
-                                <div class="info-line"></div>
-                            </td>
-                        </tr>
-                        <tr id="pending-lesson-row-108" class="lesson-row---hoverless">
-
-                            <td class="cell cell-category-logo">
-                                <a href="https://egghead.io/technologies/otherjs">
-                                    <img class="category-logo" src="https://d2eip9sf3oo6c2.cloudfront.net/tech/defaults/course_image_thumb_otherjs.png" alt="Course image thumb otherjs" />
-                                </a>
-                            </td>
-                            <td class="cell cell-lesson-title">
-                                <h4 class="title">Querying Power with Intermediate Postgres</h4>
-                            </td>
-                            <td class="cell cell-lesson-category">
-                                <div class="info-line">
-                                    <small class="folder"><i class="icon-folder-open-alt"></i> otherjs</small>
-                                </div>
-                            </td>
-
-                            <td class="cell cell-duration">
-                                <div class="info-line">
-                                    <small>Brett Cassette</small>
-                                </div>
-                            </td>
-                            <td class="cell">
-                                <div class="info-line"></div>
-                            </td>
-                        </tr>
-                        <tr id="pending-lesson-row-96" class="lesson-row---hoverless">
-                            <td class="cell cell-category-logo">
-                                <a href="https://egghead.io/technologies/react">
-                                    <img class="category-logo" src="https://d2eip9sf3oo6c2.cloudfront.net/tech/defaults/course_image_thumb_react.png" alt="Course image thumb react" />
-                                </a>
-                            </td>
-                            <td class="cell cell-lesson-title">
-                                <h4 class="title">Real World React Native Animations</h4>
-                            </td>
-                            <td class="cell cell-lesson-category">
-                                <div class="info-line">
-                                    <small class="folder"><i class="icon-folder-open-alt"></i> react</small>
-                                </div>
-                            </td>
-                            <td class="cell cell-duration">
-                                <div class="info-line">
-                                    <small>Jason Brown</small>
-                                </div>
-                            </td>
-                            <td class="cell">
-                                <div class="info-line"></div>
-                            </td>
-                        </tr>
-                        <tr id="pending-lesson-row-57" class="lesson-row---hoverless">
-                            <td class="cell cell-category-logo">
-                                <a href="https://egghead.io/technologies/css">
-                                    <img class="category-logo" src="https://d2eip9sf3oo6c2.cloudfront.net/tech/defaults/course_image_thumb_css.png" alt="Course image thumb css" />
-                                </a>
-                            </td>
-                            <td class="cell cell-lesson-title">
-                                <h4 class="title">Styling an Application from Start to Finish</h4>
-                            </td>
-                            <td class="cell cell-lesson-category">
-                                <div class="info-line">
-                                    <small class="folder"><i class="icon-folder-open-alt"></i> css</small>
-                                </div>
-                            </td>
-                            <td class="cell cell-duration">
-                                <div class="info-line">
-                                    <small>Garth Braithwaite</small>
-                                </div>
-                            </td>
-                            <td class="cell">
-                                <div class="info-line"></div>
-                            </td>
-                        </tr>
-                        <tr id="pending-lesson-row-78" class="lesson-row---hoverless">
-                            <td class="cell cell-category-logo">
-                                <a href="https://egghead.io/technologies/otherjs">
-                                    <img class="category-logo" src="https://d2eip9sf3oo6c2.cloudfront.net/tech/defaults/course_image_thumb_otherjs.png" alt="Course image thumb otherjs" />
-                                </a>
-                            </td>
-                            <td class="cell cell-lesson-title">
-                                <h4 class="title">Understand the Basics of HTTP</h4>
-                            </td>
-                            <td class="cell cell-lesson-category">
-                                <div class="info-line">
-                                    <small class="folder"><i class="icon-folder-open-alt"></i> otherjs</small>
-                                </div>
-                            </td>
-                            <td class="cell cell-duration">
-                                <div class="info-line">
-                                    <small>Pete Johanson</small>
-                                </div>
-                            </td>
-                            <td class="cell">
-                                <div class="info-line"></div>
-                            </td>
-                        </tr>
-                        <tr id="pending-lesson-row-105" class="lesson-row---hoverless">
-                            <td class="cell cell-category-logo">
-                                <a href="https://egghead.io/technologies/postgres">
-                                    <img class="category-logo" src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/105/thumb/EGH_PostgreSQL-2_Final.png?1485823755" alt="Egh postgresql 2 final" />
-                                </a>
-                            </td>
-                            <td class="cell cell-lesson-title">
-                                <h4 class="title">Using Postgres Window Functions</h4>
-                            </td>
-                            <td class="cell cell-lesson-category">
-                                <div class="info-line">
-                                    <small class="folder"><i class="icon-folder-open-alt"></i> postgres</small>
-                                </div>
-                            </td>
-                            <td class="cell cell-duration">
-                                <div class="info-line">
-                                    <small>Brett Cassette</small>
-                                </div>
-                            </td>
-                            <td class="cell">
-                                <div class="info-line">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr id="pending-lesson-row-99" class="lesson-row---hoverless">
-
-                            <td class="cell cell-category-logo">
-                                <a href="https://egghead.io/technologies/otherjs">
-                                    <img class="category-logo" src="https://d2eip9sf3oo6c2.cloudfront.net/tech/defaults/course_image_thumb_otherjs.png" alt="Course image thumb otherjs" />
-                                </a>
-                            </td>
-                            <td class="cell cell-lesson-title">
-                                <h4 class="title">Wrangle your terminal with tmux</h4>
-                            </td>
-                            <td class="cell cell-lesson-category">
-                                <div class="info-line">
-                                    <small class="folder"><i class="icon-folder-open-alt"></i> otherjs</small>
-                                </div>
-                            </td>
-
-                            <td class="cell cell-duration">
-                                <div class="info-line">
-                                    <small>Bonnie Eisenman</small>
-                                </div>
-                            </td>
-                            <td class="cell">
-                                <div class="info-line"></div>
-                            </td>
-                        </tr>
-                        <tr id="pending-lesson-row-110" class="lesson-row---hoverless">
-                            <td class="cell cell-category-logo">
-                                <a href="https://egghead.io/technologies/js">
-                                    <img class="category-logo" src="https://d2eip9sf3oo6c2.cloudfront.net/tech/defaults/course_image_thumb_js.png" alt="Course image thumb js" />
-                                </a>
-                            </td>
-                            <td class="cell cell-lesson-title">
-                                <h4 class="title">Write simple asynchronous code with JavaScript generators</h4>
-                            </td>
-                            <td class="cell cell-lesson-category">
-                                <div class="info-line">
-                                    <small class="folder"><i class="icon-folder-open-alt"></i> js</small>
-                                </div>
-                            </td>
-                            <td class="cell cell-duration">
-                                <div class="info-line">
-                                    <small>Max Stoiber</small>
-                                </div>
-                            </td>
-                            <td class="cell">
-                                <div class="info-line">
-                                </div>
-                            </td>
-                        </tr>
+                        <tbody>
+                            @foreach (var a in aTest)
+                            {
+                                <tr class="lesson-row---hoverless">
+                                    <td class="cell cell-category-logo">
+                                        <a href="https://egghead.io/technologies/js">
+                                            <img class="category-logo" src="~/Images/course_image_thumb_js.png" alt="Course image thumb js" />
+                                        </a>
+                                    </td>
+                                    <td class="cell cell-lesson-title">
+                                        <h4 class="title">Master Higher Order Components with Functional Patterns Using Recompose </h4>
+                                    </td>
+                                    <td class="cell cell-lesson-category">
+                                        <div class="info-line">
+                                            <small class="folder"><i class="icon-folder-open-alt"></i> js</small>
+                                        </div>
+                                    </td>
+                                    <td class="cell cell-duration">
+                                        <div class="info-line">
+                                            <small>Brad Martin</small>
+                                        </div>
+                                    </td>
+                                    <td class="cell">
+                                        <div class="info-line"></div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
                     </table>
                 </div>
             </div>
