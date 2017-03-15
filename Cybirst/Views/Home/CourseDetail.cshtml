@@ -34,7 +34,7 @@
 <section class="section section-browse-all-lessons">
     <div class="container">
         <div class="title-subtitle-block">
-            <a href="https://egghead.io/lessons/javascript-create-a-graphql-schema?course=build-a-graphql-server" class="custom-btn custom-btn-red custom-btn-primary">
+            <a href="@Url.Action("Lession", "Home")" class="custom-btn custom-btn-red custom-btn-primary">
                 Start Watching Lessons
             </a>
             <!-- container -->
@@ -69,7 +69,7 @@
                         <ul class="series-lessons-list">
                             @foreach (var a in aTest)
                             {
-                                <a class="" href="https://egghead.io/lessons/javascript-create-a-graphql-schema?course=build-a-graphql-server">
+                                <a class="" href="@Url.Action("Lession", "Home")">
                                     <li class="item  ">
                                         <div class="part-left"><i class="pseudo-checkbox"></i></div>
                                         <div class="part-right"></div>
@@ -95,12 +95,12 @@
                                             </span>
                                         </td>
                                         <td class="cell cell-category-logo">
-                                            <a href="https://egghead.io/technologies/js">
+                                            <a href="@Url.Action("TechnologyDetail", "Home")">
                                                 <img class="category-logo" src="//d1xwtr0qwr70yv.cloudfront.net/assets/tech/js-5e02473095281c2062c08e6a8d499936.svg" alt="Js">
                                             </a>
                                         </td>
                                         <td class="cell cell-lesson-title">
-                                            <h4 class="title"><a href="https://egghead.io/lessons/javascript-create-a-graphql-schema?course=build-a-graphql-server">Create a GraphQL Schema</a> <span class="text-muted"></span></h4>
+                                            <h4 class="title"><a href="@Url.Action("Lession", "Home")">Create a GraphQL Schema</a> <span class="text-muted"></span></h4>
 
                                         </td>
                                         <td class="cell cell-lesson-category hidden-xs hidden-sm">
@@ -130,7 +130,7 @@
                         {
                             <div class="col-sm-4 item-holder ">
                                 <div id="lesson-tile-1468" class="item ">
-                                    <a href="/lessons/javascript-create-a-graphql-schema">
+                                    <a href="@Url.Action("Lession", "Home")">
                                         <div class="media-holder">
                                             <div class="overlay"></div>
                                             <img src="https://dcv19h61vib2d.cloudfront.net/thumbs/egghead-create-a-graphql-schema/egghead-create-a-graphql-schema.jpg" alt="js tutorial about Create a GraphQL Schema" class="img-responsive">

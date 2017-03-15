@@ -23,7 +23,7 @@
                     @foreach (var a in aTest)
                     {
                         <li class="item-wrapper">
-                            <a href="/technologies/react">
+                            <a href="@Url.Action("TechnologyDetail", "Home")">
                                 <div class="item">
                                     <div class="tech-logo-holder">
                                         <img class="tech-logo" src="//d1xwtr0qwr70yv.cloudfront.net/assets/tech/react-fb48758e2d13fbbbbfcb6d73281e2814.png" alt="React">
@@ -74,13 +74,13 @@
                                     {
                                         <tr id="lesson-row-100" class="lesson-row">
                                             <td class="cell cell-category-logo">
-                                                <a href="https://egghead.io/courses/how-to-use-npm-scripts-as-your-build-tool">
+                                                <a href="@Url.Action("Lession", "Home")">
                                                     <img class="category-logo" src="https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/100/thumb/EGH_NPM_Build_Final.png?1485897772" alt="Egh npm build final">
                                                 </a>
                                             </td>
                                             <td class="cell cell-lesson-title">
                                                 <h4 class="title">
-                                                    <a href="https://egghead.io/courses/how-to-use-npm-scripts-as-your-build-tool">[Course] How to Use npm Scripts as Your Build Tool</a>
+                                                    <a href="@Url.Action("Lession", "Home")">[Course] How to Use npm Scripts as Your Build Tool</a>
                                                     <span class="text-muted"></span>
                                                 </h4>
                                             </td>
@@ -88,7 +88,7 @@
                                                 <div class="info-line">
                                                     <small class="folder">
                                                         <i class="icon-folder-open-alt"></i>
-                                                        <a href="https://egghead.io/technologies/otherjs">otherjs</a>
+                                                        <a href="@Url.Action("TechnologyDetail", "Home")">otherjs</a>
                                                     </small>
                                                 </div>
                                             </td>

@@ -119,7 +119,7 @@
 
             </div>
         </div>
-        <a href="/lessons" class="we-teach__browse-full-library">Explore the Library of Lessons</a>
+        <a href="@Url.Action("Courses", "Home")" class="we-teach__browse-full-library">Explore the Library of Courses</a>
     </div>
 </div>
 <!--end Home first-->
@@ -160,19 +160,19 @@
         <div class="most-popular-courses__course-wrapper">
             <div class="most-popular-courses__course">
                 <div class="course__logo-holder">
-                    <a href='@Url.Action("Course", "Home")'>
+                    <a href='@Url.Action("CourseDetail", "Home")'>
                         <img src='~/Images/course_image_full_angular2.png' class='course__logo' alt='' />
                     </a>
                 </div>
                 <div class="course__description">
-                    <h3 class="course__description--title"><a href='@Url.Action("Course", "Home")'>Get Started with Angular 2 </a></h3>
+                    <h3 class="course__description--title"><a href='@Url.Action("CourseDetail", "Home")'>Get Started with Angular 2 </a></h3>
                     <div class="hr"></div>
                     <div class="course__description--info">
                         <div class="course-by-author">
                             <h4 class="author">with <span class="text-uppercase">John  Lindquist</span></h4>
                             <h5 class="videos-amount">13&nbsp;<span class="hide-mobile-landscape"> lessons in 26 minutes</span></h5>
                         </div>
-                        <a class="course__button--start"  href='@Url.Action("Course", "Home")'>
+                        <a class="course__button--start"  href='@Url.Action("CourseDetail", "Home")'>
                             <img src="~/Images/course-start-button-674d59aa3fe77a6dabe027bfb5a60762.png" alt="Course start button" />
                         </a>
                     </div>
@@ -190,19 +190,19 @@
         <div class="most-popular-courses__course-wrapper">
             <div class="most-popular-courses__course">
                 <div class="course__logo-holder">
-                    <a href='@Url.Action("Course", "Home")'>
+                    <a href='@Url.Action("CourseDetail", "Home")'>
                         <img src='https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/025/full/EGH_Redux-New.png?1461772196' class='course__logo' alt='' />
                     </a>
                 </div>
                 <div class="course__description">
-                    <h3 class="course__description--title"><a href='@Url.Action("Course", "Home")'>Getting Started with Redux</a></h3>
+                    <h3 class="course__description--title"><a href='@Url.Action("CourseDetail", "Home")'>Getting Started with Redux</a></h3>
                     <div class="hr"></div>
                     <div class="course__description--info">
                         <div class="course-by-author">
                             <h4 class="author">with <span class="text-uppercase">Dan Abramov</span></h4>
                             <h5 class="videos-amount">30&nbsp;<span class="hide-mobile-landscape"> lessons in 121 minutes</span></h5>
                         </div>
-                        <a href='@Url.Action("Course", "Home")' class="course__button--start">
+                        <a href='@Url.Action("CourseDetail", "Home")' class="course__button--start">
                             <img src="~/Images/course-start-button-674d59aa3fe77a6dabe027bfb5a60762.png" alt="Course start button" />
                         </a>
                     </div>
@@ -213,19 +213,19 @@
         <div class="most-popular-courses__course-wrapper">
             <div class="most-popular-courses__course">
                 <div class="course__logo-holder">
-                    <a href='@Url.Action("Course", "Home")'>
+                    <a href='@Url.Action("CourseDetail", "Home")'>
                         <img src='https://d2eip9sf3oo6c2.cloudfront.net/series/square_covers/000/000/054/full/EGH_Webpack-Final.png?1466197336' class='course__logo' alt='' />
                     </a>
                 </div>
                 <div class="course__description">
-                    <h3 class="course__description--title"><a href='@Url.Action("Course", "Home")'>Using Webpack for Production JavaScript Applications</a></h3>
+                    <h3 class="course__description--title"><a href='@Url.Action("CourseDetail", "Home")'>Using Webpack for Production JavaScript Applications</a></h3>
                     <div class="hr"></div>
                     <div class="course__description--info">
                         <div class="course-by-author">
                             <h4 class="author">with <span class="text-uppercase">Kent C. Dodds</span></h4>
                             <h5 class="videos-amount">16&nbsp;<span class="hide-mobile-landscape"> lessons in 64 minutes</span></h5>
                         </div>
-                        <a href='@Url.Action("Course", "Home")' class="course__button--start">
+                        <a href='@Url.Action("CourseDetail", "Home")' class="course__button--start">
                             <img src="~/Images/course-start-button-674d59aa3fe77a6dabe027bfb5a60762.png" alt="Course start button" />
                         </a>
                     </div>
@@ -286,12 +286,12 @@
             @foreach (var b in bTest)
             {
                 <div class="taught-by-leaders__card">
-                    <a href="https://egghead.io/instructors/dan-abramov">
+                    <a href="@Url.Action("InstructorDetail", "Home")">
                         <img class="instructor__photo" src="~/Images/people/9VsY9i09.jpeg" alt="">
                     </a>
                     <div class="instructor__info-holder">
                         <div class="instructor__title_box">
-                            <a href="https://egghead.io/instructors/dan-abramov">
+                            <a href="@Url.Action("InstructorDetail", "Home")">
                                 <h4 class="instructor__title">Dan Abramov</h4>
                             </a>
                         </div>
@@ -308,7 +308,7 @@
                 @foreach (var c in cTest)
                 {
                     <div class="item">
-                        <a href="https://egghead.io/instructors/jafar-husain">
+                        <a href="@Url.Action("InstructorDetail", "Home")">
                             <img src='~/Images/people/image1.jpeg' class='instructor__photo' alt='' />
                         </a>
                     </div>
@@ -317,7 +317,7 @@
             <div class="more-instructors__see-all">
                 <div class="plus-more__box">+ 61 More</div>
                 <div class="see-all-instructors__box">
-                    <a href="/instructors" class="see-all-instructors__link">
+                    <a href="@Url.Action("Instructors", "Home")" class="see-all-instructors__link">
                         MEET ALL OUR
                         <br class="hide-mobile-landscape">
                         INSTRUCTORS
@@ -387,12 +387,12 @@
                             {
                                 <tr class="lesson-row---hoverless">
                                     <td class="cell cell-category-logo">
-                                        <a href="https://egghead.io/technologies/js">
+                                        <a href="@Url.Action("TechnologyDetail", "Home")">
                                             <img class="category-logo" src="~/Images/course_image_thumb_js.png" alt="Course image thumb js" />
                                         </a>
                                     </td>
                                     <td class="cell cell-lesson-title">
-                                        <h4 class="title">Master Higher Order Components with Functional Patterns Using Recompose </h4>
+                                        <h4 class="title"><a href="@Url.Action("Lession", "Home")">Master Higher Order Components with Functional Patterns Using Recompose</a></h4>
                                     </td>
                                     <td class="cell cell-lesson-category">
                                         <div class="info-line">
