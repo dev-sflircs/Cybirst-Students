@@ -14,12 +14,12 @@
                 <div class="tab-view-list">
                     <div class="series-lessons-holder visible-xs visible-sm">
                         <ul class="series-lessons-list">
-                            @foreach (var a in aTest)
+                            @foreach (var course in ViewBag.Courses)
                             {
                                 <li class="item">
                                     <div class="lesson-content">
-                                        <h5 class="title">Build a Server Rendered Vue.js App with Nuxt and Vuex</h5>
-                                        <div class="info-line"><small class="duration">vue</small></div>
+                                        <h5 class="title">@course.Name</h5>
+                                        <div class="info-line"><small class="duration">@course.Technology</small></div>
                                     </div>
                                 </li>
                             }
@@ -29,7 +29,7 @@
                     <div class="table-responsive hidden-xs hidden-sm">
                         <table class="table table-condensed">
                             <tbody>
-                                @foreach (var a in aTest)
+                                @foreach (var course in ViewBag.Courses)
                                 {
                                     <tr class="lesson-row---hoverless">
                                         <td class="cell cell-category-logo">
@@ -38,16 +38,16 @@
                                             </a>
                                         </td>
                                         <td class="cell cell-lesson-title">
-                                            <h4 class="title"><a href="@Url.Action("Index", "Lession")">Master Higher Order Components with Functional Patterns Using Recompose</a></h4>
+                                            <h4 class="title"><a href="@Url.Action("Index", "Lession")">@course.Name</a></h4>
                                         </td>
                                         <td class="cell cell-lesson-category">
                                             <div class="info-line">
-                                                <small class="folder"><i class="icon-folder-open-alt"></i> js</small>
+                                                <small class="folder"><i class="icon-folder-open-alt"></i> @course.Technology</small>
                                             </div>
                                         </td>
                                         <td class="cell cell-duration">
                                             <div class="info-line">
-                                                <small>Brad Martin</small>
+                                                <small>@course.Instructor</small>
                                             </div>
                                         </td>
                                         <td class="cell">
