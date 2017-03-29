@@ -151,8 +151,7 @@
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\CourseDetailController.cs" />
-    <Compile Include="Controllers\EpagesController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ErrorPageController.cs" />
     <Compile Include="Controllers\InstructorController.cs" />
     <Compile Include="Controllers\InstructorDetailController.cs" />
     <Compile Include="Controllers\LandingPageController.cs" />
@@ -252,25 +251,27 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Lession\Index.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\LandingPage\Index.cshtml" />
     <Content Include="Views\Course\Index.cshtml" />
     <Content Include="Views\TechnologyDetail\TechnologyDetail.cshtml" />
     <Content Include="Views\Course\NewCourses.cshtml" />
     <Content Include="Views\Auth\SignIn.cshtml" />
     <Content Include="Views\Auth\SignUp.cshtml" />
-    <Content Include="Views\Epages\Notfound.cshtml" />
-    <Content Include="Views\Epages\InternalError.cshtml" />
+    <Content Include="Views\ErrorPage\Notfound.cshtml" />
+    <Content Include="Views\ErrorPage\InternalError.cshtml" />
     <Content Include="Views\InstructorDetail\Index.cshtml" />
     <Content Include="Views\Instructor\Index.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
-    <Content Include="Views\Home\TaughtByLeaders.cshtml" />
+    <Content Include="Views\LandingPage\TaughtByLeaders.cshtml" />
     <Content Include="Views\CourseDetail\Index.cshtml" />
+    <Content Include="Views\LandingPage\CoursesInProduction.cshtml" />
+    <Content Include="Views\LandingPage\WhatDoYouWantToLearn.cshtml" />
+    <Content Include="Views\LandingPage\BlockQuote.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\people\" />
     <Folder Include="Scripts\Models\" />
-    <Folder Include="Views\LandingPage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

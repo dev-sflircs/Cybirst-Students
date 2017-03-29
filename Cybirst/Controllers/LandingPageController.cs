@@ -57,6 +57,30 @@ namespace Cybirst.Controllers
             return PartialView("TaughtByLeaders");
         }
 
+        [ChildActionOnly]
+        public ActionResult CoursesInProduction()
+        {
+            ViewBag.Instructors = _Instructors;
+
+            return PartialView("CoursesInProduction");
+        }
+
+        [ChildActionOnly]
+        public ActionResult WhatDoYouWantToLearn()
+        {
+            ViewBag.Instructors = _Instructors;
+
+            return PartialView("WhatDoYouWantToLearn");
+        }
+
+        [ChildActionOnly]
+        public ActionResult BlockQuote()
+        {
+            ViewBag.Instructors = _Instructors;
+
+            return PartialView("WhatDoYouWantToLearn");
+        }
+
         // GET: LandingPage
         public ActionResult Index()
         {
