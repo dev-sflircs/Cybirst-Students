@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Home-Index";
+    int[] aTest = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    int[] bTest = { 1, 2, 3, 4 };
+    int[] cTest = { 1, 2, 3, 4, 5, 6 };
+}
+
+<div class="ready-to-dive-in">
+        <div class="ready-to-dive-in__inner">
+            <h2 class="ready-to-dive-in__title">Courses in Production</h2>
+            <h4 class="ready-to-dive-in__subtitle">These courses are being created. <br>egghead.io members will have full access to these titles when they are released.</h4>
+
+            <div class="browse-all-lessons-holder">
+                <div class="tab-view-list">
+                    <div class="series-lessons-holder visible-xs visible-sm">
+                        <ul class="series-lessons-list">
+                            @foreach (var a in aTest)
+                            {
+                                <li class="item">
+                                    <div class="lesson-content">
+                                        <h5 class="title">Build a Server Rendered Vue.js App with Nuxt and Vuex</h5>
+                                        <div class="info-line"><small class="duration">vue</small></div>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+
+                    <div class="table-responsive hidden-xs hidden-sm">
+                        <table class="table table-condensed">
+                            <tbody>
+                                @foreach (var a in aTest)
+                                {
+                                    <tr class="lesson-row---hoverless">
+                                        <td class="cell cell-category-logo">
+                                            <a href="@Url.Action("Index", "TechnologyDetail")">
+                                                <img class="category-logo" src="~/Images/course_image_thumb_js.png" alt="Course image thumb js" />
+                                            </a>
+                                        </td>
+                                        <td class="cell cell-lesson-title">
+                                            <h4 class="title"><a href="@Url.Action("Index", "Lession")">Master Higher Order Components with Functional Patterns Using Recompose</a></h4>
+                                        </td>
+                                        <td class="cell cell-lesson-category">
+                                            <div class="info-line">
+                                                <small class="folder"><i class="icon-folder-open-alt"></i> js</small>
+                                            </div>
+                                        </td>
+                                        <td class="cell cell-duration">
+                                            <div class="info-line">
+                                                <small>Brad Martin</small>
+                                            </div>
+                                        </td>
+                                        <td class="cell">
+                                            <div class="info-line"></div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
