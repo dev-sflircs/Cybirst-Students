@@ -1,0 +1,7 @@
+E:\Cybirst\ClassLibrary1\bin\Debug\netstandard1.4\ClassLibrary1.deps.json
+E:\Cybirst\ClassLibrary1\bin\Debug\netstandard1.4\ClassLibrary1.dll
+E:\Cybirst\ClassLibrary1\bin\Debug\netstandard1.4\ClassLibrary1.pdb
+E:\Cybirst\ClassLibrary1\obj\Debug\netstandard1.4\ClassLibrary1.csprojResolveAssemblyReference.cache
+E:\Cybirst\ClassLibrary1\obj\Debug\netstandard1.4\ClassLibrary1.AssemblyInfo.cs
+E:\Cybirst\ClassLibrary1\obj\Debug\netstandard1.4\ClassLibrary1.dll
+E:\Cybirst\ClassLibrary1\obj\Debug\netstandard1.4\ClassLibrary1.pdb

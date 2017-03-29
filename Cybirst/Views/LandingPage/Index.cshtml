@@ -1,13 +1,12 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Home-Index";
     int[] aTest = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
     int[] bTest = { 1, 2, 3, 4 };
-    int[] cTest = { 1, 2, 3, 4, 5, 6};
+    int[] cTest = { 1, 2, 3, 4, 5, 6 };
 }
 
 <!--Home first-->
-<div class="home__section--accented-bg">
+@*<div class="home__section--accented-bg">
     <div class="home-hero">
         <div class="home-hero__titles-holder">
             <h1 class="home-hero__title">Bite-size video tutorials for badass web developers</h1>
@@ -121,11 +120,11 @@
         </div>
         <a href="@Url.Action("Courses", "Home")" class="we-teach__browse-full-library">Explore the Library of Courses</a>
     </div>
-</div>
+</div>*@
 <!--end Home first-->
 
 <!---Hundreds free videos-->
-<div class="hundreds-free-videos">
+@*<div class="hundreds-free-videos">
     <div class="hundreds-free-videos__inner">
         <div class="hundreds-free-videos__text-holder">
             <div class="hundreds-free-videos__pretitle"></div>
@@ -150,11 +149,11 @@
             <img class="hundreds-free-videos__animation" src="~/Images/hundreds-of-free-video-tutorials-fa61f8b47bda3fc6ba02b683ce682bd9.gif" alt="Hundreds of free video tutorials" />
         </div>
     </div>
-</div>
+</div>*@
 <!--end Hundreds free videos-->
 
 <!--Most popuplar course-->
-<div class="most-popular-courses">
+@*<div class="most-popular-courses">
     <div class="most-popular-courses__inner">
 
         <div class="most-popular-courses__course-wrapper">
@@ -234,11 +233,11 @@
         </div>
 
     </div>
-</div>
+</div>*@
 <!--end Most popuplar course-->
 
 <!--Join the Programming Elite-->
-<div class="join-elite">
+@*<div class="join-elite">
     <div class="join-elite__inner">
         <div class="join-elite__thingies">
             <img src="~/Images/join-elite-thingies-9881d780bf9db149cae0841dbf40f51c.png" alt="Join elite thingies" />
@@ -274,63 +273,17 @@
             </li>
         </ul>
     </div>
-</div>
+</div>*@
 <!--end Join the Programming Elite-->
+    @{ 
+        Html.RenderAction("TaughtByLeaders", "Home");
+    }
+<!--start Taught by leaders-->
 
-<!--end Taught by leaders-->
-<div class="taught-by-leaders">
-    <div class="taught-by-leaders__inner">
-        <h2 class="taught-by-leaders__title">Taught by Industry Leaders</h2>
-        <h3 class="taught-by-leaders__subtitle">Learn cutting-edge practices from working engineers</h3>
-        <div class="taught-by-leaders__cards-holder">
-            @foreach (var b in bTest)
-            {
-                <div class="taught-by-leaders__card">
-                    <a href="@Url.Action("InstructorDetail", "Home")">
-                        <img class="instructor__photo" src="~/Images/people/9VsY9i09.jpeg" alt="">
-                    </a>
-                    <div class="instructor__info-holder">
-                        <div class="instructor__title_box">
-                            <a href="@Url.Action("InstructorDetail", "Home")">
-                                <h4 class="instructor__title">Dan Abramov</h4>
-                            </a>
-                        </div>
-                        <div class="instructor__about">Working at Facebook on React. Creator of Redux.</div>
-                    </div>
-                    <div class="instructor__teaching-technologies">
-                        <span>Teaching Redux</span>
-                    </div>
-                </div>
-            }
-        </div>
-        <div class="taught-by-leaders__more-instructors">
-            <div class="more-instructors__instructors-photos">
-                @foreach (var c in cTest)
-                {
-                    <div class="item">
-                        <a href="@Url.Action("InstructorDetail", "Home")">
-                            <img src='~/Images/people/image1.jpeg' class='instructor__photo' alt='' />
-                        </a>
-                    </div>
-                }                
-            </div>
-            <div class="more-instructors__see-all">
-                <div class="plus-more__box">+ 61 More</div>
-                <div class="see-all-instructors__box">
-                    <a href="@Url.Action("Instructors", "Home")" class="see-all-instructors__link">
-                        MEET ALL OUR
-                        <br class="hide-mobile-landscape">
-                        INSTRUCTORS
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <!--end Taught by leaders-->
 
 <!--blockquote-->
-<blockquote>
+@*<blockquote>
     <div class="blockquote__inner">
         <div class="blockquote__text-holder">
             <div class="blockquote__text">Egghead is the best training I’ve seen so far – cutting edge with the latest subjects, frameworks, languages – no bull••••!</div>
@@ -340,11 +293,11 @@
             <a href="/stories" class="blockquote__cta">read more<br>success stories</a>
         </div>
     </div>
-</blockquote>
+</blockquote>*@
 <!--end blockquote-->
 
 <!--What do you want to learn?-->
-<div class="ready-to-dive-in">
+@*<div class="ready-to-dive-in">
     <div class="ready-to-dive-in__inner">
         <h2 class="ready-to-dive-in__title">What do you want to learn?</h2>
         <h4 class="ready-to-dive-in__subtitle">Start watching hundreds of free video lessons now.</h4>
@@ -355,11 +308,11 @@
             </button>
         </div>
     </div>
-</div>
+</div>*@
 <!--end What do you want to learn?-->
 
 <!--Courses in Production-->
-<div class="ready-to-dive-in">
+@*<div class="ready-to-dive-in">
     <div class="ready-to-dive-in__inner">
         <h2 class="ready-to-dive-in__title">Courses in Production</h2>
         <h4 class="ready-to-dive-in__subtitle">These courses are being created. <br>egghead.io members will have full access to these titles when they are released.</h4>
@@ -415,5 +368,5 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 <!--end Courses in Production-->
