@@ -6,15 +6,10 @@ using System.Web.Mvc;
 
 namespace Cybirst.Controllers
 {
-    public class EpagesController : Controller
+    public class InstructorDetailController : Controller
     {
-        // GET: Epages
-        public ActionResult Notfound()
-        {
-            return View();
-        }
-
-        public ActionResult InternalError()
+        // GET: InstructorDetail
+        public ActionResult Index()
         {
             return View();
         }

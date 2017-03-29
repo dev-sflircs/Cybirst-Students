@@ -1,5 +1,6 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿
+@{
+    ViewBag.Title = "Course detail";
     int[] aTest = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 }
 <section class="hero">
@@ -10,7 +11,6 @@
     </div>
     <!-- container -->
 </section>
-
 <section class="section">
     <div class="container">
         <div class="row row-centered">
@@ -40,7 +40,6 @@
             <!-- container -->
         </div>
         <!-- title-subtitle-block -->
-
         <div class="browse-all-lessons-holder">
             <div class="tool-bar">
                 <ul class="list-unstyled list-inline actions-list"></ul>
@@ -62,7 +61,6 @@
                 <!-- view-switchers-holder -->
             </div>
             <!-- tool-bar -->
-
             <div class="tab-content view-tabs-holder">
                 <div class="tab-pane tab-view-list active" id="lesson-list">
                     <div class="series-lessons-holder" style="display: none;">
@@ -101,7 +99,6 @@
                                         </td>
                                         <td class="cell cell-lesson-title">
                                             <h4 class="title"><a href="@Url.Action("Lession", "Home")">Create a GraphQL Schema</a> <span class="text-muted"></span></h4>
-
                                         </td>
                                         <td class="cell cell-lesson-category hidden-xs hidden-sm">
                                             <div class="info-line">
@@ -123,7 +120,6 @@
                     </div>
                 </div>
                 <!-- tab-view-list -->
-
                 <div class="tab-pane tab-view-tiles" id="lesson-thumbs">
                     <div class="row block-lessons">
                         @foreach (var a in aTest)
@@ -136,7 +132,6 @@
                                             <img src="https://dcv19h61vib2d.cloudfront.net/thumbs/egghead-create-a-graphql-schema/egghead-create-a-graphql-schema.jpg" alt="js tutorial about Create a GraphQL Schema" class="img-responsive">
                                         </div>
                                     </a>      <!-- video-holder -->
-
                                     <div class="media-subscription-holder">
                                         <h4 class="title">
                                             <span class="pseudo-checkbox-holder">
@@ -145,11 +140,9 @@
                                             </span>
                                             Create a GraphQL Schema
                                         </h4>
-
                                         <div class="info-line">
                                             <small class="duration"><i class="icon-time"></i> 4:16</small>
                                             <small class="folder"><i class="icon-folder-open-alt"></i> js</small>
-
                                         </div>
                                         <!-- info-line -->
                                         <small class="description">
@@ -169,12 +162,9 @@
                 <!-- pagination-holder -->
             </div>
             <!-- view-tabs-holder -->
-
         </div><!-- browse-all-lessons-holder -->
-
     </div><!-- container -->
 </section>
-
 <section class="section">
     <div class="container">
         <div class="row">
@@ -184,7 +174,6 @@
                     <a class="pull-left hidden-xs" href="#">
                         <img class="media-object instructor-photo" src="https://d2eip9sf3oo6c2.cloudfront.net/instructors/avatars/000/000/058/small/XJGtEzxg.jpeg?1457387913">
                     </a>
-
                     <div class="media-body">
                         <div class="row text-center visible-xs pad-bottom">
                             <img class="media-object instructor-photo" src="https://d2eip9sf3oo6c2.cloudfront.net/instructors/avatars/000/000/058/small/XJGtEzxg.jpeg?1457387913">
@@ -192,7 +181,6 @@
                         <div class="clearfix">
                             <h4 class="media-heading">Josh Black</h4>
                             <p>Front-End Developer for IBM Watson. Overly excited about all things web-related. </p>
-
                         </div>
                         <div class="clearfix">
                             <a target="_blank" href="https://twitter.com/joshblackfr">@@joshblackfr</a>
@@ -202,7 +190,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

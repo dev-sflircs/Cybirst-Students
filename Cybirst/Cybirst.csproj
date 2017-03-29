@@ -149,8 +149,16 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\CourseDetailController.cs" />
     <Compile Include="Controllers\EpagesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InstructorController.cs" />
+    <Compile Include="Controllers\InstructorDetailController.cs" />
+    <Compile Include="Controllers\LandingPageController.cs" />
+    <Compile Include="Controllers\LessionController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\TechnologyDetailController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -243,24 +251,26 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Lession.cshtml" />
-    <Content Include="Views\Home\CourseDetail.cshtml" />
+    <Content Include="Views\Lession\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Courses.cshtml" />
-    <Content Include="Views\Home\TechnologyDetail.cshtml" />
-    <Content Include="Views\Home\NewCourses.cshtml" />
+    <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\TechnologyDetail\TechnologyDetail.cshtml" />
+    <Content Include="Views\Course\NewCourses.cshtml" />
     <Content Include="Views\Auth\SignIn.cshtml" />
     <Content Include="Views\Auth\SignUp.cshtml" />
     <Content Include="Views\Epages\Notfound.cshtml" />
     <Content Include="Views\Epages\InternalError.cshtml" />
-    <Content Include="Views\Home\InstructorDetail.cshtml" />
-    <Content Include="Views\Home\Instructors.cshtml" />
-    <Content Include="Views\Home\Profile.cshtml" />
+    <Content Include="Views\InstructorDetail\Index.cshtml" />
+    <Content Include="Views\Instructor\Index.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Home\TaughtByLeaders.cshtml" />
+    <Content Include="Views\CourseDetail\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\people\" />
     <Folder Include="Scripts\Models\" />
+    <Folder Include="Views\LandingPage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
