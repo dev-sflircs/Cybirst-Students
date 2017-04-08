@@ -79,6 +79,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -150,24 +151,30 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
-    <Compile Include="Controllers\CourseDetailController.cs" />
     <Compile Include="Controllers\ErrorPageController.cs" />
     <Compile Include="Controllers\InstructorController.cs" />
-    <Compile Include="Controllers\InstructorDetailController.cs" />
     <Compile Include="Controllers\LandingPageController.cs" />
     <Compile Include="Controllers\LessionController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
-    <Compile Include="Controllers\TechnologyDetailController.cs" />
+    <Compile Include="Controllers\TechnologyController.cs" />
+    <Compile Include="DataClasses1.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CoursesInProduction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\application-d204f4216a9aa3b551b9e89541e73b80.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\egg-vendor.css" />
     <Content Include="favicon.ico" />
+    <Content Include="folder-structure.txt" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -226,6 +233,14 @@
     <Content Include="Content\assets\fonts\fontawesome-webfont-8633c2a29344599564dcb219595eb9ec.woff" />
     <Content Include="Content\assets\fonts\fontawesome-webfont-cd08aff47d4c65152f0ed2ce386616ad.woff2" />
     <Content Include="Content\assets\fonts\Mark Simonson - Proxima Nova Regular.otf" />
+    <Content Include="DataClasses1.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="DataClasses1.dbml.layout">
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
+    </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\egg-vendor.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -252,21 +267,26 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Lession\Index.cshtml" />
     <Content Include="Views\LandingPage\Index.cshtml" />
-    <Content Include="Views\Course\Index.cshtml" />
-    <Content Include="Views\TechnologyDetail\TechnologyDetail.cshtml" />
-    <Content Include="Views\Course\NewCourses.cshtml" />
+    <Content Include="Views\Course\All.cshtml" />
+    <Content Include="Views\Technology\Detail.cshtml" />
+    <Content Include="Views\Course\New.cshtml" />
     <Content Include="Views\Auth\SignIn.cshtml" />
     <Content Include="Views\Auth\SignUp.cshtml" />
     <Content Include="Views\ErrorPage\Notfound.cshtml" />
     <Content Include="Views\ErrorPage\InternalError.cshtml" />
-    <Content Include="Views\InstructorDetail\Index.cshtml" />
-    <Content Include="Views\Instructor\Index.cshtml" />
+    <Content Include="Views\Instructor\Detail.cshtml" />
+    <Content Include="Views\Instructor\All.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\LandingPage\TaughtByLeaders.cshtml" />
-    <Content Include="Views\CourseDetail\Index.cshtml" />
+    <Content Include="Views\Course\Detail.cshtml" />
     <Content Include="Views\LandingPage\CoursesInProduction.cshtml" />
     <Content Include="Views\LandingPage\WhatDoYouWantToLearn.cshtml" />
     <Content Include="Views\LandingPage\BlockQuote.cshtml" />
+    <Content Include="Views\LandingPage\HomeFirst.cshtml" />
+    <Content Include="Views\LandingPage\HundredsFreeVideos.cshtml" />
+    <Content Include="Views\LandingPage\MostPopularCourse.cshtml" />
+    <Content Include="Views\LandingPage\JoinTheProgrammingElite.cshtml" />
+    <Content Include="Views\Technology\All.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -280,6 +300,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -13,23 +13,24 @@
             {
                 <div class="taught-by-leaders__card">
                     <a href="@Url.Action("Index", "InstructorDetail")">
-                        <img class="instructor__photo" src="@Url.Content(instructor.Avatar)" alt="">
+                        <img class="instructor__photo" src="@Url.Content(instructor.MediumAvatar != null ? instructor.MediumAvatar : " ")" alt="">
                     </a>
                     <div class="instructor__info-holder">
                         <div class="instructor__title_box">
                             <a href="@Url.Action("Index", "InstructorDetail")">
-                                <h4 class="instructor__title">@instructor.Name</h4>
+                                <h4 class="instructor__title">@( instructor.FirstName + instructor.LastName )</h4>
                             </a>
                         </div>
-                        <div class="instructor__about">@instructor.Description</div>
+                        <div class="instructor__about">@instructor.Intro</div>
                     </div>
                     @{
                         string teachings = "";
                         var i = 0;
-                        foreach (var tech in instructor.Teaching)
+                        var techs = ViewBag.TechsTaughtByInstructors[instructor.ID.ToString()];
+                        foreach (var tech in techs)
                         {
                             teachings += (string)tech;
-                            if (i < instructor.Teaching.Length - 1)
+                            if (i < techs.Count - 1)
                             {
                                 teachings += ", ";
                             }
@@ -40,7 +41,7 @@
                         <span>@("Teaching " + teachings)</span>
                     </div>
                 </div>
-                        }
+            }
         </div>
         <div class="taught-by-leaders__more-instructors">
             <div class="more-instructors__instructors-photos">

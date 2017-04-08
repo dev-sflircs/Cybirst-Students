@@ -9,8 +9,8 @@
     @Styles.Render("~/Content/egg")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/egg")
-    <script src="https://d1xwtr0qwr70yv.cloudfront.net/assets/application-d204f4216a9aa3b551b9e89541e73b80.js"></script>
-    <script src="https://d1xwtr0qwr70yv.cloudfront.net/assets/app-client-bundle-be2f887cccb7ba9a2ffde065c41fe4d7.js" data-turbolinks-track="true"></script>
+    @Scripts.Render("~/bundles/egghead-bundle")
+    @*<script src="assets/app-client-bundle-be2f887cccb7ba9a2ffde065c41fe4d7.js" data-turbolinks-track="true"></script>*@
     
 </head>
 <body>
@@ -37,8 +37,8 @@
                 </div>
                 <div id="header-navigation" class="collapse navbar-collapse header__navigation">
                     <ul class="nav navbar-nav header__navigation-list">
-                        <li class=""><a href="/Home/Courses">Browsers</a></li>
-                        <li class=""><a href="/Home/NewCourses">New courses</a></li>
+                        <li class=""><a href="@Url.Action("All", "Course")">Browsers</a></li>
+                        <li class=""><a href="@Url.Action("New", "Course")/Home/NewCourses">New courses</a></li>
                     </ul>
                     <ul class="nav navbar-nav header__navigation-list fluid aligned-end">
                         <li class="hidden-xs hidden-sm">
@@ -52,8 +52,8 @@
                         <li>
                             <a href="/pricing?from=go-pro-nav" class="pro-link">GO PRO</a>
                         </li>
-                        <li><a href="/Auth/SignIn">Sign In</a></li>
-                        <li><a href="/Auth/SignUp">Create Free Account</a></li>
+                        <li><a href="@Url.Action("SignIn", "Auth")">Sign In</a></li>
+                        <li><a href="@Url.Action("SignUp", "Auth")">Create Free Account</a></li>
                     </ul>
                 </div>
             </div>
