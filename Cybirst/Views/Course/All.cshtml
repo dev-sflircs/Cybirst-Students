@@ -30,22 +30,22 @@
         <div class="jump-into-technologies">
             <div class="section-content-holder"> 
                 <ul class="technologies-list">
-                    @foreach (var a in aTest)
+                    @foreach (var tech in ViewBag.Technologies)
                     {
                         <li class="item-wrapper">
                             <a class="anchor-to-technology" data-technology="react" href="@Url.Action("Detail", "Technology")">
                                 <div class="item">
                                     <div class="tech-logo-holder">
-                                        <img class="tech-logo" src="//d1xwtr0qwr70yv.cloudfront.net/assets/tech/react-fb48758e2d13fbbbbfcb6d73281e2814.png" alt="React">
+                                        <img class="tech-logo" src="@tech.MdImage" alt="@tech.Name">
                                     </div>
                                     <div class="description">
                                         <div class="title-holder">
                                             <h4 class="title">
-                                                React
+                                                @tech.Name
                                             </h4>
-                                            <span class="badge badge-info">12</span>
+                                            <span class="badge badge-info">@tech.TotalCourses</span>
                                         </div>
-                                        <div class="text-holder">Lots of people use React as the V in MVC. Since React makes no...</div>
+                                        <div class="text-holder">@tech.Intro.Substring(0, 60)....</div>
                                     </div>
                                 </div>
                             </a>
@@ -56,8 +56,7 @@
         </div>
     </section>
 
-
-
+    
     <section class="section-technology-details">
         <div class="section-inner">
             @foreach (var b in bTest)

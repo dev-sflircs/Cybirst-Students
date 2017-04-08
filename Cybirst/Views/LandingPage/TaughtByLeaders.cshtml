@@ -9,11 +9,12 @@
         <h2 class="taught-by-leaders__title">Taught by Industry Leaders</h2>
         <h3 class="taught-by-leaders__subtitle">Learn cutting-edge practices from working engineers</h3>
         <div class="taught-by-leaders__cards-holder">
-            @foreach (var instructor in ViewBag.Instructors)
+
+            @foreach (var instructor in ViewBag.First4Instructors)
             {
                 <div class="taught-by-leaders__card">
                     <a href="@Url.Action("Index", "InstructorDetail")">
-                        <img class="instructor__photo" src="@Url.Content(instructor.MediumAvatar != null ? instructor.MediumAvatar : " ")" alt="">
+                        <img class="instructor__photo" src="@instructor.MdAvatar" alt="@( instructor.FirstName + instructor.LastName )">
                     </a>
                     <div class="instructor__info-holder">
                         <div class="instructor__title_box">
@@ -21,12 +22,12 @@
                                 <h4 class="instructor__title">@( instructor.FirstName + instructor.LastName )</h4>
                             </a>
                         </div>
-                        <div class="instructor__about">@instructor.Intro</div>
+                        <div class="instructor__about">@instructor.ShortIntro</div>
                     </div>
                     @{
                         string teachings = "";
                         var i = 0;
-                        var techs = ViewBag.TechsTaughtByInstructors[instructor.ID.ToString()];
+                        var techs = instructor.Teachings;
                         foreach (var tech in techs)
                         {
                             teachings += (string)tech;
@@ -45,17 +46,17 @@
         </div>
         <div class="taught-by-leaders__more-instructors">
             <div class="more-instructors__instructors-photos">
-                @foreach (var c in cTest)
+                @foreach (var instructor in ViewBag.Second6Instructors)
                 {
                     <div class="item">
                         <a href="@Url.Action("Index", "InstructorDetail")">
-                            <img src='~/Images/people/image1.jpeg' class='instructor__photo' alt='' />
+                            <img src="@instructor.MdAvatar" class='instructor__photo' alt="@( instructor.FirstName + instructor.LastName )" />
                         </a>
                     </div>
                 }
             </div>
             <div class="more-instructors__see-all">
-                <div class="plus-more__box">+ 61 More</div>
+                <div class="plus-more__box">+ @ViewBag.LastInstructors.Count More</div>
                 <div class="see-all-instructors__box">
                     <a href="@Url.Action("Index", "InstructorDetail")" class="see-all-instructors__link">
                         MEET ALL OUR

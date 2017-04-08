@@ -1,1 +1,49 @@
 ﻿
+<div class="technology-pages-wrapper">
+    <div class="page-title-holder">
+        <h1 class="title">
+            All of our courses are listed below.
+        </h1>
+    </div>
+
+    <section class="search-input-container">
+        <div id="AutoCompleteSearch-react-component-5172dc93-cc04-41b9-8e1f-230feac7f854">
+            <div class="SearchBar__search_bar_wrapper__1z4Oi">
+                <div class="SearchBar__search_bar_field__3kicx">
+                    <input type="text" class="SearchBar__search_bar_input__wldfQ" maxlength="100" autocapitalize="none" autocomplete="off" autocorrect="off" value="" placeholder="search 'react redux'"><!-- react-text: 4 --><!-- /react-text -->
+                    <input type="submit" class="SearchBar__icon___zsxQ SearchBar__search_bar_submit__2XSOl" value="search">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-jump-into-technologies">
+        <div class="jump-into-technologies">
+            <div class="section-content-holder">
+                <ul class="technologies-list">
+                    @foreach (var tech in ViewBag.Technologies)
+                    {
+                        <li class="item-wrapper">
+                            <a class="anchor-to-technology" data-technology="react" href="@Url.Action("Detail", "Technology")">
+                                <div class="item">
+                                    <div class="tech-logo-holder">
+                                        <img class="tech-logo" src="@tech.MdImage" alt="@tech.Name">
+                                    </div>
+                                    <div class="description">
+                                        <div class="title-holder">
+                                            <h4 class="title">
+                                                @tech.Name
+                                            </h4>
+                                            <span class="badge badge-info">@tech.TotalCourses</span>
+                                        </div>
+                                        <div class="text-holder">@tech.Intro.Substring(0, 60)....</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>

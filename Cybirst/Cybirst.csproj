@@ -157,6 +157,13 @@
     <Compile Include="Controllers\LessionController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\TechnologyController.cs" />
+    <Compile Include="DAL\DataAdapter.cs" />
+    <Compile Include="DAL\Models\Course.cs" />
+    <Compile Include="DAL\Models\Enrollment.cs" />
+    <Compile Include="DAL\Models\Instructor.cs" />
+    <Compile Include="DAL\Models\Lesson.cs" />
+    <Compile Include="DAL\Models\Student.cs" />
+    <Compile Include="DAL\Models\Technology.cs" />
     <Compile Include="DataClasses1.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -165,7 +172,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CoursesInProduction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -238,9 +244,6 @@
       <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <None Include="DataClasses1.dbml.layout">
-      <DependentUpon>DataClasses1.dbml</DependentUpon>
-    </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\egg-vendor.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -290,6 +293,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DAL\ViewModels\" />
     <Folder Include="Images\people\" />
     <Folder Include="Scripts\Models\" />
   </ItemGroup>
@@ -303,6 +307,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataClasses1.dbml.layout">
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
