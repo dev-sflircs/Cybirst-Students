@@ -151,14 +151,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
-    <Compile Include="Controllers\CourseDetailController.cs" />
     <Compile Include="Controllers\ErrorPageController.cs" />
     <Compile Include="Controllers\InstructorController.cs" />
-    <Compile Include="Controllers\InstructorDetailController.cs" />
     <Compile Include="Controllers\LandingPageController.cs" />
     <Compile Include="Controllers\LessionController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
-    <Compile Include="Controllers\TechnologyDetailController.cs" />
+    <Compile Include="Controllers\TechnologyController.cs" />
     <Compile Include="DataClasses1.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -171,10 +169,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\application-d204f4216a9aa3b551b9e89541e73b80.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\egg-vendor.css" />
     <Content Include="favicon.ico" />
+    <Content Include="folder-structure.txt" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -267,23 +267,26 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Lession\Index.cshtml" />
     <Content Include="Views\LandingPage\Index.cshtml" />
-    <Content Include="Views\Course\Index.cshtml" />
-    <Content Include="Views\TechnologyDetail\TechnologyDetail.cshtml" />
-    <Content Include="Views\Course\NewCourses.cshtml" />
+    <Content Include="Views\Course\All.cshtml" />
+    <Content Include="Views\Technology\Detail.cshtml" />
+    <Content Include="Views\Course\New.cshtml" />
     <Content Include="Views\Auth\SignIn.cshtml" />
     <Content Include="Views\Auth\SignUp.cshtml" />
     <Content Include="Views\ErrorPage\Notfound.cshtml" />
     <Content Include="Views\ErrorPage\InternalError.cshtml" />
-    <Content Include="Views\InstructorDetail\Index.cshtml" />
-    <Content Include="Views\Instructor\Index.cshtml" />
+    <Content Include="Views\Instructor\Detail.cshtml" />
+    <Content Include="Views\Instructor\All.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="Views\LandingPage\TaughtByLeaders.cshtml" />
-    <Content Include="Views\CourseDetail\Index.cshtml" />
+    <Content Include="Views\Course\Detail.cshtml" />
     <Content Include="Views\LandingPage\CoursesInProduction.cshtml" />
     <Content Include="Views\LandingPage\WhatDoYouWantToLearn.cshtml" />
     <Content Include="Views\LandingPage\BlockQuote.cshtml" />
     <Content Include="Views\LandingPage\HomeFirst.cshtml" />
     <Content Include="Views\LandingPage\HundredsFreeVideos.cshtml" />
+    <Content Include="Views\LandingPage\MostPopularCourse.cshtml" />
+    <Content Include="Views\LandingPage\JoinTheProgrammingElite.cshtml" />
+    <Content Include="Views\Technology\All.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

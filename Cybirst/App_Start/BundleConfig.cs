@@ -23,6 +23,9 @@ namespace Cybirst
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/egghead-bundle").Include(
+                      "~/Content/assets/application-d204f4216a9aa3b551b9e89541e73b80.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       //"~/Content/bootstrap.css",
                       "~/Content/site.css"));

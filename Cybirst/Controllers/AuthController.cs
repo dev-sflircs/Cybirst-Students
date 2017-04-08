@@ -8,12 +8,13 @@ namespace Cybirst.Controllers
 {
     public class AuthController : Controller
     {
-        // GET: Auth
+        // GET: Auth/SignIn
         public ActionResult SignIn()
         {
             return View();
         }
 
+        // GET: Auth/SignUp
         public ActionResult SignUp()
         {
             return View();

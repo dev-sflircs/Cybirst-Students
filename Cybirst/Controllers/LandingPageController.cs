@@ -25,6 +25,18 @@ namespace Cybirst.Controllers
         }
 
         [ChildActionOnly]
+        public ActionResult MostPopularCourse()
+        {
+            return PartialView("MostPopularCourse");
+        }
+
+        [ChildActionOnly]
+        public ActionResult JoinTheProgrammingElite()
+        {
+            return PartialView("JoinTheProgrammingElite");
+        }
+
+        [ChildActionOnly]
         public ActionResult HomeFirst()
         {
             List<Technology> list_Technologies = new List<Technology>();

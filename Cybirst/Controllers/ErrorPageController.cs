@@ -8,12 +8,13 @@ namespace Cybirst.Controllers
 {
     public class ErrorPageController : Controller
     {
-        // GET: Epages
+        // GET: ErrorPage/Notfound
         public ActionResult Notfound()
         {
             return View();
         }
 
+        // GET: ErrorPage/InternalError
         public ActionResult InternalError()
         {
             return View();

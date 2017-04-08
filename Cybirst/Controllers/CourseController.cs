@@ -8,10 +8,22 @@ namespace Cybirst.Controllers
 {
     public class CourseController : Controller
     {
-        // GET: Course
-        public ActionResult Index()
+        // GET: Course/All
+        public ActionResult All()
         {
-            return View();
+            return View("All");
+        }
+
+        // GET: Course/Detail
+        public ActionResult Detail()
+        {
+            return View("Detail");
+        }
+
+        // GET: Course/New
+        public ActionResult New()
+        {
+            return View("New");
         }
     }
 }

@@ -6,15 +6,15 @@ using System.Web.Mvc;
 
 namespace Cybirst.Controllers
 {
-    public class InstructorController : Controller
+    public class TechnologyController : Controller
     {
-        // GET: Instructor/All
+        // GET: Technology/All
         public ActionResult All()
         {
             return View("All");
         }
 
-        // GET: Instructor/Detail
+        // GET: Technology/Detail
         public ActionResult Detail()
         {
             return View("Detail");

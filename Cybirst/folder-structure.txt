@@ -1,0 +1,42 @@
+﻿
+-Assets
+	- icons
+	- technology
+		- docker
+			- largeImage
+			- smallImage
+			- mediumImage
+			- course
+				- course1
+					- largeImage
+					- smallImage
+					- mediumImage
+					- lessonImage
+					- videos
+						- lession1.mp4
+						- lession2.mp4
+						- lession3.mp4
+
+				- course2 
+					- largeImage
+					- smallImage
+					- mediumImage
+					- lessonImage
+						- lession1.mp4
+
+		- react
+			- largeImage
+			- smallImage
+			- mediumImage
+			- course
+				- course1
+					- largeImage
+					- smallImage
+					- mediumImage
+					- lessonImage
+
+				- course2 
+					- largeImage
+					- smallImage
+					- mediumImage
+					- lessonImage
