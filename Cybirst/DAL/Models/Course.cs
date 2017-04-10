@@ -19,24 +19,24 @@ namespace Cybirst.DAL.Models
 
         public string SmImage;
 
-        private string MdImage;
+        public string MdImage;
 
-        private string LgImage;
+        public string LgImage;
 
-        private bool IsPro;
+        public bool IsPro;
 
-        private int TotalLessons;
+        public int TotalLessons;
 
-        private int EstimatedTime;
+        public int EstimatedTime;
 
-        private System.Data.Linq.Binary LastUpdate;
+        public System.Data.Linq.Binary LastUpdate;
 
-        private List<Enrollment> Enrollments;
+        public List<Enrollment> Enrollments;
 
-        private List<Lesson> Lessons;
+        public List<Lesson> Lessons;
 
-        private Instructor Instructor;
+        public Instructor Instructor;
 
-        private Technology Technology;
+        public Technology Technology;
     }
 }

@@ -1,8 +1,5 @@
 ﻿@{
     ViewBag.Title = "Home-Index";
-    int[] aTest = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-    int[] bTest = { 1, 2, 3, 4 };
-    int[] cTest = { 1, 2, 3, 4, 5, 6 };
 }
 
 <div class="ready-to-dive-in">
@@ -19,7 +16,7 @@
                                 <li class="item">
                                     <div class="lesson-content">
                                         <h5 class="title">@course.Name</h5>
-                                        <div class="info-line"><small class="duration">@course.Technology</small></div>
+                                        <div class="info-line"><small class="duration">@course.Technology.Name</small></div>
                                     </div>
                                 </li>
                             }
@@ -34,7 +31,7 @@
                                     <tr class="lesson-row---hoverless">
                                         <td class="cell cell-category-logo">
                                             <a href="@Url.Action("Index", "TechnologyDetail")">
-                                                <img class="category-logo" src="~/Images/course_image_thumb_js.png" alt="Course image thumb js" />
+                                                <img class="category-logo" src="@course.SmImage" alt="Course image thumb js" />
                                             </a>
                                         </td>
                                         <td class="cell cell-lesson-title">
@@ -42,12 +39,12 @@
                                         </td>
                                         <td class="cell cell-lesson-category">
                                             <div class="info-line">
-                                                <small class="folder"><i class="icon-folder-open-alt"></i> @course.Technology</small>
+                                                <small class="folder"><i class="icon-folder-open-alt"></i> @course.Technology.Name</small>
                                             </div>
                                         </td>
                                         <td class="cell cell-duration">
                                             <div class="info-line">
-                                                <small>@course.Instructor</small>
+                                                <small>@( @course.Instructor.FirstName + @course.Instructor.LastName )</small>
                                             </div>
                                         </td>
                                         <td class="cell">

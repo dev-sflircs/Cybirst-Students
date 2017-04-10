@@ -71,7 +71,10 @@ namespace Cybirst.Controllers
         [ChildActionOnly]
         public ActionResult CoursesInProduction()
         {
-           
+            List<Course> lst20Course = dataContext.Courses.Take(20).ToList<Course>();
+
+            ViewBag.Courses = lst20Course;
+
             return PartialView("CoursesInProduction");
         }
 
