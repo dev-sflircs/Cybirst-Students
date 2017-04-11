@@ -43,7 +43,9 @@ namespace Cybirst.DAL.Models
 
         public string LgAvatar;
 
-        public int TotalLessons;
+        public int TotalCourses;
+
+        public List<Course> Courses;
 
         public List<string> Teachings = new List<string>();
     }

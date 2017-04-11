@@ -53,12 +53,14 @@ namespace Cybirst.DAL.Adapters
 
             inst.LgAvatar = item.LgAvatar;
 
-            inst.TotalLessons = item.TotalLessons;
+            inst.TotalCourses = item.TotalCourses;
 
             // inst.Teachings
             List<string> teachs = new List<string>();
             List<Course> lstCourses = item.Courses.ToList<Course>();
 
+            inst.Courses = this.Convert(item.Courses.ToList());
+            
             foreach (var course in lstCourses)
             {
                 Technology tech = course.Technology;
@@ -131,9 +133,19 @@ namespace Cybirst.DAL.Adapters
 
             course.EstimatedTime = item.EstimatedTime;
 
-            course.Instructor = this.Chain(item.Instructor);
+            course.Instructor = new Models.Instructor();
 
-            course.Technology = this.Chain(item.Technology);
+            course.Instructor.ID = item.Instructor.ID;
+
+            course.Instructor.FirstName = item.Instructor.FirstName;
+
+            course.Instructor.LastName = item.Instructor.LastName;
+
+            course.Technology = new Models.Technology();
+
+            course.Technology.ID = item.Technology.ID;
+
+            course.Technology.Name = item.Technology.Name;
 
             return course;
         }

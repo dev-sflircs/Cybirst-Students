@@ -923,7 +923,7 @@ namespace Cybirst
 		
 		private string _LgAvatar;
 		
-		private int _TotalLessons;
+		private int _TotalCourses;
 		
 		private System.Data.Linq.Binary _LastUpdate;
 		
@@ -969,8 +969,8 @@ namespace Cybirst
     partial void OnMdAvatarChanged();
     partial void OnLgAvatarChanging(string value);
     partial void OnLgAvatarChanged();
-    partial void OnTotalLessonsChanging(int value);
-    partial void OnTotalLessonsChanged();
+    partial void OnTotalCoursesChanging(int value);
+    partial void OnTotalCoursesChanged();
     partial void OnLastUpdateChanging(System.Data.Linq.Binary value);
     partial void OnLastUpdateChanged();
     #endregion
@@ -1341,22 +1341,22 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalLessons", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
-		public int TotalLessons
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalCourses", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		public int TotalCourses
 		{
 			get
 			{
-				return this._TotalLessons;
+				return this._TotalCourses;
 			}
 			set
 			{
-				if ((this._TotalLessons != value))
+				if ((this._TotalCourses != value))
 				{
-					this.OnTotalLessonsChanging(value);
+					this.OnTotalCoursesChanging(value);
 					this.SendPropertyChanging();
-					this._TotalLessons = value;
-					this.SendPropertyChanged("TotalLessons");
-					this.OnTotalLessonsChanged();
+					this._TotalCourses = value;
+					this.SendPropertyChanged("TotalCourses");
+					this.OnTotalCoursesChanged();
 				}
 			}
 		}

@@ -53,7 +53,7 @@
       <Column Name="SmAvatar" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="MdAvatar" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="LgAvatar" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="TotalLessons" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TotalCourses" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="LastUpdate" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
       <Association Name="Instructor_Course" Member="Courses" ThisKey="ID" OtherKey="InstructorID" Type="Course" />
     </Type>

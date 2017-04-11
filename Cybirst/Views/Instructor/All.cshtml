@@ -19,29 +19,49 @@
             </div><!-- title-subtitle-block -->
         </div>
         <div class="row block-lessons-series">
-            @foreach (var a in aTest)
-            {<div class="taught-by-leaders__cards-holder">
-                @foreach (var b in bTest)
-                {<div class="taught-by-leaders__card">
-                    <a href="@Url.Action("Detail", "Instructor")">
-                        <img class="instructor__photo" src="https://d2eip9sf3oo6c2.cloudfront.net/instructors/avatars/000/000/032/bio/9VsY9i09.jpeg?1444932586" alt="">
-                    </a>
-                    <div class="instructor__info-holder">
-                        <div class="instructor__title_box">
-                            <a href="">
+            @{
+                int numberOfCardHolders = ViewBag.Instructors.Length;
+            }
 
-                                <h4 class="instructor__title">Dan Abramov</h4>
+            @for (int i = 0; i < numberOfCardHolders; i++)
+            {
+
+                <div class="taught-by-leaders__cards-holder">
+                    @foreach (var instructor in ViewBag.Instructors[i])
+                    {
+                        <div class="taught-by-leaders__card">
+                            <a href="@Url.Action("Index", "InstructorDetail")">
+                                <img class="instructor__photo" src="@instructor.MdAvatar" alt="@( instructor.FirstName + instructor.LastName )">
                             </a>
+                            <div class="instructor__info-holder">
+                                <div class="instructor__title_box">
+                                    <a href="@Url.Action("Index", "InstructorDetail")">
+                                        <h4 class="instructor__title">@( instructor.FirstName + instructor.LastName )</h4>
+                                    </a>
+                                </div>
+                                <div class="instructor__about">@instructor.ShortIntro</div>
+                            </div>
+                            @{
+                                string teachings = "";
+                                var k = 0;
+                                var techs = instructor.Teachings;
+                                foreach (var tech in techs)
+                                {
+                                    teachings += (string)tech;
+                                    if (k < techs.Count - 1)
+                                    {
+                                        teachings += ", ";
+                                    }
+                                    k++;
+                                }
+                            }
+                            <div class="instructor__teaching-technologies">
+                                <span>@("Teaching " + teachings)</span>
+                            </div>
                         </div>
-                        <div class="instructor__about">Working at Facebook on React. Creator of Redux.</div>
-                    </div>
-                    <div class="instructor__teaching-technologies">
-                        <span>Teaching Redux</span>
-                    </div>
-                </div>}
-            </div>}
-
+                     }
+                </div>
+                }
         </div>
     </div>
 </section>
-
