@@ -1,109 +1,112 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="EggDB" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-0P4O3HF\SQLSERVER;Initial Catalog=EggDB;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="EggDBConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="EggHeadCodeFirst.DAL.EggHeadContext" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-UCQ60O4\SQLEXPRESS;Initial Catalog=EggHeadCodeFirst.DAL.EggHeadContext;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="EggHeadCodeFirst_DAL_EggHeadContextConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Course" Member="Courses">
     <Type Name="Course">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TeachnologyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Intro" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Image" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="MediumImage" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="LargeImage" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="IsPro" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NumberLesson" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NumberMinutes" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="LastUpdate" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TechnologyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="InstructorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Intro" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="SmImage" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MdImage" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LgImage" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="IsPro" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TotalLessons" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EstimatedTime" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdate" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Association Name="Course_Enrollment" Member="Enrollments" ThisKey="ID" OtherKey="CourseID" Type="Enrollment" />
       <Association Name="Course_Lesson" Member="Lessons" ThisKey="ID" OtherKey="CourseID" Type="Lesson" />
-      <Association Name="Technology_Course" Member="Technology" ThisKey="TeachnologyID" OtherKey="ID" Type="Technology" IsForeignKey="true" />
+      <Association Name="Instructor_Course" Member="Instructor" ThisKey="InstructorID" OtherKey="ID" Type="Instructor" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Technology_Course" Member="Technology" ThisKey="TechnologyID" OtherKey="ID" Type="Technology" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Enrollment" Member="Enrollments">
     <Type Name="Enrollment">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="StudentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="LessonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="IsComplete" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TimeStart" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
-      <Column Name="OrderState" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CourseID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsComplete" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TimeStart" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="OrderState" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="LastActive" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
-      <Association Name="Lesson_Enrollment" Member="Lesson" ThisKey="LessonID" OtherKey="ID" Type="Lesson" IsForeignKey="true" />
-      <Association Name="Student_Enrollment" Member="Student" ThisKey="StudentID" OtherKey="ID" Type="Student" IsForeignKey="true" />
+      <Association Name="Course_Enrollment" Member="Course" ThisKey="CourseID" OtherKey="ID" Type="Course" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Student_Enrollment" Member="Student" ThisKey="StudentID" OtherKey="ID" Type="Student" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Instructor" Member="Instructors">
     <Type Name="Instructor">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="UID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="LastName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UID" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Intro" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Google" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Twitter" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Facebook" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Blog" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Password" Type="System.String" DbType="NVarChar(52) NOT NULL" CanBeNull="false" />
-      <Column Name="Phone" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="ShortIntro" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GooglePlus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Twitter" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Facebook" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GitHub" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Blog" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="Address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Avatar" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="LargeAvatar" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="MediumAvatar" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="LastUpdate" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
-      <Association Name="Instructor_Lesson" Member="Lessons" ThisKey="ID" OtherKey="InstructorID" Type="Lesson" />
+      <Column Name="SmAvatar" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MdAvatar" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LgAvatar" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TotalCourses" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdate" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Association Name="Instructor_Course" Member="Courses" ThisKey="ID" OtherKey="InstructorID" Type="Course" />
     </Type>
   </Table>
   <Table Name="dbo.Lesson" Member="Lessons">
     <Type Name="Lesson">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="CourseID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="InstructorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Intro" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Time" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Video" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="[Order]" Member="Order" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="IsPro" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="LastUpdate" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
-      <Association Name="Lesson_Enrollment" Member="Enrollments" ThisKey="ID" OtherKey="LessonID" Type="Enrollment" />
-      <Association Name="Course_Lesson" Member="Course" ThisKey="CourseID" OtherKey="ID" Type="Course" IsForeignKey="true" />
-      <Association Name="Instructor_Lesson" Member="Instructor" ThisKey="InstructorID" OtherKey="ID" Type="Instructor" IsForeignKey="true" />
+      <Column Name="EstimatedTime" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Video" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="[Order]" Member="Order" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsPro" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdate" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Association Name="Course_Lesson" Member="Course" ThisKey="CourseID" OtherKey="ID" Type="Course" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Student" Member="Students">
     <Type Name="Student">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="LastName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UID" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="Intro" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Google" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Twitter" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Facebook" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Blog" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Password" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="Phone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="GooglePlus" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Twitter" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Facebook" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Blog" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="Address" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Avatar" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="LargeAvatar" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="MediumAvatar" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ExpiredProTime" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
-      <Column Name="LastUpdate" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+      <Column Name="SmAvatar" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MdAvatar" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LgAvatar" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ExpiredProTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdate" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
       <Association Name="Student_Enrollment" Member="Enrollments" ThisKey="ID" OtherKey="StudentID" Type="Enrollment" />
     </Type>
   </Table>
   <Table Name="dbo.Technology" Member="Technologies">
     <Type Name="Technology">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Intro" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Image" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="MediumImage" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="LargeImage" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="NumberCourses" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="NumberLessons" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="LastUpdate" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
-      <Association Name="Technology_Course" Member="Courses" ThisKey="ID" OtherKey="TeachnologyID" Type="Course" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Intro" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="SmImage" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="MdImage" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LgImage" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TotalCourses" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TotalLessons" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LastUpdate" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Association Name="Technology_Course" Member="Courses" ThisKey="ID" OtherKey="TechnologyID" Type="Course" />
     </Type>
   </Table>
 </Database>

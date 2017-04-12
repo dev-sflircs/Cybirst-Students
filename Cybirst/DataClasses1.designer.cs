@@ -22,7 +22,7 @@ namespace Cybirst
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="EggDB")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="EggHeadCodeFirst.DAL.EggHeadContext")]
 	public partial class DataClasses1DataContext : System.Data.Linq.DataContext
 	{
 		
@@ -51,7 +51,7 @@ namespace Cybirst
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["EggDBConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["EggHeadCodeFirst_DAL_EggHeadContextConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -137,27 +137,33 @@ namespace Cybirst
 		
 		private int _ID;
 		
-		private int _TeachnologyID;
+		private int _TechnologyID;
+		
+		private int _InstructorID;
 		
 		private string _Name;
 		
 		private string _Intro;
 		
-		private string _Image;
+		private string _SmImage;
 		
-		private string _MediumImage;
+		private string _MdImage;
 		
-		private string _LargeImage;
+		private string _LgImage;
 		
-		private System.Nullable<int> _IsPro;
+		private bool _IsPro;
 		
-		private System.Nullable<int> _NumberLesson;
+		private int _TotalLessons;
 		
-		private System.Nullable<int> _NumberMinutes;
+		private int _EstimatedTime;
 		
 		private System.Data.Linq.Binary _LastUpdate;
 		
+		private EntitySet<Enrollment> _Enrollments;
+		
 		private EntitySet<Lesson> _Lessons;
+		
+		private EntityRef<Instructor> _Instructor;
 		
 		private EntityRef<Technology> _Technology;
 		
@@ -167,36 +173,40 @@ namespace Cybirst
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
-    partial void OnTeachnologyIDChanging(int value);
-    partial void OnTeachnologyIDChanged();
+    partial void OnTechnologyIDChanging(int value);
+    partial void OnTechnologyIDChanged();
+    partial void OnInstructorIDChanging(int value);
+    partial void OnInstructorIDChanged();
     partial void OnNameChanging(string value);
     partial void OnNameChanged();
     partial void OnIntroChanging(string value);
     partial void OnIntroChanged();
-    partial void OnImageChanging(string value);
-    partial void OnImageChanged();
-    partial void OnMediumImageChanging(string value);
-    partial void OnMediumImageChanged();
-    partial void OnLargeImageChanging(string value);
-    partial void OnLargeImageChanged();
-    partial void OnIsProChanging(System.Nullable<int> value);
+    partial void OnSmImageChanging(string value);
+    partial void OnSmImageChanged();
+    partial void OnMdImageChanging(string value);
+    partial void OnMdImageChanged();
+    partial void OnLgImageChanging(string value);
+    partial void OnLgImageChanged();
+    partial void OnIsProChanging(bool value);
     partial void OnIsProChanged();
-    partial void OnNumberLessonChanging(System.Nullable<int> value);
-    partial void OnNumberLessonChanged();
-    partial void OnNumberMinutesChanging(System.Nullable<int> value);
-    partial void OnNumberMinutesChanged();
+    partial void OnTotalLessonsChanging(int value);
+    partial void OnTotalLessonsChanged();
+    partial void OnEstimatedTimeChanging(int value);
+    partial void OnEstimatedTimeChanged();
     partial void OnLastUpdateChanging(System.Data.Linq.Binary value);
     partial void OnLastUpdateChanged();
     #endregion
 		
 		public Course()
 		{
+			this._Enrollments = new EntitySet<Enrollment>(new Action<Enrollment>(this.attach_Enrollments), new Action<Enrollment>(this.detach_Enrollments));
 			this._Lessons = new EntitySet<Lesson>(new Action<Lesson>(this.attach_Lessons), new Action<Lesson>(this.detach_Lessons));
+			this._Instructor = default(EntityRef<Instructor>);
 			this._Technology = default(EntityRef<Technology>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, UpdateCheck=UpdateCheck.Never)]
 		public int ID
 		{
 			get
@@ -216,31 +226,55 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TeachnologyID", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
-		public int TeachnologyID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TechnologyID", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		public int TechnologyID
 		{
 			get
 			{
-				return this._TeachnologyID;
+				return this._TechnologyID;
 			}
 			set
 			{
-				if ((this._TeachnologyID != value))
+				if ((this._TechnologyID != value))
 				{
 					if (this._Technology.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnTeachnologyIDChanging(value);
+					this.OnTechnologyIDChanging(value);
 					this.SendPropertyChanging();
-					this._TeachnologyID = value;
-					this.SendPropertyChanged("TeachnologyID");
-					this.OnTeachnologyIDChanged();
+					this._TechnologyID = value;
+					this.SendPropertyChanged("TechnologyID");
+					this.OnTechnologyIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InstructorID", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		public int InstructorID
+		{
+			get
+			{
+				return this._InstructorID;
+			}
+			set
+			{
+				if ((this._InstructorID != value))
+				{
+					if (this._Instructor.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnInstructorIDChanging(value);
+					this.SendPropertyChanging();
+					this._InstructorID = value;
+					this.SendPropertyChanged("InstructorID");
+					this.OnInstructorIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
 		public string Name
 		{
 			get
@@ -260,7 +294,7 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Intro", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Intro", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
 		public string Intro
 		{
 			get
@@ -280,68 +314,68 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
-		public string Image
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SmImage", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public string SmImage
 		{
 			get
 			{
-				return this._Image;
+				return this._SmImage;
 			}
 			set
 			{
-				if ((this._Image != value))
+				if ((this._SmImage != value))
 				{
-					this.OnImageChanging(value);
+					this.OnSmImageChanging(value);
 					this.SendPropertyChanging();
-					this._Image = value;
-					this.SendPropertyChanged("Image");
-					this.OnImageChanged();
+					this._SmImage = value;
+					this.SendPropertyChanged("SmImage");
+					this.OnSmImageChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MediumImage", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
-		public string MediumImage
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MdImage", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public string MdImage
 		{
 			get
 			{
-				return this._MediumImage;
+				return this._MdImage;
 			}
 			set
 			{
-				if ((this._MediumImage != value))
+				if ((this._MdImage != value))
 				{
-					this.OnMediumImageChanging(value);
+					this.OnMdImageChanging(value);
 					this.SendPropertyChanging();
-					this._MediumImage = value;
-					this.SendPropertyChanged("MediumImage");
-					this.OnMediumImageChanged();
+					this._MdImage = value;
+					this.SendPropertyChanged("MdImage");
+					this.OnMdImageChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LargeImage", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
-		public string LargeImage
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LgImage", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public string LgImage
 		{
 			get
 			{
-				return this._LargeImage;
+				return this._LgImage;
 			}
 			set
 			{
-				if ((this._LargeImage != value))
+				if ((this._LgImage != value))
 				{
-					this.OnLargeImageChanging(value);
+					this.OnLgImageChanging(value);
 					this.SendPropertyChanging();
-					this._LargeImage = value;
-					this.SendPropertyChanged("LargeImage");
-					this.OnLargeImageChanged();
+					this._LgImage = value;
+					this.SendPropertyChanged("LgImage");
+					this.OnLgImageChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsPro", DbType="Int", UpdateCheck=UpdateCheck.Never)]
-		public System.Nullable<int> IsPro
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsPro", DbType="Bit NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		public bool IsPro
 		{
 			get
 			{
@@ -360,47 +394,47 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NumberLesson", DbType="Int", UpdateCheck=UpdateCheck.Never)]
-		public System.Nullable<int> NumberLesson
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalLessons", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		public int TotalLessons
 		{
 			get
 			{
-				return this._NumberLesson;
+				return this._TotalLessons;
 			}
 			set
 			{
-				if ((this._NumberLesson != value))
+				if ((this._TotalLessons != value))
 				{
-					this.OnNumberLessonChanging(value);
+					this.OnTotalLessonsChanging(value);
 					this.SendPropertyChanging();
-					this._NumberLesson = value;
-					this.SendPropertyChanged("NumberLesson");
-					this.OnNumberLessonChanged();
+					this._TotalLessons = value;
+					this.SendPropertyChanged("TotalLessons");
+					this.OnTotalLessonsChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NumberMinutes", DbType="Int", UpdateCheck=UpdateCheck.Never)]
-		public System.Nullable<int> NumberMinutes
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EstimatedTime", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		public int EstimatedTime
 		{
 			get
 			{
-				return this._NumberMinutes;
+				return this._EstimatedTime;
 			}
 			set
 			{
-				if ((this._NumberMinutes != value))
+				if ((this._EstimatedTime != value))
 				{
-					this.OnNumberMinutesChanging(value);
+					this.OnEstimatedTimeChanging(value);
 					this.SendPropertyChanging();
-					this._NumberMinutes = value;
-					this.SendPropertyChanged("NumberMinutes");
-					this.OnNumberMinutesChanged();
+					this._EstimatedTime = value;
+					this.SendPropertyChanged("EstimatedTime");
+					this.OnEstimatedTimeChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastUpdate", AutoSync=AutoSync.Always, DbType="rowversion", IsDbGenerated=true, IsVersion=true, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastUpdate", AutoSync=AutoSync.Always, DbType="rowversion NOT NULL", CanBeNull=false, IsDbGenerated=true, IsVersion=true, UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary LastUpdate
 		{
 			get
@@ -420,6 +454,19 @@ namespace Cybirst
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Course_Enrollment", Storage="_Enrollments", ThisKey="ID", OtherKey="CourseID")]
+		public EntitySet<Enrollment> Enrollments
+		{
+			get
+			{
+				return this._Enrollments;
+			}
+			set
+			{
+				this._Enrollments.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Course_Lesson", Storage="_Lessons", ThisKey="ID", OtherKey="CourseID")]
 		public EntitySet<Lesson> Lessons
 		{
@@ -433,7 +480,41 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Technology_Course", Storage="_Technology", ThisKey="TeachnologyID", OtherKey="ID", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Instructor_Course", Storage="_Instructor", ThisKey="InstructorID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Instructor Instructor
+		{
+			get
+			{
+				return this._Instructor.Entity;
+			}
+			set
+			{
+				Instructor previousValue = this._Instructor.Entity;
+				if (((previousValue != value) 
+							|| (this._Instructor.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Instructor.Entity = null;
+						previousValue.Courses.Remove(this);
+					}
+					this._Instructor.Entity = value;
+					if ((value != null))
+					{
+						value.Courses.Add(this);
+						this._InstructorID = value.ID;
+					}
+					else
+					{
+						this._InstructorID = default(int);
+					}
+					this.SendPropertyChanged("Instructor");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Technology_Course", Storage="_Technology", ThisKey="TechnologyID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public Technology Technology
 		{
 			get
@@ -456,11 +537,11 @@ namespace Cybirst
 					if ((value != null))
 					{
 						value.Courses.Add(this);
-						this._TeachnologyID = value.ID;
+						this._TechnologyID = value.ID;
 					}
 					else
 					{
-						this._TeachnologyID = default(int);
+						this._TechnologyID = default(int);
 					}
 					this.SendPropertyChanged("Technology");
 				}
@@ -487,6 +568,18 @@ namespace Cybirst
 			}
 		}
 		
+		private void attach_Enrollments(Enrollment entity)
+		{
+			this.SendPropertyChanging();
+			entity.Course = this;
+		}
+		
+		private void detach_Enrollments(Enrollment entity)
+		{
+			this.SendPropertyChanging();
+			entity.Course = null;
+		}
+		
 		private void attach_Lessons(Lesson entity)
 		{
 			this.SendPropertyChanging();
@@ -510,17 +603,17 @@ namespace Cybirst
 		
 		private int _StudentID;
 		
-		private int _LessonID;
+		private int _CourseID;
 		
-		private System.Nullable<int> _IsComplete;
+		private bool _IsComplete;
 		
-		private System.Nullable<System.TimeSpan> _TimeStart;
+		private System.DateTime _TimeStart;
 		
-		private System.Nullable<int> _OrderState;
+		private int _OrderState;
 		
 		private System.Data.Linq.Binary _LastActive;
 		
-		private EntityRef<Lesson> _Lesson;
+		private EntityRef<Course> _Course;
 		
 		private EntityRef<Student> _Student;
 		
@@ -532,13 +625,13 @@ namespace Cybirst
     partial void OnIDChanged();
     partial void OnStudentIDChanging(int value);
     partial void OnStudentIDChanged();
-    partial void OnLessonIDChanging(int value);
-    partial void OnLessonIDChanged();
-    partial void OnIsCompleteChanging(System.Nullable<int> value);
+    partial void OnCourseIDChanging(int value);
+    partial void OnCourseIDChanged();
+    partial void OnIsCompleteChanging(bool value);
     partial void OnIsCompleteChanged();
-    partial void OnTimeStartChanging(System.Nullable<System.TimeSpan> value);
+    partial void OnTimeStartChanging(System.DateTime value);
     partial void OnTimeStartChanged();
-    partial void OnOrderStateChanging(System.Nullable<int> value);
+    partial void OnOrderStateChanging(int value);
     partial void OnOrderStateChanged();
     partial void OnLastActiveChanging(System.Data.Linq.Binary value);
     partial void OnLastActiveChanged();
@@ -546,12 +639,12 @@ namespace Cybirst
 		
 		public Enrollment()
 		{
-			this._Lesson = default(EntityRef<Lesson>);
+			this._Course = default(EntityRef<Course>);
 			this._Student = default(EntityRef<Student>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, UpdateCheck=UpdateCheck.Never)]
 		public int ID
 		{
 			get
@@ -595,32 +688,32 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LessonID", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
-		public int LessonID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CourseID", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		public int CourseID
 		{
 			get
 			{
-				return this._LessonID;
+				return this._CourseID;
 			}
 			set
 			{
-				if ((this._LessonID != value))
+				if ((this._CourseID != value))
 				{
-					if (this._Lesson.HasLoadedOrAssignedValue)
+					if (this._Course.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnLessonIDChanging(value);
+					this.OnCourseIDChanging(value);
 					this.SendPropertyChanging();
-					this._LessonID = value;
-					this.SendPropertyChanged("LessonID");
-					this.OnLessonIDChanged();
+					this._CourseID = value;
+					this.SendPropertyChanged("CourseID");
+					this.OnCourseIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsComplete", DbType="Int", UpdateCheck=UpdateCheck.Never)]
-		public System.Nullable<int> IsComplete
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsComplete", DbType="Bit NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		public bool IsComplete
 		{
 			get
 			{
@@ -639,8 +732,8 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeStart", DbType="Time", UpdateCheck=UpdateCheck.Never)]
-		public System.Nullable<System.TimeSpan> TimeStart
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeStart", DbType="DateTime NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		public System.DateTime TimeStart
 		{
 			get
 			{
@@ -659,8 +752,8 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderState", DbType="Int", UpdateCheck=UpdateCheck.Never)]
-		public System.Nullable<int> OrderState
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrderState", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		public int OrderState
 		{
 			get
 			{
@@ -699,41 +792,41 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lesson_Enrollment", Storage="_Lesson", ThisKey="LessonID", OtherKey="ID", IsForeignKey=true)]
-		public Lesson Lesson
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Course_Enrollment", Storage="_Course", ThisKey="CourseID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public Course Course
 		{
 			get
 			{
-				return this._Lesson.Entity;
+				return this._Course.Entity;
 			}
 			set
 			{
-				Lesson previousValue = this._Lesson.Entity;
+				Course previousValue = this._Course.Entity;
 				if (((previousValue != value) 
-							|| (this._Lesson.HasLoadedOrAssignedValue == false)))
+							|| (this._Course.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._Lesson.Entity = null;
+						this._Course.Entity = null;
 						previousValue.Enrollments.Remove(this);
 					}
-					this._Lesson.Entity = value;
+					this._Course.Entity = value;
 					if ((value != null))
 					{
 						value.Enrollments.Add(this);
-						this._LessonID = value.ID;
+						this._CourseID = value.ID;
 					}
 					else
 					{
-						this._LessonID = default(int);
+						this._CourseID = default(int);
 					}
-					this.SendPropertyChanged("Lesson");
+					this.SendPropertyChanged("Course");
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Student_Enrollment", Storage="_Student", ThisKey="StudentID", OtherKey="ID", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Student_Enrollment", Storage="_Student", ThisKey="StudentID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public Student Student
 		{
 			get
@@ -796,7 +889,7 @@ namespace Cybirst
 		
 		private int _ID;
 		
-		private System.Nullable<int> _UID;
+		private string _UID;
 		
 		private string _FirstName;
 		
@@ -804,11 +897,15 @@ namespace Cybirst
 		
 		private string _Intro;
 		
-		private string _Google;
+		private string _ShortIntro;
+		
+		private string _GooglePlus;
 		
 		private string _Twitter;
 		
 		private string _Facebook;
+		
+		private string _GitHub;
 		
 		private string _Blog;
 		
@@ -820,15 +917,17 @@ namespace Cybirst
 		
 		private string _Address;
 		
-		private string _Avatar;
+		private string _SmAvatar;
 		
-		private string _LargeAvatar;
+		private string _MdAvatar;
 		
-		private string _MediumAvatar;
+		private string _LgAvatar;
+		
+		private int _TotalCourses;
 		
 		private System.Data.Linq.Binary _LastUpdate;
 		
-		private EntitySet<Lesson> _Lessons;
+		private EntitySet<Course> _Courses;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -836,7 +935,7 @@ namespace Cybirst
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
-    partial void OnUIDChanging(System.Nullable<int> value);
+    partial void OnUIDChanging(string value);
     partial void OnUIDChanged();
     partial void OnFirstNameChanging(string value);
     partial void OnFirstNameChanged();
@@ -844,12 +943,16 @@ namespace Cybirst
     partial void OnLastNameChanged();
     partial void OnIntroChanging(string value);
     partial void OnIntroChanged();
-    partial void OnGoogleChanging(string value);
-    partial void OnGoogleChanged();
+    partial void OnShortIntroChanging(string value);
+    partial void OnShortIntroChanged();
+    partial void OnGooglePlusChanging(string value);
+    partial void OnGooglePlusChanged();
     partial void OnTwitterChanging(string value);
     partial void OnTwitterChanged();
     partial void OnFacebookChanging(string value);
     partial void OnFacebookChanged();
+    partial void OnGitHubChanging(string value);
+    partial void OnGitHubChanged();
     partial void OnBlogChanging(string value);
     partial void OnBlogChanged();
     partial void OnEmailChanging(string value);
@@ -860,23 +963,25 @@ namespace Cybirst
     partial void OnPhoneChanged();
     partial void OnAddressChanging(string value);
     partial void OnAddressChanged();
-    partial void OnAvatarChanging(string value);
-    partial void OnAvatarChanged();
-    partial void OnLargeAvatarChanging(string value);
-    partial void OnLargeAvatarChanged();
-    partial void OnMediumAvatarChanging(string value);
-    partial void OnMediumAvatarChanged();
+    partial void OnSmAvatarChanging(string value);
+    partial void OnSmAvatarChanged();
+    partial void OnMdAvatarChanging(string value);
+    partial void OnMdAvatarChanged();
+    partial void OnLgAvatarChanging(string value);
+    partial void OnLgAvatarChanged();
+    partial void OnTotalCoursesChanging(int value);
+    partial void OnTotalCoursesChanged();
     partial void OnLastUpdateChanging(System.Data.Linq.Binary value);
     partial void OnLastUpdateChanged();
     #endregion
 		
 		public Instructor()
 		{
-			this._Lessons = new EntitySet<Lesson>(new Action<Lesson>(this.attach_Lessons), new Action<Lesson>(this.detach_Lessons));
+			this._Courses = new EntitySet<Course>(new Action<Course>(this.attach_Courses), new Action<Course>(this.detach_Courses));
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, UpdateCheck=UpdateCheck.Never)]
 		public int ID
 		{
 			get
@@ -896,8 +1001,8 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UID", DbType="Int", UpdateCheck=UpdateCheck.Never)]
-		public System.Nullable<int> UID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UID", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public string UID
 		{
 			get
 			{
@@ -916,7 +1021,7 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(50) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
 		public string FirstName
 		{
 			get
@@ -936,7 +1041,7 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(50) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
 		public string LastName
 		{
 			get
@@ -976,27 +1081,47 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Google", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
-		public string Google
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShortIntro", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public string ShortIntro
 		{
 			get
 			{
-				return this._Google;
+				return this._ShortIntro;
 			}
 			set
 			{
-				if ((this._Google != value))
+				if ((this._ShortIntro != value))
 				{
-					this.OnGoogleChanging(value);
+					this.OnShortIntroChanging(value);
 					this.SendPropertyChanging();
-					this._Google = value;
-					this.SendPropertyChanged("Google");
-					this.OnGoogleChanged();
+					this._ShortIntro = value;
+					this.SendPropertyChanged("ShortIntro");
+					this.OnShortIntroChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Twitter", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GooglePlus", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public string GooglePlus
+		{
+			get
+			{
+				return this._GooglePlus;
+			}
+			set
+			{
+				if ((this._GooglePlus != value))
+				{
+					this.OnGooglePlusChanging(value);
+					this.SendPropertyChanging();
+					this._GooglePlus = value;
+					this.SendPropertyChanged("GooglePlus");
+					this.OnGooglePlusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Twitter", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
 		public string Twitter
 		{
 			get
@@ -1016,7 +1141,7 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Facebook", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Facebook", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
 		public string Facebook
 		{
 			get
@@ -1036,7 +1161,27 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Blog", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GitHub", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public string GitHub
+		{
+			get
+			{
+				return this._GitHub;
+			}
+			set
+			{
+				if ((this._GitHub != value))
+				{
+					this.OnGitHubChanging(value);
+					this.SendPropertyChanging();
+					this._GitHub = value;
+					this.SendPropertyChanged("GitHub");
+					this.OnGitHubChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Blog", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
 		public string Blog
 		{
 			get
@@ -1056,7 +1201,7 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
 		public string Email
 		{
 			get
@@ -1076,7 +1221,7 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NVarChar(52) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
 		public string Password
 		{
 			get
@@ -1096,7 +1241,7 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NVarChar(20) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
 		public string Phone
 		{
 			get
@@ -1136,67 +1281,87 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Avatar", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
-		public string Avatar
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SmAvatar", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public string SmAvatar
 		{
 			get
 			{
-				return this._Avatar;
+				return this._SmAvatar;
 			}
 			set
 			{
-				if ((this._Avatar != value))
+				if ((this._SmAvatar != value))
 				{
-					this.OnAvatarChanging(value);
+					this.OnSmAvatarChanging(value);
 					this.SendPropertyChanging();
-					this._Avatar = value;
-					this.SendPropertyChanged("Avatar");
-					this.OnAvatarChanged();
+					this._SmAvatar = value;
+					this.SendPropertyChanged("SmAvatar");
+					this.OnSmAvatarChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LargeAvatar", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
-		public string LargeAvatar
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MdAvatar", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public string MdAvatar
 		{
 			get
 			{
-				return this._LargeAvatar;
+				return this._MdAvatar;
 			}
 			set
 			{
-				if ((this._LargeAvatar != value))
+				if ((this._MdAvatar != value))
 				{
-					this.OnLargeAvatarChanging(value);
+					this.OnMdAvatarChanging(value);
 					this.SendPropertyChanging();
-					this._LargeAvatar = value;
-					this.SendPropertyChanged("LargeAvatar");
-					this.OnLargeAvatarChanged();
+					this._MdAvatar = value;
+					this.SendPropertyChanged("MdAvatar");
+					this.OnMdAvatarChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MediumAvatar", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
-		public string MediumAvatar
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LgAvatar", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public string LgAvatar
 		{
 			get
 			{
-				return this._MediumAvatar;
+				return this._LgAvatar;
 			}
 			set
 			{
-				if ((this._MediumAvatar != value))
+				if ((this._LgAvatar != value))
 				{
-					this.OnMediumAvatarChanging(value);
+					this.OnLgAvatarChanging(value);
 					this.SendPropertyChanging();
-					this._MediumAvatar = value;
-					this.SendPropertyChanged("MediumAvatar");
-					this.OnMediumAvatarChanged();
+					this._LgAvatar = value;
+					this.SendPropertyChanged("LgAvatar");
+					this.OnLgAvatarChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastUpdate", AutoSync=AutoSync.Always, DbType="rowversion", IsDbGenerated=true, IsVersion=true, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalCourses", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		public int TotalCourses
+		{
+			get
+			{
+				return this._TotalCourses;
+			}
+			set
+			{
+				if ((this._TotalCourses != value))
+				{
+					this.OnTotalCoursesChanging(value);
+					this.SendPropertyChanging();
+					this._TotalCourses = value;
+					this.SendPropertyChanged("TotalCourses");
+					this.OnTotalCoursesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastUpdate", AutoSync=AutoSync.Always, DbType="rowversion NOT NULL", CanBeNull=false, IsDbGenerated=true, IsVersion=true, UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary LastUpdate
 		{
 			get
@@ -1216,16 +1381,16 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Instructor_Lesson", Storage="_Lessons", ThisKey="ID", OtherKey="InstructorID")]
-		public EntitySet<Lesson> Lessons
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Instructor_Course", Storage="_Courses", ThisKey="ID", OtherKey="InstructorID")]
+		public EntitySet<Course> Courses
 		{
 			get
 			{
-				return this._Lessons;
+				return this._Courses;
 			}
 			set
 			{
-				this._Lessons.Assign(value);
+				this._Courses.Assign(value);
 			}
 		}
 		
@@ -1249,13 +1414,13 @@ namespace Cybirst
 			}
 		}
 		
-		private void attach_Lessons(Lesson entity)
+		private void attach_Courses(Course entity)
 		{
 			this.SendPropertyChanging();
 			entity.Instructor = this;
 		}
 		
-		private void detach_Lessons(Lesson entity)
+		private void detach_Courses(Course entity)
 		{
 			this.SendPropertyChanging();
 			entity.Instructor = null;
@@ -1272,27 +1437,21 @@ namespace Cybirst
 		
 		private int _CourseID;
 		
-		private int _InstructorID;
-		
 		private string _Name;
 		
 		private string _Intro;
 		
-		private System.Nullable<int> _Time;
+		private int _EstimatedTime;
 		
 		private string _Video;
 		
-		private System.Nullable<int> _Order;
+		private int _Order;
 		
-		private System.Nullable<int> _IsPro;
+		private bool _IsPro;
 		
 		private System.Data.Linq.Binary _LastUpdate;
 		
-		private EntitySet<Enrollment> _Enrollments;
-		
 		private EntityRef<Course> _Course;
-		
-		private EntityRef<Instructor> _Instructor;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1302,19 +1461,17 @@ namespace Cybirst
     partial void OnIDChanged();
     partial void OnCourseIDChanging(int value);
     partial void OnCourseIDChanged();
-    partial void OnInstructorIDChanging(int value);
-    partial void OnInstructorIDChanged();
     partial void OnNameChanging(string value);
     partial void OnNameChanged();
     partial void OnIntroChanging(string value);
     partial void OnIntroChanged();
-    partial void OnTimeChanging(System.Nullable<int> value);
-    partial void OnTimeChanged();
+    partial void OnEstimatedTimeChanging(int value);
+    partial void OnEstimatedTimeChanged();
     partial void OnVideoChanging(string value);
     partial void OnVideoChanged();
-    partial void OnOrderChanging(System.Nullable<int> value);
+    partial void OnOrderChanging(int value);
     partial void OnOrderChanged();
-    partial void OnIsProChanging(System.Nullable<int> value);
+    partial void OnIsProChanging(bool value);
     partial void OnIsProChanged();
     partial void OnLastUpdateChanging(System.Data.Linq.Binary value);
     partial void OnLastUpdateChanged();
@@ -1322,13 +1479,11 @@ namespace Cybirst
 		
 		public Lesson()
 		{
-			this._Enrollments = new EntitySet<Enrollment>(new Action<Enrollment>(this.attach_Enrollments), new Action<Enrollment>(this.detach_Enrollments));
 			this._Course = default(EntityRef<Course>);
-			this._Instructor = default(EntityRef<Instructor>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, UpdateCheck=UpdateCheck.Never)]
 		public int ID
 		{
 			get
@@ -1372,31 +1527,7 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InstructorID", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
-		public int InstructorID
-		{
-			get
-			{
-				return this._InstructorID;
-			}
-			set
-			{
-				if ((this._InstructorID != value))
-				{
-					if (this._Instructor.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnInstructorIDChanging(value);
-					this.SendPropertyChanging();
-					this._InstructorID = value;
-					this.SendPropertyChanged("InstructorID");
-					this.OnInstructorIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
 		public string Name
 		{
 			get
@@ -1436,27 +1567,27 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Time", DbType="Int", UpdateCheck=UpdateCheck.Never)]
-		public System.Nullable<int> Time
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EstimatedTime", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		public int EstimatedTime
 		{
 			get
 			{
-				return this._Time;
+				return this._EstimatedTime;
 			}
 			set
 			{
-				if ((this._Time != value))
+				if ((this._EstimatedTime != value))
 				{
-					this.OnTimeChanging(value);
+					this.OnEstimatedTimeChanging(value);
 					this.SendPropertyChanging();
-					this._Time = value;
-					this.SendPropertyChanged("Time");
-					this.OnTimeChanged();
+					this._EstimatedTime = value;
+					this.SendPropertyChanged("EstimatedTime");
+					this.OnEstimatedTimeChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Video", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Video", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
 		public string Video
 		{
 			get
@@ -1476,8 +1607,8 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Order]", Storage="_Order", DbType="Int", UpdateCheck=UpdateCheck.Never)]
-		public System.Nullable<int> Order
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[Order]", Storage="_Order", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		public int Order
 		{
 			get
 			{
@@ -1496,8 +1627,8 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsPro", DbType="Int", UpdateCheck=UpdateCheck.Never)]
-		public System.Nullable<int> IsPro
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsPro", DbType="Bit NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		public bool IsPro
 		{
 			get
 			{
@@ -1516,7 +1647,7 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastUpdate", AutoSync=AutoSync.Always, DbType="rowversion", IsDbGenerated=true, IsVersion=true, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastUpdate", AutoSync=AutoSync.Always, DbType="rowversion NOT NULL", CanBeNull=false, IsDbGenerated=true, IsVersion=true, UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary LastUpdate
 		{
 			get
@@ -1536,20 +1667,7 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lesson_Enrollment", Storage="_Enrollments", ThisKey="ID", OtherKey="LessonID")]
-		public EntitySet<Enrollment> Enrollments
-		{
-			get
-			{
-				return this._Enrollments;
-			}
-			set
-			{
-				this._Enrollments.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Course_Lesson", Storage="_Course", ThisKey="CourseID", OtherKey="ID", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Course_Lesson", Storage="_Course", ThisKey="CourseID", OtherKey="ID", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public Course Course
 		{
 			get
@@ -1583,40 +1701,6 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Instructor_Lesson", Storage="_Instructor", ThisKey="InstructorID", OtherKey="ID", IsForeignKey=true)]
-		public Instructor Instructor
-		{
-			get
-			{
-				return this._Instructor.Entity;
-			}
-			set
-			{
-				Instructor previousValue = this._Instructor.Entity;
-				if (((previousValue != value) 
-							|| (this._Instructor.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Instructor.Entity = null;
-						previousValue.Lessons.Remove(this);
-					}
-					this._Instructor.Entity = value;
-					if ((value != null))
-					{
-						value.Lessons.Add(this);
-						this._InstructorID = value.ID;
-					}
-					else
-					{
-						this._InstructorID = default(int);
-					}
-					this.SendPropertyChanged("Instructor");
-				}
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1636,18 +1720,6 @@ namespace Cybirst
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-		
-		private void attach_Enrollments(Enrollment entity)
-		{
-			this.SendPropertyChanging();
-			entity.Lesson = this;
-		}
-		
-		private void detach_Enrollments(Enrollment entity)
-		{
-			this.SendPropertyChanging();
-			entity.Lesson = null;
-		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Student")]
@@ -1658,7 +1730,7 @@ namespace Cybirst
 		
 		private int _ID;
 		
-		private int _UID;
+		private string _UID;
 		
 		private string _FirstName;
 		
@@ -1666,7 +1738,7 @@ namespace Cybirst
 		
 		private string _Intro;
 		
-		private string _Google;
+		private string _GooglePlus;
 		
 		private string _Twitter;
 		
@@ -1682,13 +1754,13 @@ namespace Cybirst
 		
 		private string _Address;
 		
-		private string _Avatar;
+		private string _SmAvatar;
 		
-		private string _LargeAvatar;
+		private string _MdAvatar;
 		
-		private string _MediumAvatar;
+		private string _LgAvatar;
 		
-		private System.Nullable<System.TimeSpan> _ExpiredProTime;
+		private System.DateTime _ExpiredProTime;
 		
 		private System.Data.Linq.Binary _LastUpdate;
 		
@@ -1700,7 +1772,7 @@ namespace Cybirst
     partial void OnCreated();
     partial void OnIDChanging(int value);
     partial void OnIDChanged();
-    partial void OnUIDChanging(int value);
+    partial void OnUIDChanging(string value);
     partial void OnUIDChanged();
     partial void OnFirstNameChanging(string value);
     partial void OnFirstNameChanged();
@@ -1708,8 +1780,8 @@ namespace Cybirst
     partial void OnLastNameChanged();
     partial void OnIntroChanging(string value);
     partial void OnIntroChanged();
-    partial void OnGoogleChanging(string value);
-    partial void OnGoogleChanged();
+    partial void OnGooglePlusChanging(string value);
+    partial void OnGooglePlusChanged();
     partial void OnTwitterChanging(string value);
     partial void OnTwitterChanged();
     partial void OnFacebookChanging(string value);
@@ -1724,13 +1796,13 @@ namespace Cybirst
     partial void OnPhoneChanged();
     partial void OnAddressChanging(string value);
     partial void OnAddressChanged();
-    partial void OnAvatarChanging(string value);
-    partial void OnAvatarChanged();
-    partial void OnLargeAvatarChanging(string value);
-    partial void OnLargeAvatarChanged();
-    partial void OnMediumAvatarChanging(string value);
-    partial void OnMediumAvatarChanged();
-    partial void OnExpiredProTimeChanging(System.Nullable<System.TimeSpan> value);
+    partial void OnSmAvatarChanging(string value);
+    partial void OnSmAvatarChanged();
+    partial void OnMdAvatarChanging(string value);
+    partial void OnMdAvatarChanged();
+    partial void OnLgAvatarChanging(string value);
+    partial void OnLgAvatarChanged();
+    partial void OnExpiredProTimeChanging(System.DateTime value);
     partial void OnExpiredProTimeChanged();
     partial void OnLastUpdateChanging(System.Data.Linq.Binary value);
     partial void OnLastUpdateChanged();
@@ -1762,8 +1834,8 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UID", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
-		public int UID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UID", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public string UID
 		{
 			get
 			{
@@ -1782,7 +1854,7 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(50) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FirstName", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
 		public string FirstName
 		{
 			get
@@ -1802,7 +1874,7 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(50) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastName", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
 		public string LastName
 		{
 			get
@@ -1842,27 +1914,27 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Google", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
-		public string Google
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GooglePlus", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public string GooglePlus
 		{
 			get
 			{
-				return this._Google;
+				return this._GooglePlus;
 			}
 			set
 			{
-				if ((this._Google != value))
+				if ((this._GooglePlus != value))
 				{
-					this.OnGoogleChanging(value);
+					this.OnGooglePlusChanging(value);
 					this.SendPropertyChanging();
-					this._Google = value;
-					this.SendPropertyChanged("Google");
-					this.OnGoogleChanged();
+					this._GooglePlus = value;
+					this.SendPropertyChanged("GooglePlus");
+					this.OnGooglePlusChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Twitter", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Twitter", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
 		public string Twitter
 		{
 			get
@@ -1882,7 +1954,7 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Facebook", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Facebook", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
 		public string Facebook
 		{
 			get
@@ -1902,7 +1974,7 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Blog", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Blog", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
 		public string Blog
 		{
 			get
@@ -1922,7 +1994,7 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(50) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
 		public string Email
 		{
 			get
@@ -1942,7 +2014,7 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NVarChar(20) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
 		public string Password
 		{
 			get
@@ -1962,7 +2034,7 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NVarChar(20)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
 		public string Phone
 		{
 			get
@@ -2002,68 +2074,68 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Avatar", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
-		public string Avatar
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SmAvatar", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public string SmAvatar
 		{
 			get
 			{
-				return this._Avatar;
+				return this._SmAvatar;
 			}
 			set
 			{
-				if ((this._Avatar != value))
+				if ((this._SmAvatar != value))
 				{
-					this.OnAvatarChanging(value);
+					this.OnSmAvatarChanging(value);
 					this.SendPropertyChanging();
-					this._Avatar = value;
-					this.SendPropertyChanged("Avatar");
-					this.OnAvatarChanged();
+					this._SmAvatar = value;
+					this.SendPropertyChanged("SmAvatar");
+					this.OnSmAvatarChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LargeAvatar", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
-		public string LargeAvatar
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MdAvatar", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public string MdAvatar
 		{
 			get
 			{
-				return this._LargeAvatar;
+				return this._MdAvatar;
 			}
 			set
 			{
-				if ((this._LargeAvatar != value))
+				if ((this._MdAvatar != value))
 				{
-					this.OnLargeAvatarChanging(value);
+					this.OnMdAvatarChanging(value);
 					this.SendPropertyChanging();
-					this._LargeAvatar = value;
-					this.SendPropertyChanged("LargeAvatar");
-					this.OnLargeAvatarChanged();
+					this._MdAvatar = value;
+					this.SendPropertyChanged("MdAvatar");
+					this.OnMdAvatarChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MediumAvatar", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
-		public string MediumAvatar
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LgAvatar", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public string LgAvatar
 		{
 			get
 			{
-				return this._MediumAvatar;
+				return this._LgAvatar;
 			}
 			set
 			{
-				if ((this._MediumAvatar != value))
+				if ((this._LgAvatar != value))
 				{
-					this.OnMediumAvatarChanging(value);
+					this.OnLgAvatarChanging(value);
 					this.SendPropertyChanging();
-					this._MediumAvatar = value;
-					this.SendPropertyChanged("MediumAvatar");
-					this.OnMediumAvatarChanged();
+					this._LgAvatar = value;
+					this.SendPropertyChanged("LgAvatar");
+					this.OnLgAvatarChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExpiredProTime", DbType="Time", UpdateCheck=UpdateCheck.Never)]
-		public System.Nullable<System.TimeSpan> ExpiredProTime
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ExpiredProTime", DbType="DateTime NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		public System.DateTime ExpiredProTime
 		{
 			get
 			{
@@ -2082,7 +2154,7 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastUpdate", AutoSync=AutoSync.Always, DbType="rowversion", IsDbGenerated=true, IsVersion=true, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastUpdate", AutoSync=AutoSync.Always, DbType="rowversion NOT NULL", CanBeNull=false, IsDbGenerated=true, IsVersion=true, UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary LastUpdate
 		{
 			get
@@ -2160,15 +2232,15 @@ namespace Cybirst
 		
 		private string _Intro;
 		
-		private string _Image;
+		private string _SmImage;
 		
-		private string _MediumImage;
+		private string _MdImage;
 		
-		private string _LargeImage;
+		private string _LgImage;
 		
-		private System.Nullable<int> _NumberCourses;
+		private int _TotalCourses;
 		
-		private System.Nullable<int> _NumberLessons;
+		private int _TotalLessons;
 		
 		private System.Data.Linq.Binary _LastUpdate;
 		
@@ -2184,16 +2256,16 @@ namespace Cybirst
     partial void OnNameChanged();
     partial void OnIntroChanging(string value);
     partial void OnIntroChanged();
-    partial void OnImageChanging(string value);
-    partial void OnImageChanged();
-    partial void OnMediumImageChanging(string value);
-    partial void OnMediumImageChanged();
-    partial void OnLargeImageChanging(string value);
-    partial void OnLargeImageChanged();
-    partial void OnNumberCoursesChanging(System.Nullable<int> value);
-    partial void OnNumberCoursesChanged();
-    partial void OnNumberLessonsChanging(System.Nullable<int> value);
-    partial void OnNumberLessonsChanged();
+    partial void OnSmImageChanging(string value);
+    partial void OnSmImageChanged();
+    partial void OnMdImageChanging(string value);
+    partial void OnMdImageChanged();
+    partial void OnLgImageChanging(string value);
+    partial void OnLgImageChanged();
+    partial void OnTotalCoursesChanging(int value);
+    partial void OnTotalCoursesChanged();
+    partial void OnTotalLessonsChanging(int value);
+    partial void OnTotalLessonsChanged();
     partial void OnLastUpdateChanging(System.Data.Linq.Binary value);
     partial void OnLastUpdateChanged();
     #endregion
@@ -2224,7 +2296,7 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(50) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
 		public string Name
 		{
 			get
@@ -2244,7 +2316,7 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Intro", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Intro", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
 		public string Intro
 		{
 			get
@@ -2264,107 +2336,107 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Image", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
-		public string Image
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SmImage", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public string SmImage
 		{
 			get
 			{
-				return this._Image;
+				return this._SmImage;
 			}
 			set
 			{
-				if ((this._Image != value))
+				if ((this._SmImage != value))
 				{
-					this.OnImageChanging(value);
+					this.OnSmImageChanging(value);
 					this.SendPropertyChanging();
-					this._Image = value;
-					this.SendPropertyChanged("Image");
-					this.OnImageChanged();
+					this._SmImage = value;
+					this.SendPropertyChanged("SmImage");
+					this.OnSmImageChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MediumImage", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
-		public string MediumImage
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MdImage", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public string MdImage
 		{
 			get
 			{
-				return this._MediumImage;
+				return this._MdImage;
 			}
 			set
 			{
-				if ((this._MediumImage != value))
+				if ((this._MdImage != value))
 				{
-					this.OnMediumImageChanging(value);
+					this.OnMdImageChanging(value);
 					this.SendPropertyChanging();
-					this._MediumImage = value;
-					this.SendPropertyChanged("MediumImage");
-					this.OnMediumImageChanged();
+					this._MdImage = value;
+					this.SendPropertyChanged("MdImage");
+					this.OnMdImageChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LargeImage", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
-		public string LargeImage
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LgImage", DbType="NVarChar(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public string LgImage
 		{
 			get
 			{
-				return this._LargeImage;
+				return this._LgImage;
 			}
 			set
 			{
-				if ((this._LargeImage != value))
+				if ((this._LgImage != value))
 				{
-					this.OnLargeImageChanging(value);
+					this.OnLgImageChanging(value);
 					this.SendPropertyChanging();
-					this._LargeImage = value;
-					this.SendPropertyChanged("LargeImage");
-					this.OnLargeImageChanged();
+					this._LgImage = value;
+					this.SendPropertyChanged("LgImage");
+					this.OnLgImageChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NumberCourses", DbType="Int", UpdateCheck=UpdateCheck.Never)]
-		public System.Nullable<int> NumberCourses
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalCourses", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		public int TotalCourses
 		{
 			get
 			{
-				return this._NumberCourses;
+				return this._TotalCourses;
 			}
 			set
 			{
-				if ((this._NumberCourses != value))
+				if ((this._TotalCourses != value))
 				{
-					this.OnNumberCoursesChanging(value);
+					this.OnTotalCoursesChanging(value);
 					this.SendPropertyChanging();
-					this._NumberCourses = value;
-					this.SendPropertyChanged("NumberCourses");
-					this.OnNumberCoursesChanged();
+					this._TotalCourses = value;
+					this.SendPropertyChanged("TotalCourses");
+					this.OnTotalCoursesChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NumberLessons", DbType="Int", UpdateCheck=UpdateCheck.Never)]
-		public System.Nullable<int> NumberLessons
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TotalLessons", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		public int TotalLessons
 		{
 			get
 			{
-				return this._NumberLessons;
+				return this._TotalLessons;
 			}
 			set
 			{
-				if ((this._NumberLessons != value))
+				if ((this._TotalLessons != value))
 				{
-					this.OnNumberLessonsChanging(value);
+					this.OnTotalLessonsChanging(value);
 					this.SendPropertyChanging();
-					this._NumberLessons = value;
-					this.SendPropertyChanged("NumberLessons");
-					this.OnNumberLessonsChanged();
+					this._TotalLessons = value;
+					this.SendPropertyChanged("TotalLessons");
+					this.OnTotalLessonsChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastUpdate", AutoSync=AutoSync.Always, DbType="rowversion", IsDbGenerated=true, IsVersion=true, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LastUpdate", AutoSync=AutoSync.Always, DbType="rowversion NOT NULL", CanBeNull=false, IsDbGenerated=true, IsVersion=true, UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary LastUpdate
 		{
 			get
@@ -2384,7 +2456,7 @@ namespace Cybirst
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Technology_Course", Storage="_Courses", ThisKey="ID", OtherKey="TeachnologyID")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Technology_Course", Storage="_Courses", ThisKey="ID", OtherKey="TechnologyID")]
 		public EntitySet<Course> Courses
 		{
 			get
