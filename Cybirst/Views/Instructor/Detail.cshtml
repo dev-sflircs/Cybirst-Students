@@ -6,29 +6,30 @@
 
 <section class="hero">
     <div class="container">
-        <img src="https://d2eip9sf3oo6c2.cloudfront.net/instructors/avatars/000/000/011/bio/photo-512.png?1469949786" alt="Egghead Instructor Kent C. Dodds" class="avatar">
+        <img src="@ViewBag.Instructor.MdAvatar" alt="Egghead Instructor Kent C. Dodds" class="avatar">
 
-        <h2 class="title">Kent C. Dodds</h2>
+        <h2 class="title">@ViewBag.Instructor.FirstName @ViewBag.Instructor.LastName</h2>
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <p class="text-left"></p><p>a JavaScript developer who likes open source and teaching.</p>
-                <p></p>
+                <p>@ViewBag.Instructor.Intro</p>
             </div>
         </div>
         <br>
         <div class="row">
             <ul class="list-inline list-unstyled">
-
-                <li><a class="underlined hero-bottom-link" rel="me" target="_blank" href="https://twitter.com/kentcdodds">@@kentcdodds</a></li>
-                <li><a class="underlined hero-bottom-link" rel="me" target="_blank" href="https://plus.google.com/+kentcdodds?rel=author">Google+</a></li>
-                <li><a class="underlined hero-bottom-link" target="_blank" rel="me" itemprop="url" href="http://kentcdodds.com">http://kentcdodds.com</a></li>
+                @{ 
+                    var twitter = "@" + ViewBag.Instructor.FirstName.Trim().ToLower() + ViewBag.Instructor.LastName.Trim().ToLower();
+                }
+                <li><a class="underlined hero-bottom-link" rel="me" target="_blank" href="@ViewBag.Instructor.Twitter">@twitter</a></li>
+                <li><a class="underlined hero-bottom-link" rel="me" target="_blank" href="@ViewBag.Instructor.GooglePlus">Google+</a></li>
+                <li><a class="underlined hero-bottom-link" target="_blank" rel="me" itemprop="url" href="@ViewBag.Instructor.Blog">@ViewBag.Instructor.Blog</a></li>
 
             </ul>
         </div>
         <br>
         <a id="hero-signup" href="/pricing?from=instructor-kentcdodds" class="custom-btn custom-btn-red custom-btn-primary get-pro">
-            Unlock all of Kent C.'s PRO Lessons
+            Unlock all of @ViewBag.Instructor.FirstName.'s PRO Lessons
             <br> <small><i>click for instant access!</i></small>
         </a>
     </div>
@@ -38,8 +39,8 @@
 <section class="section section-browse-all-lessons">
     <div class="container">
         <div class="title-subtitle-block">
-            <h2 class="title">Browse Kent C. Dodds's lessons.</h2>
-            <p class="subtitle"><i>showing 110 lessons...</i></p>
+            <h2 class="title">Browse @ViewBag.Instructor.FirstName @ViewBag.Instructor.LastName's courses.</h2>
+            <p class="subtitle"><i>showing @ViewBag.Instructor.TotalCourses courses...</i></p>
         </div><!-- title-subtitle-block -->
         <div class="browse-all-lessons-holder">
             <div class="tool-bar">

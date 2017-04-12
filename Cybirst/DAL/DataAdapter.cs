@@ -13,7 +13,7 @@ namespace Cybirst.DAL.Adapters
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        private DAL.Models.Instructor Chain(Cybirst.Instructor item)
+        public DAL.Models.Instructor Chain(Cybirst.Instructor item)
         {
             DAL.Models.Instructor inst = new Models.Instructor();
 
@@ -77,7 +77,7 @@ namespace Cybirst.DAL.Adapters
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        private DAL.Models.Technology Chain(Cybirst.Technology item)
+        public DAL.Models.Technology Chain(Cybirst.Technology item)
         {
             DAL.Models.Technology tech = new Models.Technology();
 
@@ -107,7 +107,7 @@ namespace Cybirst.DAL.Adapters
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        private DAL.Models.Course Chain(Cybirst.Course item)
+        public DAL.Models.Course Chain(Cybirst.Course item)
         {
             DAL.Models.Course course = new Models.Course();
 

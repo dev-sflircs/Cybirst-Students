@@ -30,12 +30,12 @@
                     @foreach (var instructor in ViewBag.Instructors[i])
                     {
                         <div class="taught-by-leaders__card">
-                            <a href="@Url.Action("Index", "InstructorDetail")">
+                            <a href="@Url.Action("Detail", "Instructor", new { uid = instructor.UID })">
                                 <img class="instructor__photo" src="@instructor.MdAvatar" alt="@( instructor.FirstName + instructor.LastName )">
                             </a>
                             <div class="instructor__info-holder">
                                 <div class="instructor__title_box">
-                                    <a href="@Url.Action("Index", "InstructorDetail")">
+                                    <a href="@Url.Action("Detail", "Instructor", new { uid = instructor.UID })">
                                         <h4 class="instructor__title">@( instructor.FirstName + instructor.LastName )</h4>
                                     </a>
                                 </div>

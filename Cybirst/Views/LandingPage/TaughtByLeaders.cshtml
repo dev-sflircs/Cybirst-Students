@@ -13,12 +13,12 @@
             @foreach (var instructor in ViewBag.First4Instructors)
             {
                 <div class="taught-by-leaders__card">
-                    <a href="@Url.Action("Index", "InstructorDetail")">
+                    <a href="@Url.Action("Detail", "Instructor", new { uid = instructor.UID })">
                         <img class="instructor__photo" src="@instructor.MdAvatar" alt="@( instructor.FirstName + instructor.LastName )">
                     </a>
                     <div class="instructor__info-holder">
                         <div class="instructor__title_box">
-                            <a href="@Url.Action("Index", "InstructorDetail")">
+                            <a href="@Url.Action("Detail", "Instructor", new { uid = instructor.UID })">
                                 <h4 class="instructor__title">@( instructor.FirstName + instructor.LastName )</h4>
                             </a>
                         </div>
@@ -49,7 +49,7 @@
                 @foreach (var instructor in ViewBag.Second6Instructors)
                 {
                     <div class="item">
-                        <a href="@Url.Action("Index", "InstructorDetail")">
+                        <a href="@Url.Action("Detail", "Instructor", new { uid = instructor.UID })">
                             <img src="@instructor.MdAvatar" class='instructor__photo' alt="@( instructor.FirstName + instructor.LastName )" />
                         </a>
                     </div>
@@ -58,7 +58,7 @@
             <div class="more-instructors__see-all">
                 <div class="plus-more__box">+ @ViewBag.LastInstructors.Count More</div>
                 <div class="see-all-instructors__box">
-                    <a href="@Url.Action("Index", "InstructorDetail")" class="see-all-instructors__link">
+                    <a href="@Url.Action("All", "Instructor")" class="see-all-instructors__link">
                         MEET ALL OUR
                         <br class="hide-mobile-landscape">
                         INSTRUCTORS

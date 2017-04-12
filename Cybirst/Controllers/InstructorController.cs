@@ -49,9 +49,19 @@ namespace Cybirst.Controllers
         }
 
         // GET: Instructor/Detail
-        public ActionResult Detail()
+        public ActionResult Detail(string uid)
         {
-            return View("Detail");
+            try
+            {
+                Instructor Instructor = dataContext.Instructors.Where(x => x.UID == uid).FirstOrDefault();
+
+                @ViewBag.Instructor = dataAdapter.Chain(Instructor);
+
+                return View("Detail");
+            }catch(Exception e)
+            {
+                return HttpNotFound("I cannot found your Instructor! :(");
+            }         
         }
     }
 }
