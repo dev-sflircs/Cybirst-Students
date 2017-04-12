@@ -141,6 +141,12 @@ namespace Cybirst.DAL.Adapters
 
             course.Instructor.LastName = item.Instructor.LastName;
 
+            course.Instructor.SmAvatar = item.Instructor.SmAvatar;
+
+            course.Instructor.MdAvatar = item.Instructor.MdAvatar;
+
+            course.Instructor.LgAvatar = item.Instructor.LgAvatar;
+
             course.Technology = new Models.Technology();
 
             course.Technology.ID = item.Technology.ID;
