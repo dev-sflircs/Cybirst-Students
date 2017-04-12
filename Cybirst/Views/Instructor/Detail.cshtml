@@ -84,28 +84,12 @@
 
             <div class="tab-content view-tabs-holder">
                 <div class="tab-pane tab-view-list" id="lesson-list">
-                    <div class="series-lessons-holder" style="display: none;">
-                        <ul class="series-lessons-list">
-                            @foreach (var a in aTest)
-                            {
-                                <a class="" href="https://egghead.io/lessons/javascript-public-class-fields-with-react-components">
-                                    <li class="item  ">
-                                        <div class="part-left"><i class="pseudo-checkbox"></i></div>
-                                        <div class="part-right"></div>
-                                        <div class="lesson-content">
-                                            <h5 class="title">Public Class Fields with React Components </h5>
-                                            <div class="info-line"><small class="duration">js - <i class="icon-time"></i> 4:52</small></div>
-                                        </div>
-                                    </li><!-- item -->
-                                </a>
-                            }
-                        </ul>
-                    </div>
+
 
                     <div class="table-responsive">
                         <table class="table table-condensed">
                             <tbody>
-                                @foreach (var a in aTest)
+                                @foreach (var course in ViewBag.Instructor.Courses)
                                 {
                                     <tr id="lesson-row-1763" class="lesson-row ">
                                         <td class="cell cell-pseudo-checkbox">
@@ -116,24 +100,24 @@
                                         </td>
                                         <td class="cell cell-category-logo">
                                             <a href="@Url.Action("Detail", "Technology")">
-                                                <img class="category-logo" src="//d1xwtr0qwr70yv.cloudfront.net/assets/tech/js-5e02473095281c2062c08e6a8d499936.svg" alt="Js">
+                                                <img class="category-logo" src="@course.SmImage" alt="Js">
                                             </a>
                                         </td>
                                         <td class="cell cell-lesson-title">
-                                            <h4 class="title"><a href="@Url.Action("Index", "Lession")">Public Class Fields with React Components</a> <span class="text-muted"></span></h4>
+                                            <h4 class="title"><a href="@Url.Action("Index", "Lession")">@course.Name</a> <span class="text-muted"></span></h4>
 
                                         </td>
                                         <td class="cell cell-lesson-category hidden-xs hidden-sm">
                                             <div class="info-line">
                                                 <small class="folder">
-                                                    <i class="icon-folder-open-alt"></i> <a href="@Url.Action("Detail", "Technology")">js</a>
+                                                    <i class="icon-folder-open-alt"></i> <a href="@Url.Action("Detail", "Technology")">@course.Technology.Name</a>
                                                 </small>
                                             </div>
                                         </td>
                                         <td class="cell cell-pro"></td>
                                         <td class="cell cell-duration hidden-xs hidden-sm">
                                             <div class="info-line">
-                                                <small class="duration"><i class="icon-time"></i> 4:52</small>
+                                                <small class="duration"><i class="icon-time"></i> @(course.EstimatedTime / 60) mins</small>
                                             </div>
                                         </td>
                                     </tr>
@@ -147,11 +131,11 @@
 
                 <div class="tab-pane tab-view-tiles active" id="lesson-thumbs">
                     <div class="row block-lessons">
-                        @foreach (var a in aTest)
+                        @foreach (var course in ViewBag.Instructor.Courses)
                         {
                             <div class="col-sm-4 item-holder ">
                                 <div id="lesson-tile-1763" class="item ">
-                                    <a href="@Url.Action("Index", "Lession")">
+                                    <a href="@Url.Action("Index", "Course")">
                                         <div class="media-holder">
                                             <div class="overlay"></div>
                                             <img src="https://dcv19h61vib2d.cloudfront.net/thumbs/egghead-js-public-class-fields-with-react-components/egghead-js-public-class-fields-with-react-components.jpg" alt="js tutorial about Public Class Fields with React Components" class="img-responsive">
@@ -160,21 +144,19 @@
 
                                     <div class="media-subscription-holder">
                                         <h4 class="title">
-                                            <span class="pseudo-checkbox-holder">
-                                                <i id="completed-icon-1763-false" class="pseudo-checkbox" style="display: none"></i>
-                                                <i id="uncompleted-icon-1763-false" class="pseudo-checkbox" style=""></i>
-                                            </span>
-                                            Public Class Fields with React Components
+                                            @course.Name
                                         </h4>
 
                                         <div class="info-line">
-                                            <small class="duration"><i class="icon-time"></i> 4:52</small>
-                                            <small class="folder"><i class="icon-folder-open-alt"></i> js</small>
-
+                                            @{ 
+                                                var minutes = course.EstimatedTime / 60;
+                                            }
+                                            <small class="duration"><i class="icon-time"></i> @minutes mins</small>
+                                            <small class="folder"><i class="icon-folder-open-alt"></i> @course.Technology.Name</small>
                                         </div>
                                         <!-- info-line -->
                                         <small class="description">
-                                            <p><a href="https://tc39.github.io/proposal-class-public-fields/">Public Class Fields</a> allow you to add instance properties to the class definition with the assignment operator (<code>=</code>). In this lesson, we'll look at their use case for simplifying event callbacks and state initialization with a React component.</p>
+                                            <p> @course.Intro.Substring(0, 240)....</p>
                                         </small>
                                     </div>
                                     <!-- video-subscription-holder -->

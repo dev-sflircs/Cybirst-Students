@@ -55,7 +55,7 @@ namespace Cybirst.Controllers
             {
                 Instructor Instructor = dataContext.Instructors.Where(x => x.UID == uid).FirstOrDefault();
 
-                @ViewBag.Instructor = dataAdapter.Chain(Instructor);
+                ViewBag.Instructor = dataAdapter.Chain(Instructor);
 
                 return View("Detail");
             }catch(Exception e)
