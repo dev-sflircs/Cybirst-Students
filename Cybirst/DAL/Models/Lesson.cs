@@ -15,6 +15,8 @@ namespace Cybirst.DAL.Models
 
         public string Intro;
 
+        public string Image;
+
         public int EstimatedTime;
 
         public string Video;

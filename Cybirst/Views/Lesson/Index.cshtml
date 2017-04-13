@@ -19,7 +19,7 @@
                                         }
                                     </style>
                                     <video width="300" height="300" controls autoplay="autoplay">
-                                        <source src="@Url.Action("Index", "Video", new { videoUrl = @ViewBag.videoUrl })" type='video/mp4'/>
+                                        <source src="@Url.Action("Index", "Video", new { videoUrl = @ViewBag.Lesson.Video })" type='video/mp4'/>
                                     </video>
                                 </div>
                             </div>
@@ -79,12 +79,12 @@
                             <div class="pad-bottom-10 playlist-description">
                                 <div class="pad-10">
                                     <div class="pad-bottom-10 text-subtle">
-                                        <small><!-- react-text: 20 -->this lesson is part of a <!-- /react-text --><!-- react-text: 21 -->course<!-- /react-text --><!-- react-text: 22 -->:<!-- /react-text --></small>
+                                        <small>this lesson is part of a course</small>
                                     </div>
                                     <div class="pull-right">
                                         <a href="https://egghead.io/courses/build-a-graphql-server"><i class="fa fa-caret-square-o-right"></i></a>
                                     </div>
-                                    <h4 class="series-title">Build a GraphQL Server</h4>
+                                    <h4 class="series-title">@ViewBag.Lesson.Name</h4>
                                 </div>
                             </div>
                             <div class="inner">

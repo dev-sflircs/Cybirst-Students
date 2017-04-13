@@ -154,7 +154,7 @@
     <Compile Include="Controllers\ErrorPageController.cs" />
     <Compile Include="Controllers\InstructorController.cs" />
     <Compile Include="Controllers\LandingPageController.cs" />
-    <Compile Include="Controllers\LessionController.cs" />
+    <Compile Include="Controllers\LessonController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\TechnologyController.cs" />
     <Compile Include="DAL\DataAdapter.cs" />
@@ -268,7 +268,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Lession\Index.cshtml" />
+    <Content Include="Views\Lesson\Index.cshtml" />
     <Content Include="Views\LandingPage\Index.cshtml" />
     <Content Include="Views\Course\All.cshtml" />
     <Content Include="Views\Technology\Detail.cshtml" />

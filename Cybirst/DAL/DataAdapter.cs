@@ -8,6 +8,44 @@ namespace Cybirst.DAL.Adapters
 {
     public class DataAdapter
     {
+
+        public DAL.Models.Lesson Chain(Cybirst.Lesson item)
+        {
+            DAL.Models.Lesson lesson = new Models.Lesson();
+
+            lesson.ID = item.ID;
+
+            lesson.Name = item.Name;
+
+            lesson.Intro = item.Intro;
+
+            lesson.Video = item.Video;
+
+            lesson.EstimatedTime = item.EstimatedTime;
+
+            lesson.Order = item.Order;
+
+            lesson.IsPro = item.IsPro;
+
+            lesson.Image = item.Course.SmImage;
+
+            lesson.Course.ID = item.Course.ID;
+
+            lesson.Course.Name = item.Course.Name;
+
+            lesson.Course.Technology.ID = item.Course.Technology.ID;
+
+            lesson.Course.Technology.Name = item.Course.Technology.Name;
+
+            lesson.Course.Instructor.ID = item.Course.Instructor.ID;
+
+            lesson.Course.Instructor.FirstName = item.Course.Instructor.FirstName;
+
+            lesson.Course.Instructor.LastName = item.Course.Instructor.LastName;
+
+            return lesson;
+        }
+
         /// <summary>
         /// Chain Cybirst.Instructor to DAL.Models.Instructor
         /// </summary>
