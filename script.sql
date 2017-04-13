@@ -1,11 +1,11 @@
 USE [master]
 GO
-/****** Object:  Database [EggHeadCodeFirst.DAL.EggHeadContext]    Script Date: 4/12/2017 10:31:15 PM ******/
+/****** Object:  Database [EggHeadCodeFirst.DAL.EggHeadContext]    Script Date: 4/13/2017 8:09:19 AM ******/
 CREATE DATABASE [EggHeadCodeFirst.DAL.EggHeadContext]
 GO
 USE [EggHeadCodeFirst.DAL.EggHeadContext]
 GO
-/****** Object:  Table [dbo].[Course]    Script Date: 4/12/2017 10:31:15 PM ******/
+/****** Object:  Table [dbo].[Course]    Script Date: 4/13/2017 8:09:20 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -30,7 +30,7 @@ CREATE TABLE [dbo].[Course](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Enrollment]    Script Date: 4/12/2017 10:31:15 PM ******/
+/****** Object:  Table [dbo].[Enrollment]    Script Date: 4/13/2017 8:09:20 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -50,7 +50,7 @@ CREATE TABLE [dbo].[Enrollment](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Instructor]    Script Date: 4/12/2017 10:31:15 PM ******/
+/****** Object:  Table [dbo].[Instructor]    Script Date: 4/13/2017 8:09:20 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -83,7 +83,7 @@ CREATE TABLE [dbo].[Instructor](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Lesson]    Script Date: 4/12/2017 10:31:15 PM ******/
+/****** Object:  Table [dbo].[Lesson]    Script Date: 4/13/2017 8:09:20 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -105,7 +105,7 @@ CREATE TABLE [dbo].[Lesson](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Student]    Script Date: 4/12/2017 10:31:15 PM ******/
+/****** Object:  Table [dbo].[Student]    Script Date: 4/13/2017 8:09:20 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -136,7 +136,7 @@ CREATE TABLE [dbo].[Student](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Technology]    Script Date: 4/12/2017 10:31:16 PM ******/
+/****** Object:  Table [dbo].[Technology]    Script Date: 4/13/2017 8:09:20 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -277,6 +277,14 @@ INSERT [dbo].[Instructor] ([ID], [UID], [FirstName], [LastName], [Intro], [Short
 GO
 SET IDENTITY_INSERT [dbo].[Instructor] OFF
 GO
+SET IDENTITY_INSERT [dbo].[Lesson] ON 
+
+GO
+INSERT [dbo].[Lesson] ([ID], [CourseID], [Name], [Intro], [EstimatedTime], [Video], [Order], [IsPro]) VALUES (32, 27, N' Create a Basic Component using Vue.js', N'Vue.js is a "progressive framework for building user interfaces." The core of Vue is focused on the view layer only. It''s easy to get started and quick to set up.
+In this lesson, we will create a basic Vue component using the new Vue() method and add data properties to show dynamic content in window.', 64, N'~/Videos/747a8fc6b9e502bf74a109693067f511eed1dc8b.mp4', 1, 0)
+GO
+SET IDENTITY_INSERT [dbo].[Lesson] OFF
+GO
 SET IDENTITY_INSERT [dbo].[Student] ON 
 
 GO
@@ -335,31 +343,31 @@ INSERT [dbo].[Technology] ([ID], [Name], [Intro], [SmImage], [MdImage], [LgImage
 GO
 SET IDENTITY_INSERT [dbo].[Technology] OFF
 GO
-/****** Object:  Index [IX_InstructorID]    Script Date: 4/12/2017 10:31:16 PM ******/
+/****** Object:  Index [IX_InstructorID]    Script Date: 4/13/2017 8:09:20 AM ******/
 CREATE NONCLUSTERED INDEX [IX_InstructorID] ON [dbo].[Course]
 (
 	[InstructorID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_TechnologyID]    Script Date: 4/12/2017 10:31:16 PM ******/
+/****** Object:  Index [IX_TechnologyID]    Script Date: 4/13/2017 8:09:20 AM ******/
 CREATE NONCLUSTERED INDEX [IX_TechnologyID] ON [dbo].[Course]
 (
 	[TechnologyID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_CourseID]    Script Date: 4/12/2017 10:31:16 PM ******/
+/****** Object:  Index [IX_CourseID]    Script Date: 4/13/2017 8:09:20 AM ******/
 CREATE NONCLUSTERED INDEX [IX_CourseID] ON [dbo].[Enrollment]
 (
 	[CourseID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_StudentID]    Script Date: 4/12/2017 10:31:16 PM ******/
+/****** Object:  Index [IX_StudentID]    Script Date: 4/13/2017 8:09:20 AM ******/
 CREATE NONCLUSTERED INDEX [IX_StudentID] ON [dbo].[Enrollment]
 (
 	[StudentID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_CourseID]    Script Date: 4/12/2017 10:31:16 PM ******/
+/****** Object:  Index [IX_CourseID]    Script Date: 4/13/2017 8:09:20 AM ******/
 CREATE NONCLUSTERED INDEX [IX_CourseID] ON [dbo].[Lesson]
 (
 	[CourseID] ASC
