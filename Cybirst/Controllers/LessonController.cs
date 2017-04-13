@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cybirst.DAL.Adapters;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -44,13 +45,33 @@ namespace Cybirst.Controllers
         }
     }
 
-    public class LessionController : Controller
+    public class LessonController : Controller
     {
+        private DataClasses1DataContext dataContext;
+        private DataAdapter dataAdapter;
+
+        public LessonController()
+        {
+            dataContext = new DataClasses1DataContext();
+            dataAdapter = new DataAdapter();
+        }
+
         // GET: Lession
         public ActionResult Index(int id)
         {
-            ViewBag.videoUrl = "~/Videos/747a8fc6b9e502bf74a109693067f511eed1dc8b.mp4";
-            return View();
+            try
+            {
+                Lesson lesson = dataContext.Lessons.Where(x => x.ID == id).FirstOrDefault();
+
+                ViewBag.Lesson = dataAdapter.Chain(lesson);
+
+                return View();
+            }
+            catch (Exception e)
+            {
+                return HttpNotFound("I cannot found your Lesson! :(");
+            }
+            
         }
     }
 }
