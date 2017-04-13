@@ -29,13 +29,19 @@ namespace Cybirst.DAL.Adapters
 
             lesson.Image = item.Course.SmImage;
 
+            lesson.Course = new Models.Course();
+
             lesson.Course.ID = item.Course.ID;
 
             lesson.Course.Name = item.Course.Name;
 
+            lesson.Course.Technology = new Models.Technology();
+
             lesson.Course.Technology.ID = item.Course.Technology.ID;
 
             lesson.Course.Technology.Name = item.Course.Technology.Name;
+
+            lesson.Course.Instructor = new Models.Instructor();
 
             lesson.Course.Instructor.ID = item.Course.Instructor.ID;
 

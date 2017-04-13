@@ -154,15 +154,15 @@
             <div class="col-sm-12 col-md-12 part-left">
                 <div class="lesson-description-holder">
                     <h1 class="title">
-                        Create a GraphQL Schema
+                        @ViewBag.Lesson.Name
                     </h1>
                     <div class="info-line">
-                        <small class="duration"><i class="icon-time"></i> 4:16</small>
-                        <small class="folder"><i class="icon-folder-open-alt"></i> <a class="underlined" href="/technologies/js">JavaScript</a></small>
-                        <small> lesson by <a rel="author" class="underlined" href="/instructors/josh-black">Josh Black</a></small>
+                        <small class="duration"><i class="icon-time"></i> @(ViewBag.Lesson.EstimatedTime/60):@(ViewBag.Lesson.EstimatedTime % 60)</small>
+                        <small class="folder"><i class="icon-folder-open-alt"></i> <a class="underlined" href="/technologies/js">@ViewBag.Lesson.Course.Technology.Name</a></small>
+                        <small> lesson by <a rel="author" class="underlined" href="/instructors/josh-black">@ViewBag.Lesson.Course.Instructor.FirstName @ViewBag.Lesson.Course.Instructor.LastName</a></small>
                     </div>
                     <div class="description-text-holder">
-                        <p>In this video, we’ll take a look at the GraphQL Language and write out our first GraphQL Schema. We’ll use the <code>graphql</code> package available to us through <code>npm</code> to parse our <code>graphql</code> language file and resolve our initial query.</p>
+                        <p>@ViewBag.Lesson.Intro</p>
                     </div>
                     <div class="share-lesson-holder">
                         <ul class="social-likes">
