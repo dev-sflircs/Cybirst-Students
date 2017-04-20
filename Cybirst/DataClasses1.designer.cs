@@ -51,7 +51,7 @@ namespace Cybirst
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["EggHeadCodeFirst_DAL_EggHeadContextConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["EggHeadCodeFirst_DAL_EggHeadContextConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
