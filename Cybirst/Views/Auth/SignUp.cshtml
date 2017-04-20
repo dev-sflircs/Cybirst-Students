@@ -27,13 +27,13 @@
                         <label class="string required control-label" for="user_first_name">
                             <abbr title="required">*</abbr> First name
                         </label>
-                        <input class="string required form-control" autofocus="autofocus" maxlength="255" size="255" type="text" name="user[first_name]" id="user_first_name">
+                        @Html.TextBoxFor(m => m.FirstName , new { @class = "string required form-control",@placeholder = "FirstName" ,@autofocus = "autofocus" })
                     </div>
                     <div class="form-group string required user_first_name">
                         <label class="string required control-label" for="user_first_name">
                             <abbr title="required">*</abbr> Last name
                         </label>
-                        <input class="string required form-control" autofocus="autofocus" maxlength="255" size="255" type="text" name="user[first_name]" id="user_first_name">
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "string required form-control", @placeholder = "LastName" })
                     </div>
                     <div class="form-group email required user_email">
                         <label class="email required control-label" for="user_email">
