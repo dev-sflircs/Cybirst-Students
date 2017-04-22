@@ -191,11 +191,25 @@ namespace Cybirst.DAL.Adapters
 
             course.Instructor.LgAvatar = item.Instructor.LgAvatar;
 
+            course.Instructor.Intro = item.Instructor.Intro;
+
+            course.Instructor.ShortIntro = item.Instructor.ShortIntro;
+
+            course.Instructor.Twitter = item.Instructor.Twitter;
+
+            course.Instructor.Facebook = item.Instructor.Facebook;
+
+            course.Instructor.GitHub = item.Instructor.GitHub;
+
             course.Technology = new Models.Technology();
 
             course.Technology.ID = item.Technology.ID;
 
             course.Technology.Name = item.Technology.Name;
+
+            course.Technology.MdImage = item.Technology.MdImage;
+
+            course.Lessons = this.Convert(item.Lessons.ToList());
 
             return course;
         }

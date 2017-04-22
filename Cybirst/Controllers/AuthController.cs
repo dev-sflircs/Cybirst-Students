@@ -45,6 +45,13 @@ namespace Cybirst.Controllers
 
     public class AuthController : Controller
     {
+        private DataClasses1DataContext dataContext;
+
+        public AuthController()
+        {
+            dataContext = new DataClasses1DataContext();
+        }
+
         // GET: Auth/SignIn
         public ActionResult SignIn()
         {
@@ -57,6 +64,7 @@ namespace Cybirst.Controllers
             if (ModelState.IsValid)
             {
                 SigninModel a = signinModel;
+                return RedirectToAction("Index", "LandingPage");
             }
 
             return View();
@@ -74,6 +82,19 @@ namespace Cybirst.Controllers
             if (ModelState.IsValid)
             {
                 SignupModel a = signUpModel;
+                Cybirst.Student st = new Student();
+                st.FirstName = a.FirstName;
+                st.LastName = a.LastName;
+                st.Email = a.Email;
+                st.Password = a.Password;
+                st.ExpiredProTime = DateTime.Now;
+                dataContext.Students.InsertOnSubmit(st);
+                dataContext.SubmitChanges();
+                return RedirectToAction("SignIn");
+            }
+            else
+            {
+                ViewBag.Error = "Thông tin không hợp lệ!";
             }
             return View();
         }
