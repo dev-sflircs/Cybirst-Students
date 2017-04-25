@@ -57,13 +57,30 @@ namespace Cybirst.Controllers
         }
 
         // GET: Lession
-        public ActionResult Index(int id)
+        public ActionResult Index(int uid)
         {
             try
             {
-                Lesson lesson = dataContext.Lessons.Where(x => x.ID == id).FirstOrDefault();
+                Lesson currentLesson = dataContext.Lessons.Where(x => x.ID == uid).FirstOrDefault();
 
-                ViewBag.Lesson = dataAdapter.Chain(lesson);
+                ViewBag.Lesson = dataAdapter.Chain(currentLesson);
+
+                if (currentLesson.Order > 1)
+                {
+                    List<Lesson> lstPreviousLessions = dataContext.Lessons.Take(currentLesson.Order - 1).ToList<Lesson>();
+
+                    ViewBag.PreviousLessons = dataAdapter.Convert(lstPreviousLessions);
+                }
+                else
+                {
+                    List<Lesson> lstPreviousLessions = new List<Lesson>();
+
+                    ViewBag.PreviousLessons = dataAdapter.Convert(lstPreviousLessions);
+                }                 
+
+                List<Lesson> lstNextLessions = dataContext.Lessons.Skip(currentLesson.Order).ToList<Lesson>();
+
+                ViewBag.NextLessons = dataAdapter.Convert(lstNextLessions);
 
                 return View();
             }

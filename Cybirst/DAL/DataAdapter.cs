@@ -27,7 +27,7 @@ namespace Cybirst.DAL.Adapters
 
             lesson.IsPro = item.IsPro;
 
-            lesson.Image = item.Course.SmImage;
+            lesson.Image = item.Course.Technology.MdImage;
 
             lesson.Course = new Models.Course();
 
@@ -191,11 +191,25 @@ namespace Cybirst.DAL.Adapters
 
             course.Instructor.LgAvatar = item.Instructor.LgAvatar;
 
+            course.Instructor.Intro = item.Instructor.Intro;
+
+            course.Instructor.ShortIntro = item.Instructor.ShortIntro;
+
+            course.Instructor.Twitter = item.Instructor.Twitter;
+
+            course.Instructor.Facebook = item.Instructor.Facebook;
+
+            course.Instructor.GitHub = item.Instructor.GitHub;
+
             course.Technology = new Models.Technology();
 
             course.Technology.ID = item.Technology.ID;
 
             course.Technology.Name = item.Technology.Name;
+
+            course.Technology.MdImage = item.Technology.MdImage;
+
+            course.Lessons = this.Convert(item.Lessons.ToList());
 
             return course;
         }
@@ -231,6 +245,18 @@ namespace Cybirst.DAL.Adapters
         public List<DAL.Models.Instructor> Convert(List<Cybirst.Instructor> inputs)
         {
             List<DAL.Models.Instructor> temp = new List<Models.Instructor>();
+
+            foreach (var item in inputs)
+            {
+                temp.Add(this.Chain(item));
+            }
+
+            return temp;
+        }
+
+        public List<DAL.Models.Lesson> Convert(List<Cybirst.Lesson> inputs)
+        {
+            List<DAL.Models.Lesson> temp = new List<Models.Lesson>();
 
             foreach (var item in inputs)
             {
