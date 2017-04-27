@@ -6,7 +6,7 @@
 <section class="hero">
     <div class="container">
         <div class="">
-            <img src="https://d2eip9sf3oo6c2.cloudfront.net/series/covers/000/000/080/full/EGH_GraphQL_Final-cover.png?1481655254" class="img-responsive series-img">
+            <img src="@ViewBag.Course.LgImage">
         </div>
     </div>
     <!-- container -->
@@ -16,14 +16,13 @@
         <div class="row row-centered">
             <div class="col-md-12 text-left">
                 <div class="title-subtitle-block">
-                    <h1 class="title">Build a GraphQL Server</h1>
-                    <p class="subtitle"><i class="icon-time text-muted"></i> <i>57 minutes</i> </p>
+                    <h1 class="title">@ViewBag.Course.Name</h1>
+                    <p class="subtitle"><i class="icon-time text-muted"></i> <i>@(ViewBag.Course.EstimatedTime / 60) minutes</i> </p>
                 </div><!-- title-subtitle-block -->
                 <div class="row">
                     <div class="col-sm-8 col-sm-offset-2 ">
                         <div>
-                            <p>In this course we take a look at a new data query language and runtime called GraphQL. GraphQL was designed and built at Facebook to help product developers request and receive the data they need for their mobile and web applications. GraphQL sits on top of your application’s data access layer, providing clients with the ability to explicitly specify their data requirements, and the guarantee that this data won’t change.</p>
-                            <p>GraphQL manages these kind of guarantees through a mixture of it’s Type System and Query semantics, both of which are pieces of GraphQL that we’ll look at in this series. We’ll also take a look at Mutations, and how to make our GraphQL Servers Relay-compliant using Nodes, Edges, and Connections.</p>
+                            <p>@ViewBag.Course.Intro</p>
                         </div>
                     </div>
                 </div>
@@ -72,8 +71,8 @@
                                         <div class="part-left"><i class="pseudo-checkbox"></i></div>
                                         <div class="part-right"></div>
                                         <div class="lesson-content">
-                                            <h5 class="title">Create a GraphQL Schema </h5>
-                                            <div class="info-line"><small class="duration">js - <i class="icon-time"></i> 4:16</small></div>
+                                            <h5 class="title">abc</h5>
+                                            <div class="info-line"><small class="duration">js - <i class="icon-time">12:30</i> </small></div>
                                         </div>
                                     </li><!-- item -->
                                 </a>
@@ -83,7 +82,7 @@
                     <div class="table-responsive">
                         <table class="table table-condensed">
                             <tbody>
-                                @foreach (var a in aTest)
+                                @foreach (var lesson in ViewBag.Course.Lessons)
                                 {
                                     <tr id="lesson-row-1468" class="lesson-row ">
                                         <td class="cell cell-pseudo-checkbox">
@@ -94,23 +93,23 @@
                                         </td>
                                         <td class="cell cell-category-logo">
                                             <a href="@Url.Action("Detail", "Technology")">
-                                                <img class="category-logo" src="//d1xwtr0qwr70yv.cloudfront.net/assets/tech/js-5e02473095281c2062c08e6a8d499936.svg" alt="Js">
+                                                <img class="category-logo" src="@ViewBag.Course.Technology.MdImage" alt="Js">
                                             </a>
                                         </td>
                                         <td class="cell cell-lesson-title">
-                                            <h4 class="title"><a href="@Url.Action("Index", "Lession")">Create a GraphQL Schema</a> <span class="text-muted"></span></h4>
+                                            <h4 class="title"><a href="@Url.Action("Index", "Lession")">@lesson.Name</a> <span class="text-muted"></span></h4>
                                         </td>
                                         <td class="cell cell-lesson-category hidden-xs hidden-sm">
                                             <div class="info-line">
                                                 <small class="folder">
-                                                    <i class="icon-folder-open-alt"></i> <a href="https://egghead.io/technologies/js">js</a>
+                                                    <i class="icon-folder-open-alt"></i> <a href="https://egghead.io/technologies/js">@ViewBag.Course.Technology.Name</a>
                                                 </small>
                                             </div>
                                         </td>
                                         <td class="cell cell-pro"></td>
                                         <td class="cell cell-duration hidden-xs hidden-sm">
                                             <div class="info-line">
-                                                <small class="duration"><i class="icon-time"></i> 4:16</small>
+                                                <small class="duration"><i class="icon-time"></i> @(lesson.EstimatedTime / 60):@(lesson.EstimatedTime % 60)</small>
                                             </div>
                                         </td>
                                     </tr>
@@ -122,7 +121,7 @@
                 <!-- tab-view-list -->
                 <div class="tab-pane tab-view-tiles" id="lesson-thumbs">
                     <div class="row block-lessons">
-                        @foreach (var a in aTest)
+                        @foreach (var lessons in ViewBag.Course.Lessons)
                         {
                             <div class="col-sm-4 item-holder ">
                                 <div id="lesson-tile-1468" class="item ">
@@ -172,21 +171,24 @@
                 <h4><strong>Presented by:</strong></h4>
                 <div class="media well">
                     <a class="pull-left hidden-xs" href="#">
-                        <img class="media-object instructor-photo" src="https://d2eip9sf3oo6c2.cloudfront.net/instructors/avatars/000/000/058/small/XJGtEzxg.jpeg?1457387913">
+                        <img class="media-object instructor-photo" src="@ViewBag.Course.Instructor.SmAvatar">
                     </a>
                     <div class="media-body">
                         <div class="row text-center visible-xs pad-bottom">
                             <img class="media-object instructor-photo" src="https://d2eip9sf3oo6c2.cloudfront.net/instructors/avatars/000/000/058/small/XJGtEzxg.jpeg?1457387913">
                         </div>
                         <div class="clearfix">
-                            <h4 class="media-heading">Josh Black</h4>
-                            <p>Front-End Developer for IBM Watson. Overly excited about all things web-related. </p>
+                            <h4 class="media-heading">@ViewBag.Course.Instructor.FirstName @ViewBag.Course.Instructor.LastName</h4>
+                            <p>@ViewBag.Course.Instructor.Intro</p>
                         </div>
                         <div class="clearfix">
-                            <a target="_blank" href="https://twitter.com/joshblackfr">@@joshblackfr</a>
+                            <a target="_blank" href="@ViewBag.Course.Instructor.Twitter">@@@ViewBag.Course.Instructor.FirstName</a>
                         </div>
                         <div class="clearfix">
-                            <a target="_blank" href="https://github.com/joshblack">https://github.com/joshblack</a>
+                            <a target="_blank" href="@ViewBag.Course.Instructor.Facebook">@ViewBag.Course.Instructor.Facebook</a>
+                        </div>
+                        <div class="clearfix">
+                            <a target="_blank" href="@ViewBag.Course.Instructor.GitHub">@ViewBag.Course.Instructor.GitHub</a>
                         </div>
                     </div>
                 </div>
