@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace Cybirst.Controllers
 {
@@ -42,7 +43,7 @@ namespace Cybirst.Controllers
         public string Password { get; set; }
     }
 
-
+    [AllowAnonymous]
     public class AuthController : Controller
     {
         private DataClasses1DataContext dataContext;
@@ -63,8 +64,16 @@ namespace Cybirst.Controllers
         {
             if (ModelState.IsValid)
             {
-                SigninModel a = signinModel;
-                return RedirectToAction("Index", "LandingPage");
+                Student currentUser = dataContext.Students.Where(x => x.Email == signinModel.Email && x.Password == signinModel.Password).FirstOrDefault();
+                if(currentUser != null)
+                {
+                    FormsAuthentication.SetAuthCookie(currentUser.ID.ToString(), true);
+                    return RedirectToAction("Index", "LandingPage");
+                }
+                else
+                {
+                    ViewBag.Error = "Email or Password is not valid!";
+                }
             }
 
             return View();
@@ -81,20 +90,27 @@ namespace Cybirst.Controllers
         {
             if (ModelState.IsValid)
             {
-                SignupModel a = signUpModel;
-                Cybirst.Student st = new Student();
-                st.FirstName = a.FirstName;
-                st.LastName = a.LastName;
-                st.Email = a.Email;
-                st.Password = a.Password;
-                st.ExpiredProTime = DateTime.Now;
-                dataContext.Students.InsertOnSubmit(st);
-                dataContext.SubmitChanges();
-                return RedirectToAction("SignIn");
+                try
+                {
+                    SignupModel a = signUpModel;
+                    Cybirst.Student st = new Student();
+                    st.FirstName = a.FirstName;
+                    st.LastName = a.LastName;
+                    st.Email = a.Email;
+                    st.UID = a.Email;
+                    st.Password = a.Password;
+                    st.ExpiredProTime = DateTime.Now;
+                    dataContext.Students.InsertOnSubmit(st);
+                    dataContext.SubmitChanges();
+                    return RedirectToAction("SignIn");
+                }catch(Exception e)
+                {
+                    ViewBag.Error = "Invalid information. Please try again!";
+                }
             }
             else
             {
-                ViewBag.Error = "Thông tin không hợp lệ!";
+                ViewBag.Error = "Invalid information. Please try again!";
             }
             return View();
         }

@@ -21,8 +21,9 @@
                     <br>
                     <br>
                 </div>
-               @using (Html.BeginForm("SignUp","Auth")) { 
-                <form id="register-form" class="simple_form form-vertical" autocomplete="false" novalidate="novalidate" action="/users" accept-charset="UTF-8" method="post">
+               @using (Html.BeginForm("SignUp","Auth", FormMethod.Post)) { 
+                <form id="register-form" class="simple_form form-vertical">
+                    @Html.AntiForgeryToken()
                     <div class="form-group string required user_first_name">
                         <label class="string required control-label" for="user_first_name">
                             <abbr title="required">*</abbr> First name
@@ -52,7 +53,7 @@
                     </div>
                     <br>
                     <div class="form-group text-center">
-                        Have an account? <a class="underlined action" href="/users/sign_in">Sign in</a>
+                        Have an account? <a class="underlined action" href="@Url.Action("SignIn", "Auth")">Sign in</a>
                     </div>
                     <div class="form-group text-center">
                         Forgot your

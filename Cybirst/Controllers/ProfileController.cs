@@ -9,7 +9,7 @@ namespace Cybirst.Controllers
     public class ProfileController : Controller
     {
         // GET: Profile
-        public ActionResult Index()
+        public ActionResult Index(int ID)
         {
             return View();
         }

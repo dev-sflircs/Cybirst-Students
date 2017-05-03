@@ -30,11 +30,11 @@ namespace Cybirst.Controllers
         }
 
         // GET: Technology/Detail
-        public ActionResult Detail(int id)
+        public ActionResult Detail(int uid)
         {
             try
             {
-                Technology technology = dataContext.Technologies.Where(x => x.ID == id).FirstOrDefault();
+                Technology technology = dataContext.Technologies.Where(x => x.ID == uid).FirstOrDefault();
 
                 ViewBag.Technology = dataAdapter.Chain(technology);
 

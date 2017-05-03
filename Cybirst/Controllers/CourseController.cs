@@ -26,11 +26,11 @@ namespace Cybirst.Controllers
         }
 
         // GET: Course/Detail
-        public ActionResult Detail(int ?id)
+        public ActionResult Detail(int uid)
         {
             try
             {
-                Course course = dataContext.Courses.Where(x => x.ID == id).FirstOrDefault();
+                Course course = dataContext.Courses.Where(x => x.ID == uid).FirstOrDefault();
                 ViewBag.Course = dataAdapter.Chain(course);
                 return View("Detail");
             } catch (Exception e)

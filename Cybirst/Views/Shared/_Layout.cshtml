@@ -38,7 +38,6 @@
                 <div id="header-navigation" class="collapse navbar-collapse header__navigation">
                     <ul class="nav navbar-nav header__navigation-list">
                         <li class=""><a href="@Url.Action("All", "Course")">Browsers</a></li>
-                        <li class=""><a href="@Url.Action("New", "Course")/Home/NewCourses">New courses</a></li>
                     </ul>
                     <ul class="nav navbar-nav header__navigation-list fluid aligned-end">
                         <li class="hidden-xs hidden-sm">
@@ -52,8 +51,44 @@
                         <li>
                             <a href="/pricing?from=go-pro-nav" class="pro-link">GO PRO</a>
                         </li>
-                        <li><a href="@Url.Action("SignIn", "Auth")">Sign In</a></li>
-                        <li><a href="@Url.Action("SignUp", "Auth")">Create Free Account</a></li>
+                        @{
+                            string ID = HttpContext.Current.User.Identity.Name;
+                            if (!string.IsNullOrEmpty(ID))
+                            {
+                                <li class="dropdown">
+                                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                                        @ID
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li>
+                                            <a href="/profile/@ID">User</a>
+                                        </li>
+                                        <li>
+                                            <a href="/membership">Membership</a>
+                                        </li>
+                                        <li>
+                                            <a href="/watch_later">Watch Later Playlist</a>
+                                        </li>
+                                        <li><a href="/playlists">All Playlists</a></li>
+                                        <li>
+                                            <a class="btn-nav btn-nav-secondary" rel="nofollow" href="/users/sign_out">Sign Out</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="hidden-xs">
+                                    <a href="/profile/@ID" class="header__userpic-link">
+                                        <img class="header__userpic" alt="dev-sflircs" src="https://secure.gravatar.com/avatar/2c83b92309a8c69be6e289ce9a92cb71?default=identicon&amp;secure=true&amp;size=128" width="128" height="128">
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li><a href="@Url.Action("SignIn", "Auth")">Sign In</a></li>
+                                <li><a href="@Url.Action("SignUp", "Auth")">Create Free Account</a></li>
+                            }
+                        }
+                        
                     </ul>
                 </div>
             </div>

@@ -12,9 +12,10 @@
 
         <div class="narrow-form-holder sign-form-holder">
             <div class="colored-box grey">
-                @using (Html.BeginForm("SignIn", "Auth"))
+                @using (Html.BeginForm("SignIn", "Auth", FormMethod.Post))
                 {
-                <form class="simple_form form-vertical" accept-charset="UTF-8" method="post">
+                <form class="simple_form form-vertical">
+                    @Html.AntiForgeryToken()
                     <div class="form-group email optional user_email">
                         <label class="email optional control-label" for="user_email">Email</label>
                         @Html.TextBoxFor(m => m.Email, new { @class = "string email optional form-control form-control", @placeholder = "Email", @autofocus = "autofocus" })
@@ -23,7 +24,7 @@
                         <label class="password optional control-label" for="user_password">Password</label>
                         @Html.PasswordFor(m => m.Password, new { @class = "password optional form-control", @placeholder = "Password", @type = "password" })
                     </div>
-                    <div class="form-group">
+                    @*<div class="form-group">
                         <div class="checkbox custom-checkbox">
                             <label>
                                 <span class="icon-holder">
@@ -35,7 +36,7 @@
                                 </span>
                             </label>
                         </div>
-                    </div>
+                    </div>*@
                     <div class="form-group flexbox-between">
                         <input type="submit" name="commit" value="Sign In" class="btn btn custom-btn custom-btn-secondary custom-btn-blue" >
                         <a class="btn custom-btn custom-btn-secondary custom-btn-grey" href="/users/auth/github">
@@ -46,7 +47,7 @@
                     <br>
                     <div class="form-group text-center">
                         Need to create an
-                        account? <a class="underlined action" href="/users/sign_up">Sign up</a>
+                        account? <a class="underlined action" href="@Url.Action("SignUp", "Auth")">Sign up</a>
                     </div>
                     <div class="form-group text-center">
                         Forgot your

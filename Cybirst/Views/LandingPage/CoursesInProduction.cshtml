@@ -30,12 +30,12 @@
                                 {
                                     <tr class="lesson-row---hoverless">
                                         <td class="cell cell-category-logo">
-                                            <a href="@Url.Action("Index", "TechnologyDetail")">
+                                            <a href="@Url.Action("Detail", "Technology", new { uid = course.Technology.ID })">
                                                 <img class="category-logo" src="@course.SmImage" alt="Course image thumb js" />
                                             </a>
                                         </td>
                                         <td class="cell cell-lesson-title">
-                                            <h4 class="title"><a href="@Url.Action("Index", "Lession")">@course.Name</a></h4>
+                                            <h4 class="title"><a href="@Url.Action("Detail", "Course", new { uid = course.ID })">@course.Name</a></h4>
                                         </td>
                                         <td class="cell cell-lesson-category">
                                             <div class="info-line">

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="EggHeadCodeFirst.DAL.EggHeadContext" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-9SJ3T54\SQLEXPRESS;Initial Catalog=EggHeadCodeFirst.DAL.EggHeadContext;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="EggHeadCodeFirst_DAL_EggHeadContextConnectionString2" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-0P4O3HF\SQLSERVER;Initial Catalog=EggHeadCodeFirst.DAL.EggHeadContext;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="EggHeadCodeFirst_DAL_EggHeadContextConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Course" Member="Courses">
     <Type Name="Course">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />

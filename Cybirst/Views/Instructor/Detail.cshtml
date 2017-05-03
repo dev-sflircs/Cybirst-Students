@@ -155,16 +155,28 @@
                                             <small class="folder"><i class="icon-folder-open-alt"></i> @course.Technology.Name</small>
                                         </div>
                                         <!-- info-line -->
-                                        <small class="description">
-                                            <p> @course.Intro.Substring(0, 240)....</p>
-                                        </small>
+                                        @{
+                                            string description = course.Intro;
+                                            if (description.Length > 240)
+                                            {
+                                                <small class="description">
+                                                    <p>@course.Intro.Substring(0, 240)....</p>
+                                                </small>
+                                            }
+                                            else{
+                                                <small class="description">
+                                                    <p>@course.Intro....</p>
+                                                </small>
+                                            }
+                                        }
+                                        
                                     </div>
                                     <!-- video-subscription-holder -->
                                 </div>
                                 <!-- item -->
                                 <div class="cs-items-separator"></div>
                             </div>
-                        }
+                                            }
                     </div>
                     <!-- block-lessons -->
                 </div>
