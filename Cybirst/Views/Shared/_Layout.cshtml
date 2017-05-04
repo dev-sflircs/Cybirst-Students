@@ -64,7 +64,8 @@
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-right">
                                         <li>
-                                            <a href="/profile/@ViewBag.Student.UID">User</a>
+                                            <a href="@Url.Action("Index", "Profile", new { uid=ViewBag.Student.UID})">User</a>
+                                            @*<a href="/profile/@ViewBag.Student.UID">User</a>*@
                                         </li>
                                         <li>
                                             <a href="/membership">Membership</a>

@@ -18,11 +18,11 @@ namespace Cybirst.Controllers
         }
 
         // GET: Profile
-        public ActionResult Index(string ID)
+        public ActionResult Index(string uid)
         {
-            Student st = dataContext.Students.Where(x => x.ID == Int64.Parse(ID)).FirstOrDefault();
+            Student st = dataContext.Students.Where(x => x.UID == uid).FirstOrDefault();
             ViewBag.Student = dataAdapter.Chain(st);
-            return View();
+            return View(st);
         }
     }
 }
