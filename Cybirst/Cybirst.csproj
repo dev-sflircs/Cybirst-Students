@@ -294,7 +294,6 @@
     <Content Include="Views\LandingPage\MostPopularCourse.cshtml" />
     <Content Include="Views\LandingPage\JoinTheProgrammingElite.cshtml" />
     <Content Include="Views\Technology\All.cshtml" />
-    <Content Include="Views\Shared\UserBandView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

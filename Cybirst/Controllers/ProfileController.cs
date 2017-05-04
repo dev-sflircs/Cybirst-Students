@@ -18,24 +18,11 @@ namespace Cybirst.Controllers
         }
 
         // GET: Profile
-        public ActionResult Index(int ID)
+        public ActionResult Index(string ID)
         {
+            Student st = dataContext.Students.Where(x => x.ID == Int64.Parse(ID)).FirstOrDefault();
+            ViewBag.Student = dataAdapter.Chain(st);
             return View();
-        }
-
-        
-        public PartialViewResult UserBrand(string ID)
-        {
-            try
-            {
-                Student st = dataContext.Students.Where(x => x.ID == Int64.Parse(ID)).FirstOrDefault();
-                ViewBag.Student = dataAdapter.Chain(st);
-                return PartialView("~/Views/Shared/UserBandView.cshtml");
-            }
-            catch (Exception e)
-            {
-                return new PartialViewResult();
-            }
         }
     }
 }
