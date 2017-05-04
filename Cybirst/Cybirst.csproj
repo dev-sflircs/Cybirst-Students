@@ -184,6 +184,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\15355719_386396191696787_1357761904338457074_n.jpg" />
     <Content Include="Images\956631.jpeg" />
     <Content Include="Images\9VsY9i09.jpeg" />
     <Content Include="Images\andre_500.jpg" />
@@ -293,6 +294,7 @@
     <Content Include="Views\LandingPage\MostPopularCourse.cshtml" />
     <Content Include="Views\LandingPage\JoinTheProgrammingElite.cshtml" />
     <Content Include="Views\Technology\All.cshtml" />
+    <Content Include="Views\Shared\UserBandView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

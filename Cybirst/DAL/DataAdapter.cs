@@ -8,6 +8,47 @@ namespace Cybirst.DAL.Adapters
 {
     public class DataAdapter
     {
+        public DAL.Models.Student Chain(Cybirst.Student item)
+        {
+            DAL.Models.Student student = new Models.Student();
+            student.ID = item.ID;
+
+            student.UID = item.UID;
+
+            student.FirstName = item.FirstName;
+
+            student.LastName = item.LastName;
+
+            student.Intro = item.Intro;
+
+            student.GooglePlus = item.GooglePlus;
+
+            student.Twitter = item.Twitter;
+
+            student.Facebook = item.Facebook;
+
+            student.Blog = item.Blog;
+
+            student.Email = item.Email;
+
+            student.Password = item.Password;
+
+            student.Phone = item.Phone;
+
+            student.Address = item.Address;
+
+            student.SmAvatar = item.SmAvatar;
+
+            student.MdAvatar = item.MdAvatar;
+
+            student.LgAvatar = item.LgAvatar;
+
+            student.ExpiredProTime = item.ExpiredProTime;
+
+            //public List<Enrollment> Enrollments;
+
+            return student;
+        }
 
         public DAL.Models.Lesson Chain(Cybirst.Lesson item)
         {
