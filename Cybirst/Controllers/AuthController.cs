@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cybirst.DAL.Adapters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -47,10 +48,12 @@ namespace Cybirst.Controllers
     public class AuthController : Controller
     {
         private DataClasses1DataContext dataContext;
+        private DataAdapter dataAdapter;
 
         public AuthController()
         {
             dataContext = new DataClasses1DataContext();
+            dataAdapter = new DataAdapter();
         }
 
         // GET: Auth/SignIn
@@ -68,6 +71,7 @@ namespace Cybirst.Controllers
                 if(currentUser != null)
                 {
                     FormsAuthentication.SetAuthCookie(currentUser.ID.ToString(), true);
+                    System.Web.HttpContext.Current.Session["currentUser"] = dataAdapter.Chain(currentUser);
                     return RedirectToAction("Index", "LandingPage");
                 }
                 else

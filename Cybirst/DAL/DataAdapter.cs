@@ -8,6 +8,66 @@ namespace Cybirst.DAL.Adapters
 {
     public class DataAdapter
     {
+        public DAL.Models.Student Chain(Cybirst.Student item)
+        {
+            DAL.Models.Student student = new Models.Student();
+            student.ID = item.ID;
+
+            student.UID = item.UID;
+
+            student.FirstName = item.FirstName;
+
+            student.LastName = item.LastName;
+
+            student.Intro = item.Intro;
+
+            student.GooglePlus = item.GooglePlus;
+
+            student.Twitter = item.Twitter;
+
+            student.Facebook = item.Facebook;
+
+            student.Blog = item.Blog;
+
+            student.Email = item.Email;
+
+            student.Password = item.Password;
+
+            student.Phone = item.Phone;
+
+            student.Address = item.Address;
+
+            student.SmAvatar = item.SmAvatar;
+
+            student.MdAvatar = item.MdAvatar;
+
+            student.LgAvatar = item.LgAvatar;
+
+            student.ExpiredProTime = item.ExpiredProTime;
+
+            student.Enrollments = this.Convert(item.Enrollments.ToList());
+            
+            return student;
+        }
+
+
+        public DAL.Models.Enrollment Chain(Cybirst.Enrollment item)
+        {
+            DAL.Models.Enrollment enrollment = new Models.Enrollment();
+            enrollment.ID = item.ID;
+
+            enrollment.IsComplete = item.IsComplete;
+
+            enrollment.TimeStart = item.TimeStart;
+
+            enrollment.OrderState = item.OrderState;
+
+            enrollment.LastActive = item.LastActive;
+
+            enrollment.Course = this.Chain(item.Course);
+
+            return enrollment;
+        }
 
         public DAL.Models.Lesson Chain(Cybirst.Lesson item)
         {
@@ -222,6 +282,17 @@ namespace Cybirst.DAL.Adapters
         public List<DAL.Models.Course> Convert(List<Cybirst.Course> inputs)
         {
             List<DAL.Models.Course> temp = new List<Models.Course>();
+
+            foreach (var item in inputs)
+            {
+                temp.Add(this.Chain(item));
+            }
+            return temp;
+        }
+
+        public List<DAL.Models.Enrollment> Convert(List<Cybirst.Enrollment> inputs)
+        {
+            List<DAL.Models.Enrollment> temp = new List<Models.Enrollment>();
 
             foreach (var item in inputs)
             {

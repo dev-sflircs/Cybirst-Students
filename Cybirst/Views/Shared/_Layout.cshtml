@@ -11,7 +11,7 @@
     @Scripts.Render("~/bundles/egg")
     @Scripts.Render("~/bundles/egghead-bundle")
     @*<script src="assets/app-client-bundle-be2f887cccb7ba9a2ffde065c41fe4d7.js" data-turbolinks-track="true"></script>*@
-    
+
 </head>
 <body>
     <!--Header-->
@@ -52,17 +52,20 @@
                             <a href="/pricing?from=go-pro-nav" class="pro-link">GO PRO</a>
                         </li>
                         @{
-                            string ID = HttpContext.Current.User.Identity.Name;
-                            if (!string.IsNullOrEmpty(ID))
+                            Cybirst.DAL.Models.Student currentUser = (Cybirst.DAL.Models.Student)System.Web.HttpContext.Current.Session["currentUser"];
+
+                            ViewBag.Student = currentUser;
+                            if (ViewBag.Student != null)
                             {
                                 <li class="dropdown">
                                     <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-                                        @ID
+                                        @ViewBag.Student.UID
                                         <b class="caret"></b>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-right">
                                         <li>
-                                            <a href="/profile/@ID">User</a>
+                                            <a href="@Url.Action("Index", "Profile", new { uid=ViewBag.Student.UID})">User</a>
+                                            @*<a href="/profile/@ViewBag.Student.UID">User</a>*@
                                         </li>
                                         <li>
                                             <a href="/membership">Membership</a>
@@ -77,8 +80,8 @@
                                     </ul>
                                 </li>
                                 <li class="hidden-xs">
-                                    <a href="/profile/@ID" class="header__userpic-link">
-                                        <img class="header__userpic" alt="dev-sflircs" src="https://secure.gravatar.com/avatar/2c83b92309a8c69be6e289ce9a92cb71?default=identicon&amp;secure=true&amp;size=128" width="128" height="128">
+                                    <a href="/profile/@ViewBag.Student.UID" class="header__userpic-link">
+                                        <img class="header__userpic" alt="dev-sflircs" src="@ViewBag.Student.SmAvatar" width="128" height="128">
                                     </a>
                                 </li>
                             }
@@ -88,87 +91,83 @@
                                 <li><a href="@Url.Action("SignUp", "Auth")">Create Free Account</a></li>
                             }
                         }
-                        
                     </ul>
                 </div>
             </div>
         </nav>
-
         <script type="text/javascript" charset="utf-8">
-            $(document).ready(function(){
-              // Hide Header on on scroll down
-              var didScroll;
-              var lastScrollTop = 0;
-              var delta = 5;
-              var headerHeight = $('header').outerHeight();
+            $(document).ready(function () {
+                // Hide Header on on scroll down
+                var didScroll;
+                var lastScrollTop = 0;
+                var delta = 5;
+                var headerHeight = $('header').outerHeight();
 
-              $(window).scroll(function(event){
-                didScroll = true;
-              });
+                $(window).scroll(function (event) {
+                    didScroll = true;
+                });
 
-              setInterval(function() {
-                if (didScroll) {
-                  hasScrolled();
-                  didScroll = false;
+                setInterval(function () {
+                    if (didScroll) {
+                        hasScrolled();
+                        didScroll = false;
+                    }
+                }, 250);
+
+                function hasScrolled() {
+                    var st = $(this).scrollTop();
+
+                    // Make sure they scroll more than delta
+                    if (Math.abs(lastScrollTop - st) <= delta)
+                        return;
+
+                    // If they scrolled down and are past the navbar, add class .nav-up.
+                    // This is necessary so you never see what is "behind" the navbar.
+                    if (st > lastScrollTop && st > headerHeight) {
+                        // Scroll Down
+                        $('.navigation__header').removeClass('header-down').addClass('header-up');
+                    } else {
+                        // Scroll Up
+                        if (st + $(window).height() < $(document).height()) {
+                            $('.navigation__header').removeClass('header-up').addClass('header-down');
+                        }
+                    }
+
+                    lastScrollTop = st;
                 }
-              }, 250);
-
-              function hasScrolled() {
-                var st = $(this).scrollTop();
-
-                // Make sure they scroll more than delta
-                if(Math.abs(lastScrollTop - st) <= delta)
-                  return;
-
-                // If they scrolled down and are past the navbar, add class .nav-up.
-                // This is necessary so you never see what is "behind" the navbar.
-                if (st > lastScrollTop && st > headerHeight){
-                  // Scroll Down
-                  $('.navigation__header').removeClass('header-down').addClass('header-up');
-                } else {
-                  // Scroll Up
-                  if(st + $(window).height() < $(document).height()) {
-                    $('.navigation__header').removeClass('header-up').addClass('header-down');
-                  }
-                }
-
-                lastScrollTop = st;
-              }
             });
 
             // Collapsable Search Field
-            $('.search-field__holder.collapsed').on('click', function(e) {
-              $(this).removeClass('collapsed').addClass('expanded').find('.search-field__input').focus();
+            $('.search-field__holder.collapsed').on('click', function (e) {
+                $(this).removeClass('collapsed').addClass('expanded').find('.search-field__input').focus();
             });
 
-            $(document).on('touchstart', function() {
-              documentClick = true;
+            $(document).on('touchstart', function () {
+                documentClick = true;
             });
-            $(document).on('touchmove', function() {
-              documentClick = false;
+            $(document).on('touchmove', function () {
+                documentClick = false;
             });
 
             $(document).on('click touchend', function (event) {
-              if (event.type == 'click') documentClick = true;
-              if (documentClick){
-                if(!$(event.target).closest('.navigation__header .search-field__holder').length) {
-                  if($('.navigation__header .search-field__holder').hasClass('expanded')) {
-                    $('.navigation__header .search-field__holder').addClass('collapsed').removeClass('expanded');
-                  }
+                if (event.type == 'click') documentClick = true;
+                if (documentClick) {
+                    if (!$(event.target).closest('.navigation__header .search-field__holder').length) {
+                        if ($('.navigation__header .search-field__holder').hasClass('expanded')) {
+                            $('.navigation__header .search-field__holder').addClass('collapsed').removeClass('expanded');
+                        }
+                    }
                 }
-              }
             })
         </script>
     </header>
     <div class="header--spacer"></div>
     <!--end Header-->
-
     <!--Body-->
     <div class="home">
         @RenderBody()
     </div>
     <!--end Body-->
-
     <!--Footer-->
     <footer class="site-footer">
         <div class="site-footer__inner">
@@ -193,7 +192,7 @@
                 </div>
             </div>
             <div class="site-footer__search-place">
-                <h3 class="site-footer__search-place--title">Search Lessons</h3>
+                <h3 class="site-footer__search-place--title">Search Courses</h3>
                 <div class="search-field__holder">
                     <input type="text" class="search-field__input">
                     <button class="search-field__submit">
