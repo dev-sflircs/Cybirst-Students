@@ -84,20 +84,12 @@
 
             <div class="tab-content view-tabs-holder">
                 <div class="tab-pane tab-view-list" id="lesson-list">
-
-
                     <div class="table-responsive">
                         <table class="table table-condensed">
                             <tbody>
                                 @foreach (var course in ViewBag.Instructor.Courses)
                                 {
                                     <tr id="lesson-row-1763" class="lesson-row ">
-                                        <td class="cell cell-pseudo-checkbox">
-                                            <span class="pseudo-checkbox-holder">
-                                                <i id="completed-icon-1763-true" class="pseudo-checkbox" style="display: none"></i>
-                                                <i id="uncompleted-icon-1763-true" class="pseudo-checkbox" style=""></i>
-                                            </span>
-                                        </td>
                                         <td class="cell cell-category-logo">
                                             <a href="@Url.Action("Detail", "Technology")">
                                                 <img class="category-logo" src="@course.SmImage" alt="Js">

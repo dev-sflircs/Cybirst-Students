@@ -33,7 +33,7 @@
 <section class="section section-browse-all-lessons">
     <div class="container">
         <div class="title-subtitle-block">
-            <a href="@Url.Action("Index", "Lession")" class="custom-btn custom-btn-red custom-btn-primary">
+            <a href="@Url.Action("Index", "Lesson", new { uid= ViewBag.Course.Lessons[0].ID })" class="custom-btn custom-btn-red custom-btn-primary">
                 Start Watching Lessons
             </a>
             <!-- container -->
@@ -62,23 +62,6 @@
             <!-- tool-bar -->
             <div class="tab-content view-tabs-holder">
                 <div class="tab-pane tab-view-list active" id="lesson-list">
-                    <div class="series-lessons-holder" style="display: none;">
-                        <ul class="series-lessons-list">
-                            @foreach (var a in aTest)
-                            {
-                                <a class="" href="@Url.Action("Index", "Lession")">
-                                    <li class="item  ">
-                                        <div class="part-left"><i class="pseudo-checkbox"></i></div>
-                                        <div class="part-right"></div>
-                                        <div class="lesson-content">
-                                            <h5 class="title">abc</h5>
-                                            <div class="info-line"><small class="duration">js - <i class="icon-time">12:30</i> </small></div>
-                                        </div>
-                                    </li><!-- item -->
-                                </a>
-                            }
-                        </ul>
-                    </div>
                     <div class="table-responsive">
                         <table class="table table-condensed">
                             <tbody>
@@ -92,17 +75,17 @@
                                             </span>
                                         </td>
                                         <td class="cell cell-category-logo">
-                                            <a href="@Url.Action("Detail", "Technology")">
+                                            <a href="@Url.Action("Detail", "Technology", new { uid= ViewBag.Course.Technology.ID })">
                                                 <img class="category-logo" src="@ViewBag.Course.Technology.MdImage" alt="Js">
                                             </a>
                                         </td>
                                         <td class="cell cell-lesson-title">
-                                            <h4 class="title"><a href="@Url.Action("Index", "Lession")">@lesson.Name</a> <span class="text-muted"></span></h4>
+                                            <h4 class="title"><a href="@Url.Action("Index", "Lesson", new { uid = lesson.ID })">@lesson.Name</a> <span class="text-muted"></span></h4>
                                         </td>
                                         <td class="cell cell-lesson-category hidden-xs hidden-sm">
                                             <div class="info-line">
                                                 <small class="folder">
-                                                    <i class="icon-folder-open-alt"></i> <a href="https://egghead.io/technologies/js">@ViewBag.Course.Technology.Name</a>
+                                                    <i class="icon-folder-open-alt"></i> <a href="new { uid= ViewBag.Course.Technology.ID }">@ViewBag.Course.Technology.Name</a>
                                                 </small>
                                             </div>
                                         </td>
@@ -121,11 +104,11 @@
                 <!-- tab-view-list -->
                 <div class="tab-pane tab-view-tiles" id="lesson-thumbs">
                     <div class="row block-lessons">
-                        @foreach (var lessons in ViewBag.Course.Lessons)
+                        @foreach (var lesson in ViewBag.Course.Lessons)
                         {
                             <div class="col-sm-4 item-holder ">
                                 <div id="lesson-tile-1468" class="item ">
-                                    <a href="@Url.Action("Index", "Lession")">
+                                    <a href="@Url.Action("Index", "Lesson", new { uid= lesson.ID })">
                                         <div class="media-holder">
                                             <div class="overlay"></div>
                                             <img src="https://dcv19h61vib2d.cloudfront.net/thumbs/egghead-create-a-graphql-schema/egghead-create-a-graphql-schema.jpg" alt="js tutorial about Create a GraphQL Schema" class="img-responsive">
@@ -137,15 +120,25 @@
                                                 <i id="completed-icon-1468-false" class="pseudo-checkbox" style="display: none"></i>
                                                 <i id="uncompleted-icon-1468-false" class="pseudo-checkbox" style=""></i>
                                             </span>
-                                            Create a GraphQL Schema
+                                            @lesson.Name
                                         </h4>
                                         <div class="info-line">
-                                            <small class="duration"><i class="icon-time"></i> 4:16</small>
-                                            <small class="folder"><i class="icon-folder-open-alt"></i> js</small>
+                                            <small class="duration"><i class="icon-time"></i> @(lesson.EstimatedTime / 60):@(lesson.EstimatedTime % 60)</small>
+                                            <small class="folder"><i class="icon-folder-open-alt"></i> @ViewBag.Course.Technology.Name</small>
                                         </div>
                                         <!-- info-line -->
                                         <small class="description">
-                                            <p>In this video, we’ll take a look at the GraphQL Language and write out our first GraphQL Schema. We’ll use the <code>graphql</code> package available to us through <code>npm</code> to parse our <code>graphql</code> language file and resolve our initial query.</p>
+                                            @{
+                                                if (lesson.Intro.Length < 140)
+                                                {
+                                                    <p>@lesson.Intro....</p>
+                                                }
+                                                else
+                                                {
+                                                    <p>@lesson.Intro.Substring(0, 140)....</p>
+                                                }
+                                            }
+                                            
                                         </small>
                                     </div>
                                     <!-- video-subscription-holder -->

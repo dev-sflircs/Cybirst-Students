@@ -25,6 +25,14 @@ namespace Cybirst.Controllers
             return View("All");
         }
 
+        // GET: Course/Search
+        public ActionResult Search(string keyword)
+        {
+            List<Technology> lstTechnology = dataContext.Technologies.Where(x => x.Name.Contains(keyword)).ToList<Technology>();
+            ViewBag.Technologies = lstTechnology;
+            return View("All");
+        }
+
         // GET: Course/Detail
         public ActionResult Detail(int uid)
         {

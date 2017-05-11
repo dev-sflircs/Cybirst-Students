@@ -41,12 +41,15 @@
                     </ul>
                     <ul class="nav navbar-nav header__navigation-list fluid aligned-end">
                         <li class="hidden-xs hidden-sm">
-                            <div class="search-field__holder collapsed">
-                                <input type="text" class="search-field__input">
-                                <button class="search-field__submit">
-                                    <i class="icon icon-search"></i>
-                                </button>
-                            </div>
+                            @using (Html.BeginForm("Search", "Course", FormMethod.Get))
+                            {
+                                <div class="search-field__holder collapsed">
+                                    <input type="text" class="search-field__input" name="keyword">
+                                    <button class="search-field__submit" type="submit">
+                                        <i class="icon icon-search"></i>
+                                    </button>                               
+                                </div>
+                            }  
                         </li>
                         <li>
                             <a href="/pricing?from=go-pro-nav" class="pro-link">GO PRO</a>
@@ -177,13 +180,10 @@
                         <a href="/pricing?from=go-pro-nav">Go Pro</a>
                     </li>
                     <li>
-                        <a href="/courses">Browse Courses</a>
+                        <a href="@Url.Action("All", "Course")">Browsers</a>
                     </li>
                     <li>
-                        <a href="/instructors">Instructors</a>
-                    </li>
-                    <li>
-                        <a href="/stories">Read Success Stories</a>
+                        <a href="@Url.Action("All", "Instructor")">Instructors</a>
                     </li>
                 </ul>
                 <div class="egghead__copyright">&copy; egghead.io</div>
@@ -192,19 +192,13 @@
                 </div>
             </div>
             <div class="site-footer__search-place">
-                <h3 class="site-footer__search-place--title">Search Courses</h3>
-                <div class="search-field__holder">
-                    <input type="text" class="search-field__input">
-                    <button class="search-field__submit">
-                        <i class="icon icon-search"></i>
-                    </button>
-                </div>
                 <div class="site-footer__social_holder">
                     <div class="links-set">
                         <a href="https://twitter.com/eggheadio" class="icon-twitter"></a>
                         <a href="https://www.facebook.com/eggheadio" class="icon-facebook-sign"></a>
                         <a href="https://plus.google.com/+EggheadIo" rel="publisher" class="icon-google-plus"></a>
                     </div>
+                    <br />
                     <a href="/" class="site-footer__logo-link">
                         <img class="site-footer__logo" src="~/Images/logo-with-text-e29fbcc9ef0910c60818a30b0390299f.svg" alt="Logo with text" />
                     </a>
