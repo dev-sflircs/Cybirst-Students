@@ -21,7 +21,7 @@ namespace Cybirst.Controllers
         // GET: Profile
         public ActionResult Index(string uid)
         {
-            Student student = dataContext.Students.Where(x => x.ID == ID).FirstOrDefault();
+            Student student = dataContext.Students.Where(x => x.UID == uid).FirstOrDefault();
             List<Enrollment> enrollments = student.Enrollments.ToList();
             List<Course> courses = new List<Course>();
             int minutes_watched = 0;
