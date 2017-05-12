@@ -22,7 +22,12 @@
                 <div class="row">
                     <div class="col-sm-8 col-sm-offset-2 ">
                         <div>
-                            <p>@ViewBag.Course.Intro</p>
+                            @{ 
+                                if(ViewBag.Course.Intro != null){
+                                    <p>@ViewBag.Course.Intro</p>
+                                }
+                            }
+                            
                         </div>
                     </div>
                 </div>
