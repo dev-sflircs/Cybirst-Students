@@ -28,13 +28,13 @@
                                 <hr>
                                 <div class="profile__achievements">
                                     <div class="profile__achievement-item">
-                                        <p>0</p>
+                                        <p>@ViewBag.minutes_watched</p>
                                         <div class="profile__achievement-description">
                                             Minutes Watched
                                         </div>
                                     </div>
                                     <div class="profile__achievement-item">
-                                        <p>0</p>
+                                        <p>@ViewBag.lessons_watched</p>
                                         <div class="profile__achievement-description">
                                             Lessons Watched
                                         </div>
@@ -44,37 +44,40 @@
                                 <hr>
                             </div>
                             <div class="js-react-on-rails-component" style="display:none"></div>
-                            <div>
-                                @foreach (var enrollment in ViewBag.Student.Enrollments)
-                                {
-                                    <div data-reactroot="" class="profile__course-card">
-                                        <div class="profile__course-card-info">
-                                            <img src="https://d2eip9sf3oo6c2.cloudfront.net/tech/defaults/course_image_thumb_node.png" class="profile__course-card-img">
-                                            <div>
-                                                <h3 class="profile__course-card-title">@enrollment.Course.Name</h3>
-                                                <p class="profile__course-card-time-left">25:44 left to go (11 more lessons)</p>
-                                            </div>
-                                            <a href="https://egghead.io/courses/introduction-to-node-servers-with-hapi-js" class="profile__play-button">
-                                                <i class="fa fa-play fa-lg"></i>
-                                            </a>
+                            @foreach (var enrollment in Model.Enrollments) {
+                                <div>
+                                <div data-reactroot="" class="profile__course-card">
+                                    <div class="profile__course-card-info">
+                                    <img src="@enrollment.Course.MdImage" class="profile__course-card-img">
+                                    <div>
+                                        <h3 class="profile__course-card-title">@enrollment.Course.Name</h3>
+                                        <p class="profile__course-card-time-left">@(enrollment.Course.EstimatedTime /60)m:@(enrollment.Course.EstimatedTime % 60)s left to go (@(enrollment.Course.Lessons.Count - enrollment.OrderState) more lessons)</p></div>
+                                        <a href="https://egghead.io/courses/introduction-to-node-servers-with-hapi-js" class="profile__play-button">
+                                            <i class="fa fa-play fa-lg"></i>
+                                        </a>
+                                    </div>
+                                    <div>
+                                    <div class="profile__course-card-next-up-container flexbox-between flexbox-center">
+                                        <div class="profile__course-card-next-up-text">Up Next</div>
+                                        <div class="profile__course-card-next-lesson">
+                                        <a href="https://egghead.io/lessons/node-js-hapi-js-logging-with-good-and-good-console">@(enrollment.Course.Lessons[enrollment.OrderState].Name)</a>
                                         </div>
-                                        <div>
-                                            <div class="profile__course-card-next-up-container flexbox-between flexbox-center">
-                                                <div class="profile__course-card-next-up-text">Up Next</div>
-                                                <div class="profile__course-card-next-lesson">
-                                                    <a href="https://egghead.io/lessons/node-js-hapi-js-logging-with-good-and-good-console">hapi.js - Logging with good and good-console</a>
-                                                </div>
-                                                <div class="profile__course-card-next-lesson-time">02:45</div>
-                                            </div>
+                                        @{ 
+                                            var upnext_lesson_minute = @enrollment.Course.Lessons[enrollment.OrderState].EstimatedTime / 60;
+                                            var upnext_lesson_second = @enrollment.Course.Lessons[enrollment.OrderState].EstimatedTime % 60;
+                                        }
+                                        <div class="profile__course-card-next-lesson-time">@(upnext_lesson_minute)m:@(upnext_lesson_second)s</div>
+                                        @*<div class="profile__course-card-next-lesson-time">12:30</div>*@
                                         </div>
                                     </div>
-                                }
-                            </div>
-                            <div class="profile__achievements-container">
+                                </div>
+                                </div>
+                            }
+                            @*<div class="profile__achievements-container">
                                 <strong>RECENTLY WATCHED</strong>
                                 <hr>
-                            </div>
-                            <div class="profile__lesson-card-container">
+                            </div>*@
+                            @*<div class="profile__lesson-card-container">
                                 <a class="profile__lesson-card" href="/lessons/node-js-hapi-js-up-and-running">
                                     <div class="profile__lesson-card-title-container flexbox-center">
                                         <img src="https://d2eip9sf3oo6c2.cloudfront.net/tech/defaults/course_image_thumb_node.png" alt="Course image thumb node">
@@ -85,7 +88,7 @@
                                         <i class="fa fa-check-circle fa-lg"></i>
                                     </div>
                                 </a>
-                            </div>
+                            </div>*@
                         </section>
                     </div>
                 </div>

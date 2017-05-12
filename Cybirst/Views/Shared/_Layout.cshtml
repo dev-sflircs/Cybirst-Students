@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>Cybirst</title>
     <!-- Depends on lodash from vendor-client-bundle -->
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/egg")
@@ -52,7 +52,7 @@
                             }  
                         </li>
                         <li>
-                            <a href="/pricing?from=go-pro-nav" class="pro-link">GO PRO</a>
+                            <a href="#" class="pro-link">GO PRO</a>
                         </li>
                         @{
                             Cybirst.DAL.Models.Student currentUser = (Cybirst.DAL.Models.Student)System.Web.HttpContext.Current.Session["currentUser"];
@@ -71,19 +71,19 @@
                                             @*<a href="/profile/@ViewBag.Student.UID">User</a>*@
                                         </li>
                                         <li>
-                                            <a href="/membership">Membership</a>
+                                            <a href="@Url.Action("Index", "Profile", new { uid=ViewBag.Student.UID})">Membership</a>
                                         </li>
                                         <li>
-                                            <a href="/watch_later">Watch Later Playlist</a>
+                                            <a href="@Url.Action("Index", "Profile", new { uid=ViewBag.Student.UID})">Watch Later Playlist</a>
                                         </li>
-                                        <li><a href="/playlists">All Playlists</a></li>
+                                        <li><a href="@Url.Action("Index", "Profile", new { uid=ViewBag.Student.UID})">All Playlists</a></li>
                                         <li>
-                                            <a class="btn-nav btn-nav-secondary" rel="nofollow" href="/users/sign_out">Sign Out</a>
+                                            <a class="btn-nav btn-nav-secondary" rel="nofollow" href="@Url.Action("Index", "Profile", new { uid=ViewBag.Student.UID})">Sign Out</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="hidden-xs">
-                                    <a href="/profile/@ViewBag.Student.UID" class="header__userpic-link">
+                                    <a href="@Url.Action("Index", "Profile", new { uid=ViewBag.Student.UID})" class="header__userpic-link">
                                         <img class="header__userpic" alt="dev-sflircs" src="@ViewBag.Student.SmAvatar" width="128" height="128">
                                     </a>
                                 </li>
@@ -140,7 +140,7 @@
                 }
             });
 
-            // Collapsable Search Field
+            // Collapsable Search FieldIn
             $('.search-field__holder.collapsed').on('click', function (e) {
                 $(this).removeClass('collapsed').addClass('expanded').find('.search-field__input').focus();
             });
@@ -177,7 +177,7 @@
             <div class="site-footer__links-place">
                 <ul class="site-footer__links-list">
                     <li>
-                        <a href="/pricing?from=go-pro-nav">Go Pro</a>
+                        <a href="#">Go Pro</a>
                     </li>
                     <li>
                         <a href="@Url.Action("All", "Course")">Browsers</a>
@@ -188,7 +188,7 @@
                 </ul>
                 <div class="egghead__copyright">&copy; egghead.io</div>
                 <div class="egghead__terms">
-                    <a href="/privacy">Terms &amp; Conditions</a>
+                    <a href="#">Terms &amp; Conditions</a>
                 </div>
             </div>
             <div class="site-footer__search-place">

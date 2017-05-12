@@ -24,7 +24,7 @@
                     @foreach (var tech in ViewBag.Technologies)
                     {
                         <li class="item-wrapper">
-                            <a class="anchor-to-technology" data-technology="react" href="@Url.Action("Detail", "Technology")">
+                            <a class="anchor-to-technology" data-technology="react" href="@Url.Action("Detail", "Technology",new  { uid = @tech.ID})">
                                 <div class="item">
                                     <div class="tech-logo-holder">
                                         <img class="tech-logo" src="@tech.MdImage" alt="@tech.Name">

@@ -39,7 +39,7 @@
                     </div>*@
                     <div class="form-group flexbox-between">
                         <input type="submit" name="commit" value="Sign In" class="btn btn custom-btn custom-btn-secondary custom-btn-blue" >
-                        <a class="btn custom-btn custom-btn-secondary custom-btn-grey" href="/users/auth/github">
+                        <a class="btn custom-btn custom-btn-secondary custom-btn-grey" href="@Url.Action("SignIn", "Auth")">
                             <i class="fa fa-github"></i>
                             Sign in with Github
                         </a>
@@ -51,7 +51,7 @@
                     </div>
                     <div class="form-group text-center">
                         Forgot your
-                        password? <a class="underlined action" href="/users/password/new">Recover it</a>
+                        password? <a class="underlined action" href="#">Recover it</a>
                     </div>
                 </form>
                 }
