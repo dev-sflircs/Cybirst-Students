@@ -26,12 +26,11 @@ namespace Cybirst
             bundles.Add(new ScriptBundle("~/bundles/egghead-bundle").Include(
                       "~/Content/assets/application-d204f4216a9aa3b551b9e89541e73b80.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      //"~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/experts").Include(
+                      "~/Content/experts.css"));
 
-            bundles.Add(new StyleBundle("~/Content/egg").Include(
-                      "~/Content/egg-vendor.css"));
+            bundles.Add(new StyleBundle("~/Content/students").Include(
+                      "~/Content/students.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/egg").Include(
                       "~/Scripts/egg-vendor.js"));

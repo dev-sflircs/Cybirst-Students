@@ -149,6 +149,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Experts\ExpertsAreaRegistration.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\ErrorPageController.cs" />
@@ -178,12 +179,12 @@
     <Content Include="Content\assets\application-d204f4216a9aa3b551b9e89541e73b80.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\egg-vendor.css" />
+    <Content Include="Content\students.css" />
     <Content Include="favicon.ico" />
     <Content Include="folder-structure.txt" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\experts.css" />
     <Content Include="Images\15355719_386396191696787_1357761904338457074_n.jpg" />
     <Content Include="Images\956631.jpeg" />
     <Content Include="Images\9VsY9i09.jpeg" />
@@ -245,6 +246,7 @@
       <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Areas\Experts\Views\web.config" />
     <None Include="DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>
@@ -297,6 +299,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Experts\Controllers\" />
+    <Folder Include="Areas\Experts\Models\" />
+    <Folder Include="Areas\Experts\Views\Shared\" />
     <Folder Include="Images\people\" />
     <Folder Include="Scripts\Models\" />
     <Folder Include="Videos\" />

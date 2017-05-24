@@ -33970,3 +33970,10 @@ only screen and (min-resolution: 2dppx) {
     top: 0;
     width: 60px;
 }
+
+.cs-items-separator {
+    display: block;
+    width: 100%;
+    margin-bottom: 40px;
+    overflow: hidden;
+}
