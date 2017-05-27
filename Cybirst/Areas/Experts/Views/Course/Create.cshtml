@@ -1,0 +1,145 @@
+﻿@model Cybirst.Areas.Experts.Controllers.CourseModel
+
+@{
+    Layout = "~/Areas/Experts/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Index", "Home")"><i class="fa fa-arrow-left"></i> Create a new course</a>
+    </h1>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TechnologyID, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TechnologyID, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TechnologyID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.InstructorID, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.InstructorID, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.InstructorID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Intro, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Intro, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Intro, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IsPro, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.IsPro)
+                                @Html.ValidationMessageFor(model => model.IsPro, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">
+                            Small image
+                        </label>
+                        <div class="col-md-10">
+                            <div class="col-md-12" style="text-align: center; background: #f9f9f9; border: dashed 3px #bdbdbd;">
+                                <img src="http://kemri-wellcome.org/wp-content/themes/kemri/img/img_placeholder.png" id="imgSmImage" height="100" />
+                                <input type="file" id="btnSmImage" name="SmImage" />
+                                <script>
+                                    $("#btnSmImage").change(function () {
+                                        var reader = new FileReader();
+
+                                        reader.onload = function (e) {
+                                            // get loaded data and render thumbnail.
+                                            $("#imgSmImage").attr('src', e.target.result);
+                                        };
+
+                                        // read the image file as a data URL.
+                                        reader.readAsDataURL(this.files[0]);
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">
+                            Medium image
+                        </label>
+                        <div class="col-md-10">
+                            <div class="col-md-12" style="text-align: center; background: #f9f9f9; border: dashed 3px #bdbdbd;">
+                                <img src="http://kemri-wellcome.org/wp-content/themes/kemri/img/img_placeholder.png" id="imgMdImage" height="100" />
+                                <input type="file" id="btnMdImage" name="MdImage" />
+                                <script>
+                                    $("#btnMdImage").change(function () {
+                                        var reader = new FileReader();
+
+                                        reader.onload = function (e) {
+                                            // get loaded data and render thumbnail.
+                                            $("#imgMdImage").attr('src', e.target.result);
+                                        };
+
+                                        // read the image file as a data URL.
+                                        reader.readAsDataURL(this.files[0]);
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">
+                            Large image
+                        </label>
+                        <div class="col-md-10">
+                            <div class="col-md-12" style="text-align: center; background: #f9f9f9; border: dashed 3px #bdbdbd;">
+                                <img src="http://kemri-wellcome.org/wp-content/themes/kemri/img/img_placeholder.png" id="imgLgImage" height="150" />
+                                <input type="file" id="btnLgImage" name="LgImage" />
+                                <script>
+                                    $("#btnLgImage").change(function () {
+                                        var reader = new FileReader();
+
+                                        reader.onload = function (e) {
+                                            // get loaded data and render thumbnail.
+                                            $("#imgLgImage").attr('src', e.target.result);
+                                        };
+
+                                        // read the image file as a data URL.
+                                        reader.readAsDataURL(this.files[0]);
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-primary btn-block" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

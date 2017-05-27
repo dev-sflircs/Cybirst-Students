@@ -149,6 +149,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Experts\Controllers\AuthController.cs" />
+    <Compile Include="Areas\Experts\Controllers\CourseController.cs" />
+    <Compile Include="Areas\Experts\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Experts\Controllers\UserController.cs" />
     <Compile Include="Areas\Experts\ExpertsAreaRegistration.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
@@ -247,6 +251,17 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Areas\Experts\Views\web.config" />
+    <Content Include="Areas\Experts\Views\Auth\SignIn.cshtml" />
+    <Content Include="Areas\Experts\Views\Auth\SignUp.cshtml" />
+    <Content Include="Areas\Experts\Views\Course\Edit.cshtml" />
+    <Content Include="Areas\Experts\Views\Course\Index.cshtml" />
+    <Content Include="Areas\Experts\Views\Home\Faq.cshtml" />
+    <Content Include="Areas\Experts\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Experts\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\Experts\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Experts\Views\User\Profile.cshtml" />
+    <Content Include="Areas\Experts\Views\User\UpdateProfile.cshtml" />
+    <Content Include="Areas\Experts\Views\Course\Create.cshtml" />
     <None Include="DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>
@@ -299,9 +314,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Experts\Controllers\" />
     <Folder Include="Areas\Experts\Models\" />
-    <Folder Include="Areas\Experts\Views\Shared\" />
+    <Folder Include="Assets\" />
     <Folder Include="Images\people\" />
     <Folder Include="Scripts\Models\" />
     <Folder Include="Videos\" />

@@ -17,7 +17,8 @@ namespace Cybirst.Areas.Experts
             context.MapRoute(
                 "Experts_default",
                 "Experts/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Index", controller = "Home", id = UrlParameter.Optional },
+                namespaces: new[] { "Cybirst.Areas.Experts.Controllers" }
             );
         }
     }

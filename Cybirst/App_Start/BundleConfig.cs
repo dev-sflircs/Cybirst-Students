@@ -27,6 +27,7 @@ namespace Cybirst
                       "~/Content/assets/application-d204f4216a9aa3b551b9e89541e73b80.js"));
 
             bundles.Add(new StyleBundle("~/Content/experts").Include(
+                      "~/Content/bootstrap.css",
                       "~/Content/experts.css"));
 
             bundles.Add(new StyleBundle("~/Content/students").Include(
