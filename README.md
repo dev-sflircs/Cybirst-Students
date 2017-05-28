@@ -6,15 +6,18 @@
 
 #### Bước 1: Download hoặc Clone project
 ```sh
-$ git clone git@github.com:khanh96le/QuanLyThuVien.git
+$ git@github.com:dev-sflircs/Cybirst-Students.git
 ```
-#### Bước 2: Mở project bằng Visual studio 2015
+#### Bước 2: Mở project bằng Visual studio
 
 #### Bước 3: Mở file **Web.config** thay đổi Data Source trong phần **connectionString**
 ```sh
   <connectionStrings>
-    <add name="LibraryContext" connectionString="Data Source=<YOUR_SQL_SERVER>;Initial Catalog=QuanLyThuVien;Integrated Security=SSPI;" providerName="System.Data.SqlClient" />
+      <add name="EggHeadCodeFirst_DAL_EggHeadContextConnectionString1"
+          connectionString="Data Source=<YOUR_SQL_SERVER>;Initial Catalog=EggHeadCodeFirst.DAL.EggHeadContext;Integrated Security=True"
+          providerName="System.Data.SqlClient" />
   </connectionStrings>
+
 ```
 
 #### Bước 4: Import cơ sở dữ liệu vào SQL Server
