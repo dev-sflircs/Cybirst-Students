@@ -33,7 +33,7 @@
                     @foreach (var tech in ViewBag.Technologies)
                     {
                         <li class="item-wrapper">
-                            <a class="anchor-to-technology" data-technology="react" href="@Url.Action("Detail", "Technology", new {uid=@tech.ID})">
+                            <a class="anchor-to-technology" data-technology="react" href="@Url.Action("Detail", "Technology", new { uid = @tech.ID })">
                                 <div class="item">
                                     <div class="tech-logo-holder">
                                         <img class="tech-logo" src="@tech.MdImage" alt="@tech.Name">
@@ -45,7 +45,18 @@
                                             </h4>
                                             <span class="badge badge-info">@tech.TotalCourses</span>
                                         </div>
-                                        <div class="text-holder">@tech.Intro.Substring(0, 60)....</div>
+                                        <div class="text-holder">
+                                        @{
+                                            if(tech.Intro != null && tech.Intro.Length > 60)
+                                            {
+                                                <span>@tech.Intro.Substring(0, 60)....</span>
+                                            }
+                                            else
+                                            {
+                                                <span>@tech.Intro</span>
+                                            }
+                                        }
+                                        </div>
                                     </div>
                                 </div>
                             </a>
@@ -114,19 +125,6 @@
                                                             }
 
                                                         }
-                                                    </div>
-                                                    <div class="lessons-in-course-number-holder">
-                                                        <div class="progress-bar-row">
-                                                            <div class="progress-bar-holder">
-                                                                <div class="progress-bar">
-                                                                    <div class="inner" style="width: 0%;"></div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="value-holder">
-                                                                0 of <span class="total">30</span> lessons
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                 </div>
                                                 <a class="link-overlay" href="@Url.Action("Detail", "Course", new { uid = @course.ID })" target="_blank"></a>

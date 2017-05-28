@@ -246,11 +246,6 @@
     <Content Include="Content\assets\fonts\fontawesome-webfont-8633c2a29344599564dcb219595eb9ec.woff" />
     <Content Include="Content\assets\fonts\fontawesome-webfont-cd08aff47d4c65152f0ed2ce386616ad.woff2" />
     <Content Include="Content\assets\fonts\Mark Simonson - Proxima Nova Regular.otf" />
-    <Content Include="DataClasses1.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Areas\Experts\Views\web.config" />
     <Content Include="Areas\Experts\Views\Auth\SignIn.cshtml" />
     <Content Include="Areas\Experts\Views\Auth\SignUp.cshtml" />
@@ -267,6 +262,11 @@
     <Content Include="Areas\Experts\Views\Lesson\Index.cshtml" />
     <Content Include="Areas\Experts\Views\Lesson\Edit.cshtml" />
     <Content Include="Areas\Experts\Views\Lesson\Create.cshtml" />
+    <Content Include="DataClasses1.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>

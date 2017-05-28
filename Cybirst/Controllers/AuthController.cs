@@ -103,6 +103,9 @@ namespace Cybirst.Controllers
                     st.Email = a.Email;
                     st.UID = a.Email;
                     st.Password = a.Password;
+                    st.SmAvatar = "https://secure.gravatar.com/avatar/2c83b92309a8c69be6e289ce9a92cb71?default=identicon&secure=true&size=128";
+                    st.MdAvatar = "https://secure.gravatar.com/avatar/2c83b92309a8c69be6e289ce9a92cb71?default=identicon&secure=true&size=256";
+                    st.LgAvatar = "https://secure.gravatar.com/avatar/2c83b92309a8c69be6e289ce9a92cb71?default=identicon&secure=true&size=512";
                     st.ExpiredProTime = DateTime.Now;
                     dataContext.Students.InsertOnSubmit(st);
                     dataContext.SubmitChanges();

@@ -197,9 +197,20 @@ namespace Cybirst.DAL.Adapters
 
             tech.LgImage = item.LgImage;
 
-            tech.TotalCourses = item.TotalCourses;
+            tech.TotalCourses = item.Courses.ToList().Count();
 
-            tech.TotalLessons = item.TotalLessons;
+            tech.TotalLessons = 0;
+
+            if(item.Courses != null && item.Courses.ToList().Count() > 0)
+            {
+                foreach(var course in item.Courses)
+                {
+                    if(course.Lessons.Count() > 0)
+                    {
+                        tech.TotalLessons += course.Lessons.Count(); 
+                    }
+                }
+            }
 
             tech.Courses = this.Convert(item.Courses.ToList());
 
@@ -233,7 +244,12 @@ namespace Cybirst.DAL.Adapters
 
             course.IsPro = item.IsPro;
 
-            course.TotalLessons = item.TotalLessons;
+            course.TotalLessons = 0;
+
+            if (item.Lessons.Count() > 0)
+            {
+                course.TotalLessons += item.Lessons.Count();
+            }
 
             course.EstimatedTime = item.EstimatedTime;
 

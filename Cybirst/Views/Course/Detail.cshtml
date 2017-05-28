@@ -1,7 +1,6 @@
 ﻿
 @{
     ViewBag.Title = "Course detail";
-    int[] aTest = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 }
 <section class="hero">
     <div class="container">
@@ -22,11 +21,7 @@
                 <div class="row">
                     <div class="col-sm-8 col-sm-offset-2 ">
                         <div>
-                            @{
-                                if(ViewBag.Course.Intro != null){
-                                    <p>ViewBag.Course.Intro</p>
-                                }
-                            }
+                           <p>@ViewBag.Course.Intro....</p>
                         </div>
                     </div>
                 </div>

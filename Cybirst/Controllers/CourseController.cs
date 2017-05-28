@@ -21,7 +21,7 @@ namespace Cybirst.Controllers
         public ActionResult All()
         {
             List<Technology> lstTechnology = dataContext.Technologies.ToList<Technology>();
-            ViewBag.Technologies = lstTechnology;
+            ViewBag.Technologies = dataAdapter.Convert(lstTechnology);
             return View("All");
         }
 
@@ -29,7 +29,7 @@ namespace Cybirst.Controllers
         public ActionResult Search(string keyword)
         {
             List<Technology> lstTechnology = dataContext.Technologies.Where(x => x.Name.Contains(keyword)).ToList<Technology>();
-            ViewBag.Technologies = lstTechnology;
+            ViewBag.Technologies = dataAdapter.Convert(lstTechnology);
             return View("All");
         }
 

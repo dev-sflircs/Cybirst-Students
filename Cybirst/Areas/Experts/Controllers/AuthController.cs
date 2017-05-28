@@ -114,6 +114,9 @@ namespace Cybirst.Areas.Experts.Controllers
                     st.LastName = a.LastName;
                     st.Email = a.Email;
                     st.UID = a.Email;
+                    st.SmAvatar = "https://secure.gravatar.com/avatar/2c83b92309a8c69be6e289ce9a92cb71?default=identicon&secure=true&size=128";
+                    st.MdAvatar = "https://secure.gravatar.com/avatar/2c83b92309a8c69be6e289ce9a92cb71?default=identicon&secure=true&size=256";
+                    st.LgAvatar = "https://secure.gravatar.com/avatar/2c83b92309a8c69be6e289ce9a92cb71?default=identicon&secure=true&size=512";
                     st.Password = a.Password;
                     dbContext.Instructors.InsertOnSubmit(st);
                     dbContext.SubmitChanges();
