@@ -1,0 +1,82 @@
+﻿
+<div class="col-xs-12">
+    @foreach(var ls in ViewBag.Lessons)
+    {
+        <dl class="dl-horizontal">
+            <dt>
+                CourseID
+            </dt>
+
+            <dd>
+                @ls.CourseID
+            </dd>
+
+            <dt>
+                Name
+            </dt>
+
+            <dd>
+                @ls.Name
+            </dd>
+
+            <dt>
+                Intro
+            </dt>
+
+            <dd>
+                @ls.Intro
+            </dd>
+
+            <dt>
+                EstimatedTime
+            </dt>
+
+            <dd>
+                @ls.EstimatedTime
+            </dd>
+
+            <dt>
+                Video
+            </dt>
+
+            <dd>
+                @ls.Video
+            </dd>
+
+            <dt>
+                Order
+            </dt>
+
+            <dd>
+                @ls.Order
+            </dd>
+
+            <dt>
+                IsPro
+            </dt>
+
+            <dd>
+                @ls.IsPro)
+            </dd>
+        </dl>
+    }
+</div>
+
+@*
+<div class="info-box bg-aqua">
+    <span class="info-box-icon"><i class="ion-ios-chatbubble-outline"></i></span>
+
+    <div class="info-box-content">
+        <span class="info-box-text">Direct Messages</span>
+        <span class="info-box-number">163,921</span>
+
+        <div class="progress">
+            <div class="progress-bar" style="width: 40%"></div>
+        </div>
+        <span class="progress-description">
+            40% Increase in 30 Days
+        </span>
+    </div>
+    <!-- /.info-box-content -->
+</div>
+<!-- /.info-box -->*@

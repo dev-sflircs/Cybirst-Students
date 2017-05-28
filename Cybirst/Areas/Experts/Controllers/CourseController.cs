@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace Cybirst.Areas.Experts.Controllers
 {
@@ -14,8 +15,10 @@ namespace Cybirst.Areas.Experts.Controllers
 
         public int InstructorID { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
+        [Required]
         public string Intro { get; set; }
 
         public string SmImage { get; set; }
@@ -24,6 +27,7 @@ namespace Cybirst.Areas.Experts.Controllers
 
         public string LgImage { get; set; }
 
+        [Required]
         public bool IsPro { get; set; }
     }
 
@@ -42,6 +46,19 @@ namespace Cybirst.Areas.Experts.Controllers
             catch (Exception e)
             {
                 return RedirectToAction("NotFound", "ErrorHandler");   
+            }
+        }
+
+        public ActionResult Update(int id)
+        {
+            try
+            {
+                Course courseDetail = dbContext.Courses.Where(x => x.ID == id).FirstOrDefault();
+                return View(courseDetail);
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("NotFound", "ErrorHandler");
             }
         }
 
@@ -74,6 +91,27 @@ namespace Cybirst.Areas.Experts.Controllers
         // GET: Course/Create
         public ActionResult Create()
         {
+            List<Technology> lst = dbContext.Technologies.ToList();
+
+            List<SelectListItem> techs = new List<SelectListItem>();
+
+            int i = 0;
+
+            foreach (var tech in lst)
+            {
+                if (i == 0)
+                {
+                    techs.Add(new SelectListItem { Text = tech.Name, Value = tech.ID.ToString(), Selected = true });
+                }
+                else
+                {
+                    techs.Add(new SelectListItem { Text = tech.Name, Value = tech.ID.ToString() });
+                }
+
+                i++;
+            }
+
+            ViewBag.Technologies = techs;
             return View();
         }
 

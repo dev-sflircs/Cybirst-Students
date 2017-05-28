@@ -152,6 +152,7 @@
     <Compile Include="Areas\Experts\Controllers\AuthController.cs" />
     <Compile Include="Areas\Experts\Controllers\CourseController.cs" />
     <Compile Include="Areas\Experts\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Experts\Controllers\LessonController.cs" />
     <Compile Include="Areas\Experts\Controllers\UserController.cs" />
     <Compile Include="Areas\Experts\ExpertsAreaRegistration.cs" />
     <Compile Include="Controllers\AuthController.cs" />
@@ -262,6 +263,8 @@
     <Content Include="Areas\Experts\Views\User\Profile.cshtml" />
     <Content Include="Areas\Experts\Views\User\UpdateProfile.cshtml" />
     <Content Include="Areas\Experts\Views\Course\Create.cshtml" />
+    <Content Include="Areas\Experts\Views\Course\Update.cshtml" />
+    <Content Include="Areas\Experts\Views\Lesson\Index.cshtml" />
     <None Include="DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>
