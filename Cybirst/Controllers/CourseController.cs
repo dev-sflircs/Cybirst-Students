@@ -40,7 +40,7 @@ namespace Cybirst.Controllers
             {
                 Course course = dataContext.Courses.Where(x => x.ID == uid).FirstOrDefault();
                 ViewBag.Course = dataAdapter.Chain(course);
-                return View("Detail");
+                return View("Detail", course);
             } catch (Exception e)
             {
                 return HttpNotFound("Cannot find your course!");

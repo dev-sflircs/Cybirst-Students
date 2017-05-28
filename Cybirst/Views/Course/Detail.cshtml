@@ -1,11 +1,12 @@
-﻿
+﻿@model Cybirst.Course
+
 @{
     ViewBag.Title = "Course detail";
 }
 <section class="hero">
     <div class="container">
         <div class="">
-            <img src="@ViewBag.Course.LgImage">
+            <img src="@Model.LgImage">
         </div>
     </div>
     <!-- container -->
@@ -15,13 +16,18 @@
         <div class="row row-centered">
             <div class="col-md-12 text-left">
                 <div class="title-subtitle-block">
-                    <h1 class="title">@ViewBag.Course.Name</h1>
-                    <p class="subtitle"><i class="icon-time text-muted"></i> <i>@(ViewBag.Course.EstimatedTime / 60) minutes</i> </p>
+                    <h1 class="title">@Model.Name</h1>
+                    <p class="subtitle"><i class="icon-time text-muted"></i> <i>@(Model.EstimatedTime / 60) minutes</i> </p>
                 </div><!-- title-subtitle-block -->
                 <div class="row">
                     <div class="col-sm-8 col-sm-offset-2 ">
                         <div>
-                           <p>@ViewBag.Course.Intro....</p>
+                            @{
+                                if (!String.IsNullOrEmpty(Model.Intro))
+                                {
+                                    <span>@( Model.Intro )</span>
+                                }
+                            } 
                         </div>
                     </div>
                 </div>

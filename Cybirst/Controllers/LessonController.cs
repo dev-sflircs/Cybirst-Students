@@ -67,7 +67,7 @@ namespace Cybirst.Controllers
 
                 if (currentLesson.Order > 1)
                 {
-                    List<Lesson> lstPreviousLessions = dataContext.Lessons.Take(currentLesson.Order - 1).ToList<Lesson>();
+                    List<Lesson> lstPreviousLessions = dataContext.Lessons.Where(x=>x.CourseID == currentLesson.CourseID).Take(currentLesson.Order - 1).ToList<Lesson>();
 
                     ViewBag.PreviousLessons = dataAdapter.Convert(lstPreviousLessions);
                 }
@@ -78,7 +78,7 @@ namespace Cybirst.Controllers
                     ViewBag.PreviousLessons = dataAdapter.Convert(lstPreviousLessions);
                 }                 
 
-                List<Lesson> lstNextLessions = dataContext.Lessons.Skip(currentLesson.Order).ToList<Lesson>();
+                List<Lesson> lstNextLessions = dataContext.Lessons.Where(x => x.CourseID == currentLesson.CourseID).Skip(currentLesson.Order).ToList<Lesson>();
 
                 ViewBag.NextLessons = dataAdapter.Convert(lstNextLessions);
 
