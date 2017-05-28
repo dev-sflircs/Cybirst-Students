@@ -265,6 +265,7 @@
     <Content Include="Areas\Experts\Views\Course\Create.cshtml" />
     <Content Include="Areas\Experts\Views\Course\Update.cshtml" />
     <Content Include="Areas\Experts\Views\Lesson\Index.cshtml" />
+    <Content Include="Areas\Experts\Views\Lesson\Edit.cshtml" />
     <None Include="DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>

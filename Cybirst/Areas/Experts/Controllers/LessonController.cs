@@ -1,34 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
 namespace Cybirst.Areas.Experts.Controllers
 {
+    public class LessonModel
+    {
+        public int  ID { get; set; }
+        
+        public int  CourseID { get; set; }
+
+        public string Name { get; set; }
+    
+        public string Intro { get; set; }
+
+        public int EstimatedTime { get; set; }
+
+        public string Video { get; set; }
+
+        public int Order { get; set; }
+
+        public bool IsPro { get; set; }
+    }
+
     public class LessonController : Controller
     {
         private DataClasses1DataContext dbContext = new DataClasses1DataContext();
 
         // GET: Experts/Lesson
-        [ChildActionOnly]
-        public ActionResult Index(int courseid)
+        public ActionResult Index(int id)
         {
-            Course cs = dbContext.Courses.Where(x => x.ID == courseid).FirstOrDefault();
-            List<Lesson> ls = cs.Lessons.ToList();
-            ViewBag.Lessons = ls;
-            return View();
-        }
-
-        // GET: Experts/Lesson/Details/5
-        [ChildActionOnly]
-        public ActionResult Details(int id)
-        {
-            return View();
+            try
+            {
+                Lesson lessonDetail = dbContext.Lessons.Where(x => x.ID == id).FirstOrDefault();
+                return View(lessonDetail);
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("NotFound", "ErrorHandler");
+            }
         }
 
         // GET: Experts/Lesson/Create
-        [ChildActionOnly]
         public ActionResult Create()
         {
             return View();
@@ -51,30 +67,57 @@ namespace Cybirst.Areas.Experts.Controllers
         }
 
         // GET: Experts/Lesson/Edit/5
-        [ChildActionOnly]
         public ActionResult Edit(int id)
         {
+            Lesson lessonDetail = dbContext.Lessons.Where(x => x.ID == id).FirstOrDefault();
+            ViewBag.lessonDetail = lessonDetail;
             return View();
         }
 
         // POST: Experts/Lesson/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, LessonModel lm, HttpPostedFileBase Video)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                if (Video != null)
+                {
+                    Video.SaveAs(HttpContext.Server.MapPath("~/Assets/Videos/") + Video.FileName);
+                    lm.Video = "~/Assets/Videos/" + Video.FileName;
+                }
+                
+                var lessonToUpdate = dbContext.Lessons.SingleOrDefault(x => x.ID == id);
+                if (lessonToUpdate != null)
+                {
+                    // found it
+                    try
+                    {
+                        lessonToUpdate.Name = lm.Name;
 
-                return RedirectToAction("Index");
+                        lessonToUpdate.Intro = lm.Intro;
+
+                        lessonToUpdate.Video = !String.IsNullOrEmpty(lm.Video) ? lm.Video : lessonToUpdate.Video;
+
+                        lessonToUpdate.IsPro = lm.IsPro;
+
+                        dbContext.SubmitChanges();
+                        return RedirectToAction("Index", new { id = id });
+                    }
+                    catch (Exception e)
+                    {
+                        return View();
+                    }
+                }
+                else
+                {
+                    return View();
+                }
+
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
         // GET: Experts/Lesson/Delete/5
-        [ChildActionOnly]
         public ActionResult Delete(int id)
         {
             return View();

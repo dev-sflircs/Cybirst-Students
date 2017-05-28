@@ -123,18 +123,18 @@ namespace Cybirst.Areas.Experts.Controllers
             {
                 if (SmImage != null)
                 {
-                    SmImage.SaveAs(HttpContext.Server.MapPath("~/Assets/") + SmImage.FileName);
-                    cm.SmImage = "~/Assets/" + SmImage.FileName;
+                    SmImage.SaveAs(HttpContext.Server.MapPath("~/Assets/Images/") + SmImage.FileName);
+                    cm.SmImage = "~/Assets/Images/" + SmImage.FileName;
                 }
                 if (MdImage != null)
                 {
-                    MdImage.SaveAs(HttpContext.Server.MapPath("~/Assets/") + MdImage.FileName);
-                    cm.MdImage = "~/Assets/" + MdImage.FileName;
+                    MdImage.SaveAs(HttpContext.Server.MapPath("~/Assets/Images/") + MdImage.FileName);
+                    cm.MdImage = "~/Assets/Images/" + MdImage.FileName;
                 }
                 if (LgImage != null)
                 {
-                    LgImage.SaveAs(HttpContext.Server.MapPath("~/Assets/") + LgImage.FileName);
-                    cm.LgImage = "~/Assets/" + LgImage.FileName;
+                    LgImage.SaveAs(HttpContext.Server.MapPath("~/Assets/Images/") + LgImage.FileName);
+                    cm.LgImage = "~/Assets/Images/" + LgImage.FileName;
                 }
 
                 try
@@ -181,18 +181,18 @@ namespace Cybirst.Areas.Experts.Controllers
             {
                 if (SmImage != null)
                 {
-                    SmImage.SaveAs(HttpContext.Server.MapPath("~/Assets/") + SmImage.FileName);
-                    cm.SmImage = "~/Assets/" + SmImage.FileName;
+                    SmImage.SaveAs(HttpContext.Server.MapPath("~/Assets/Images/") + SmImage.FileName);
+                    cm.SmImage = "~/Assets/Images/" + SmImage.FileName;
                 }
                 if (MdImage != null)
                 {
-                    MdImage.SaveAs(HttpContext.Server.MapPath("~/Assets/") + MdImage.FileName);
-                    cm.MdImage = "~/Assets/" + MdImage.FileName;
+                    MdImage.SaveAs(HttpContext.Server.MapPath("~/Assets/Images/") + MdImage.FileName);
+                    cm.MdImage = "~/Assets/Images/" + MdImage.FileName;
                 }
                 if(LgImage != null)
                 {
-                    LgImage.SaveAs(HttpContext.Server.MapPath("~/Assets/") + LgImage.FileName);
-                    cm.LgImage = "~/Assets/" + LgImage.FileName;
+                    LgImage.SaveAs(HttpContext.Server.MapPath("~/Assets/Images/") + LgImage.FileName);
+                    cm.LgImage = "~/Assets/Images/" + LgImage.FileName;
                 }
 
                 var courseToUpdate = dbContext.Courses.SingleOrDefault(x => x.ID == id);

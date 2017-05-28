@@ -5,16 +5,11 @@
     Layout = "~/Areas/Experts/Views/Shared/_Layout.cshtml";
 }
 
-
 <section class="content-header">
     <h1>
-        Course's detail
+        <a href="@Url.Action("Index", "Home")"><i class="fa fa-arrow-left"></i> Course's detail</a>
     </h1>
-    <ol class="breadcrumb">
-        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-dashboard"></i> Home</a></li>
-    </ol>
 </section>
-
 <!-- Main content -->
 <section class="content">
     <div class="row">
