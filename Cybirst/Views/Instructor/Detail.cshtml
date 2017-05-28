@@ -28,7 +28,7 @@
             </ul>
         </div>
         <br>
-        <a id="hero-signup" href="/pricing?from=instructor-kentcdodds" class="custom-btn custom-btn-red custom-btn-primary get-pro">
+        <a id="hero-signup" href="#" class="custom-btn custom-btn-red custom-btn-primary get-pro">
             Unlock all of @ViewBag.Instructor.FirstName.'s PRO Lessons
             <br> <small><i>click for instant access!</i></small>
         </a>
@@ -84,28 +84,19 @@
 
             <div class="tab-content view-tabs-holder">
                 <div class="tab-pane tab-view-list" id="lesson-list">
-
-
                     <div class="table-responsive">
                         <table class="table table-condensed">
                             <tbody>
                                 @foreach (var course in ViewBag.Instructor.Courses)
                                 {
                                     <tr id="lesson-row-1763" class="lesson-row ">
-                                        <td class="cell cell-pseudo-checkbox">
-                                            <span class="pseudo-checkbox-holder">
-                                                <i id="completed-icon-1763-true" class="pseudo-checkbox" style="display: none"></i>
-                                                <i id="uncompleted-icon-1763-true" class="pseudo-checkbox" style=""></i>
-                                            </span>
-                                        </td>
                                         <td class="cell cell-category-logo">
                                             <a href="@Url.Action("Detail", "Technology")">
                                                 <img class="category-logo" src="@course.SmImage" alt="Js">
                                             </a>
                                         </td>
                                         <td class="cell cell-lesson-title">
-                                            <h4 class="title"><a href="@Url.Action("Index", "Lession")">@course.Name</a> <span class="text-muted"></span></h4>
-
+                                            <h4 class="title"><a href="@Url.Action("Index", "Lesson")">@course.Name</a> <span class="text-muted"></span></h4>
                                         </td>
                                         <td class="cell cell-lesson-category hidden-xs hidden-sm">
                                             <div class="info-line">
@@ -135,7 +126,7 @@
                         {
                             <div class="col-sm-4 item-holder ">
                                 <div id="lesson-tile-1763" class="item ">
-                                    <a href="@Url.Action("Index", "Course")">
+                                    <a href="@Url.Action("Index", "Lesson")">
                                         <div class="media-holder">
                                             <div class="overlay"></div>
                                             <img src="https://dcv19h61vib2d.cloudfront.net/thumbs/egghead-js-public-class-fields-with-react-components/egghead-js-public-class-fields-with-react-components.jpg" alt="js tutorial about Public Class Fields with React Components" class="img-responsive">
@@ -155,22 +146,34 @@
                                             <small class="folder"><i class="icon-folder-open-alt"></i> @course.Technology.Name</small>
                                         </div>
                                         <!-- info-line -->
-                                        <small class="description">
-                                            <p> @course.Intro.Substring(0, 240)....</p>
-                                        </small>
+                                        @{
+                                            string description = course.Intro;
+                                            if (description.Length > 240)
+                                            {
+                                                <small class="description">
+                                                    <p>@course.Intro.Substring(0, 240)....</p>
+                                                </small>
+                                            }
+                                            else{
+                                                <small class="description">
+                                                    <p>@course.Intro....</p>
+                                                </small>
+                                            }
+                                        }
+                                        
                                     </div>
                                     <!-- video-subscription-holder -->
                                 </div>
                                 <!-- item -->
                                 <div class="cs-items-separator"></div>
                             </div>
-                        }
+                            }
                     </div>
                     <!-- block-lessons -->
                 </div>
                 <!-- tab-view-tiles -->
                 <div class="pagination-holder text-center">
-                    <ul class="pagination pagination"><li class="prev disabled"><span>← Previous</span></li> <li class="active"><span>1</span></li> <li><a rel="next" href="/instructors/kentcdodds?order=desc&amp;page=2">2</a></li> <li><a href="/instructors/kentcdodds?order=desc&amp;page=3">3</a></li> <li class="next"><a rel="next" href="/instructors/kentcdodds?order=desc&amp;page=2">Next →</a></li></ul>
+                    <ul class="pagination pagination"><li class="prev disabled"><span>← Previous</span></li> <li class="active"><span>1</span></li> <li class="next"><a rel="next" href="#">Next →</a></li></ul>
                 </div>
                 <!-- pagination-holder -->
             </div>

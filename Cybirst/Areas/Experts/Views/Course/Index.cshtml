@@ -1,0 +1,77 @@
+﻿@model Course
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Experts/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Index", "Home")"><i class="fa fa-arrow-left"></i> Course's detail</a>
+    </h1>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-widget widget-user">
+                <!-- Add the bg color to the header using any of the bg-* classes -->
+                <div class="widget-user-header bg-aqua-active" style="background: url('https://cdn.sstatic.net/img/so-hero-alt-splash.svg?v=0b8f98f7bb06') center center;">
+                    <h3 class="widget-user-username">@Model.Name
+                        @{
+                            if (Model.IsPro)
+                            {
+                                <small class="label bg-red" style="font-size: 12px; margin-left: 5px">PRO</small>
+                            }
+                        }
+                        <a href="@Url.Action("Edit", "Course", new { id= Model.ID })"><button class="btn btn-flat btn-sm pull-right">Edit</button></a>
+                    </h3>
+                    <h5 class="widget-user-desc">@Model.Technology.Name</h5>
+                </div>
+                <div class="widget-user-image">
+                    <img src="@Url.Content(Model.SmImage)" alt="User Avatar">
+                </div>
+            </div>
+            <div class="box-body text-center">
+                <div class="container" style="font-size: 16px; line-height: 25px; padding: 40px 40px">
+                    @Model.Intro
+                </div>
+            </div>
+            <div class="box-footer">
+                <div class="row">
+                    <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                            <h5 class="description-header">@Model.TotalLessons</h5>
+                            <span class="description-text">LESSONS</span>
+                        </div>
+                        <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-4 border-right">
+                        <div class="description-block">
+                            <h5 class="description-header">@(Model.EstimatedTime/60)</h5>
+                            <span class="description-text">MINUTES VIDEO</span>
+                        </div>
+                        <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-sm-4">
+                        <div class="description-block">
+                            <h5 class="description-header">@(Model.Enrollments.Count())</h5>
+                            <span class="description-text">ENROLLMENTS</span>
+                        </div>
+                        <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="@Url.Action("Update", "Course", new { id= Model.ID })" class="btn btn-md btn-block btn-flat btn-primary">Update your course's lesson</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>

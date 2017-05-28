@@ -1,0 +1,162 @@
+﻿@model Cybirst_Experts.Instructor
+
+@{
+    ViewBag.Title = "Profile";
+}
+
+<h2>Profile <a href="@Url.Action("UpdateProfile", "User")" class="btn btn-sm btn-flat btn-primary pull-right">Update profile</a></h2>
+
+<div>
+    <h4>Instructor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Intro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Intro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShortIntro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShortIntro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GooglePlus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GooglePlus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Twitter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Twitter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Facebook)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Facebook)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GitHub)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GitHub)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Blog)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Blog)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SmAvatar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SmAvatar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MdAvatar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MdAvatar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LgAvatar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LgAvatar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalCourses)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalCourses)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

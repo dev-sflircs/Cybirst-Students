@@ -1,9 +1,6 @@
 ﻿
 @{
     ViewBag.Title = "Courses";
-    int[] aTest = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-    int[] bTest = { 1, 2, 3 };
-    int[] cTest = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 }
 
 
@@ -19,8 +16,11 @@
         <div id="AutoCompleteSearch-react-component-5172dc93-cc04-41b9-8e1f-230feac7f854">
             <div class="SearchBar__search_bar_wrapper__1z4Oi">
                 <div class="SearchBar__search_bar_field__3kicx">
-                    <input type="text" class="SearchBar__search_bar_input__wldfQ" maxlength="100" autocapitalize="none" autocomplete="off" autocorrect="off" value="" placeholder="search 'react redux'">
-                    <input type="submit" class="SearchBar__icon___zsxQ SearchBar__search_bar_submit__2XSOl" value="search">
+                    @using (Html.BeginForm("Search", "Course", FormMethod.Get))
+                    {
+                        <input type="text" class="SearchBar__search_bar_input__wldfQ" maxlength="100" name="keyword" placeholder="search 'react redux'">
+                        <input type="submit" class="SearchBar__icon___zsxQ SearchBar__search_bar_submit__2XSOl" value="search">
+                    }
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
                     @foreach (var tech in ViewBag.Technologies)
                     {
                         <li class="item-wrapper">
-                            <a class="anchor-to-technology" data-technology="react" href="@Url.Action("Detail", "Technology")">
+                            <a class="anchor-to-technology" data-technology="react" href="@Url.Action("Detail", "Technology", new {uid=@tech.ID})">
                                 <div class="item">
                                     <div class="tech-logo-holder">
                                         <img class="tech-logo" src="@tech.MdImage" alt="@tech.Name">
@@ -86,7 +86,7 @@
                                         <img src="@course.Instructor.SmAvatar" class="course-author-avatar" alt="">
                                         <div class="card-course-inner">
                                             <div class="expanded-card-only">
-                                                <h4 class="course-subtitle">WATCH @( @course.Instructor.FirstName + @course.Instructor.LastName )’s COURSE</h4>
+                                                <h4 class="course-subtitle">@( @course.Instructor.FirstName + @course.Instructor.LastName )</h4>
                                                 <h3 class="course-title">
                                                     <span>"@course.Name</span>
                                                 </h3>
@@ -97,14 +97,23 @@
                                                 </div>
                                                 <div class="course-description-holder">
                                                     <div class="condensed-card-only">
-                                                        <h4 class="course-subtitle">WATCH @( @course.Instructor.FirstName + @course.Instructor.LastName )’s COURSE</h4>
+                                                        <h4 class="course-subtitle">@( @course.Instructor.FirstName + @course.Instructor.LastName )</h4>
                                                         <h3 class="course-title">
                                                             <span>@course.Name</span>
                                                         </h3>
                                                     </div>
                                                     <div class="description-text">
-                                                        <p>&gt; @course.Intro.Substring(0, 150)....</p>
+                                                        @{
+                                                            if (@course.Intro.Length < 150)
+                                                            {
+                                                                <p>@course.Intro....</p>
+                                                            }
+                                                            else
+                                                            {
+                                                                <p>@course.Intro.Substring(0, 150)....</p>
+                                                            }
 
+                                                        }
                                                     </div>
                                                     <div class="lessons-in-course-number-holder">
                                                         <div class="progress-bar-row">
@@ -120,7 +129,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <a class="link-overlay" href="@Url.Action("Detail", "Course")"></a>
+                                                <a class="link-overlay" href="@Url.Action("Detail", "Course", new { uid = @course.ID })" target="_blank"></a>
                                             </div>
                                         </div>
                                     </div>

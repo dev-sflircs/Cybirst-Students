@@ -5,7 +5,7 @@
             <h3 class="home-hero__subtitle">Learn the latest frameworks from industry pros</h3>
         </div>
         <div class="home-hero__btn-container">
-            <a href="/courses" class="custom-btn custom-btn-red custom-btn-primary">PICK A COURSE TO WATCH</a>
+            <a href="@Url.Action("All", "Course")" class="custom-btn custom-btn-red custom-btn-primary">PICK A COURSE TO WATCH</a>
         </div>
         <div class="home-hero__learn-more-container">
             <a href="#we-teach-section" class="home-hero__learn-more-link">
@@ -33,7 +33,7 @@
                     @foreach (var tech in ViewBag.Technologies)
                     {
                         <div>
-                            <a href="@Url.Action("Index", "TechnologyDetail")" class="we-teach__carousel-item">
+                            <a href="@Url.Action("Detail", "Technology", new { uid = tech.ID })" class="we-teach__carousel-item">
                                 <img class="we-teach__carousel-item__logo" src="@tech.MdImage" alt="React" />
                                 <span class="we-teach__carousel-item__title">@tech.Name</span>
                             </a>
@@ -110,7 +110,7 @@
 
             </div>
         </div>
-        <a href="@Url.Action("Courses", "Home")" class="we-teach__browse-full-library">Explore the Library of Courses</a>
+        <a href="@Url.Action("All", "Technology")" class="we-teach__browse-full-library">Explore the Library of Technologies</a>
     </div>
 </div>
 

@@ -1,4 +1,5 @@
-﻿
+﻿@model Cybirst.Controllers.SigninModel
+
 @{
     ViewBag.Title = "SignIn";
 }
@@ -11,11 +12,19 @@
 
         <div class="narrow-form-holder sign-form-holder">
             <div class="colored-box grey">
-                <form class="simple_form form-vertical" novalidate="novalidate" id="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post">
-                    <input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="8e44spKykIrccd+eXyWCMh1XFZuXoe7r7f1YS1jkNNbnvloRGJ2QkdI2nSMG3G/UF7UCbQRxSiOf/alF0uRs0g==">
-                    <div class="form-group email optional user_email"><label class="email optional control-label" for="user_email">Email</label><input class="string email optional form-control form-control" maxlength="255" type="email" size="255" value="" name="user[email]" id="user_email"></div>
-                    <div class="form-group password optional user_password"><label class="password optional control-label" for="user_password">Password</label><input class="password optional form-control" maxlength="128" size="128" type="password" name="user[password]" id="user_password"></div>
-                    <div class="form-group">
+                @using (Html.BeginForm("SignIn", "Auth", FormMethod.Post))
+                {
+                <form class="simple_form form-vertical">
+                    @Html.AntiForgeryToken()
+                    <div class="form-group email optional user_email">
+                        <label class="email optional control-label" for="user_email">Email</label>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "string email optional form-control form-control", @placeholder = "Email", @autofocus = "autofocus" })
+                    </div>
+                    <div class="form-group password optional user_password">
+                        <label class="password optional control-label" for="user_password">Password</label>
+                        @Html.PasswordFor(m => m.Password, new { @class = "password optional form-control", @placeholder = "Password", @type = "password" })
+                    </div>
+                    @*<div class="form-group">
                         <div class="checkbox custom-checkbox">
                             <label>
                                 <span class="icon-holder">
@@ -27,24 +36,25 @@
                                 </span>
                             </label>
                         </div>
-                    </div>
+                    </div>*@
                     <div class="form-group flexbox-between">
-                        <input type="submit" name="commit" value="Sign In" class="btn btn custom-btn custom-btn-secondary custom-btn-blue">
-                        <a class="btn custom-btn custom-btn-secondary custom-btn-grey" href="/users/auth/github">
+                        <input type="submit" name="commit" value="Sign In" class="btn btn custom-btn custom-btn-secondary custom-btn-blue" >
+                        <a class="btn custom-btn custom-btn-secondary custom-btn-grey" href="@Url.Action("SignIn", "Auth", new { Area = "Experts" })">
                             <i class="fa fa-github"></i>
-                            Sign in with Github
+                            Sign in as Expert
                         </a>
                     </div>
                     <br>
                     <div class="form-group text-center">
                         Need to create an
-                        account? <a class="underlined action" href="/users/sign_up">Sign up</a>
+                        account? <a class="underlined action" href="@Url.Action("SignUp", "Auth")">Sign up</a>
                     </div>
                     <div class="form-group text-center">
                         Forgot your
-                        password? <a class="underlined action" href="/users/password/new">Recover it</a>
+                        password? <a class="underlined action" href="#">Recover it</a>
                     </div>
                 </form>
+                }
             </div>
         </div>
     </div>

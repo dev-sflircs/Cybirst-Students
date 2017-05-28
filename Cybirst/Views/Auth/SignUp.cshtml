@@ -1,4 +1,5 @@
-﻿
+﻿@model Cybirst.Controllers.SignupModel
+
 @{
     ViewBag.Title = "SignUp";
 }
@@ -11,7 +12,7 @@
         <div class="narrow-form-holder sign-form-holder">
             <div class="colored-box grey">
                 <div>
-                    <a class="btn custom-btn custom-btn-secondary custom-btn-grey" href="/users/auth/github">
+                    <a class="btn custom-btn custom-btn-secondary custom-btn-grey" href="#">
                         <i class="fa fa-github"></i>
                         Sign up with Github
                     </a>      <br>
@@ -20,13 +21,31 @@
                     <br>
                     <br>
                 </div>
-                <form id="register-form" class="simple_form form-vertical" autocomplete="false" novalidate="novalidate" action="/users" accept-charset="UTF-8" method="post">
-                    <input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="JXz+6ocplW8lzV+FX525tRZALWqzvtS0cFrtzHFRNKYzLJxJDQaVdCuKHTgGZFRTHKI6nCBucHwCWhzC+1Fsog==">
-                    <input type="text" name="prevent_autofill" id="prevent_autofill" value="" style="display:none;">
-                    <input type="password" name="password_fake" id="password_fake" value="" style="display:none;">
-                    <div class="form-group string required user_first_name"><label class="string required control-label" for="user_first_name"><abbr title="required">*</abbr> First name</label><input class="string required form-control" autofocus="autofocus" maxlength="255" size="255" type="text" name="user[first_name]" id="user_first_name"></div>
-                    <div class="form-group email required user_email"><label class="email required control-label" for="user_email"><abbr title="required">*</abbr> Email</label><input class="string email required form-control form-control" maxlength="255" type="email" size="255" value="" name="user[email]" id="user_email"></div>
-                    <div class="form-group password required user_password"><label class="password required control-label" for="user_password"><abbr title="required">*</abbr> Password</label><input class="password required form-control" maxlength="128" size="128" type="password" name="user[password]" id="user_password"></div>
+               @using (Html.BeginForm("SignUp","Auth", FormMethod.Post)) { 
+                <form id="register-form" class="simple_form form-vertical">
+                    @Html.AntiForgeryToken()
+                    <div class="form-group string required user_first_name">
+                        <label class="string required control-label" for="user_first_name">
+                            <abbr title="required">*</abbr> First name
+                        </label>
+                        @Html.TextBoxFor(m => m.FirstName , new { @class = "string required form-control",@placeholder = "FirstName" ,@autofocus = "autofocus" })
+                    </div>
+                    <div class="form-group string required user_first_name">
+                        <label class="string required control-label" for="user_first_name">
+                            <abbr title="required">*</abbr> Last name
+                        </label>
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "string required form-control", @placeholder = "LastName" })
+                    </div>
+                    <div class="form-group email required user_email">
+                        <label class="email required control-label" for="user_email">
+                            <abbr title="required">*</abbr> Email</label>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "string email required form-control form-control" , @placeholder = "Email" })
+                    </div>
+                    <div class="form-group password required user_password">
+                    <label class="password required control-label" for="user_password">
+                        <abbr title="required">*</abbr> Password</label>
+                        @Html.PasswordFor(m => m.Password, new { @class = "password required form-control",@placeholder = "Password", @type = "password" })
+                    </div>
                     <div class="form-group flexbox-between xs-flexbox-column">
                         <input type="submit" name="commit" value="Create Account" class="btn btn custom-btn custom-btn-secondary custom-btn-blue">
                         <br class="visible-xs">
@@ -34,13 +53,15 @@
                     </div>
                     <br>
                     <div class="form-group text-center">
-                        Have an account? <a class="underlined action" href="/users/sign_in">Sign in</a>
+                        Have an account? <a class="underlined action" href="@Url.Action("SignIn", "Auth")">Sign in</a>
                     </div>
                     <div class="form-group text-center">
                         Forgot your
-                        password? <a class="underlined action" href="/users/password/new">Recover it</a>
+                        password? <a class="underlined action" href="#">Recover it</a>
                     </div>
+                    <h1>@ViewBag.Error</h1>
                 </form>
+               }
             </div>
         </div>
     </div>

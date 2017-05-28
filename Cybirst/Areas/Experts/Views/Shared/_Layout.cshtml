@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Cybirst-Experts</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    @Styles.Render("~/Content/experts")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</head>
+<body class="skin-blue layout-top-nav">
+    <div class="wrapper" style="height: auto;">
+        <header class="main-header">
+            <nav class="navbar navbar-static-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a href="@Url.Action("Index", "Home")"" class="navbar-brand"><b>Cy</b>Experts</a>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="@Url.Action("Contact", "Home")">FAQ</a></li>
+                        </ul>
+                        @using (Html.BeginForm("Search", "Home", FormMethod.Get, new { @class = "navbar-form navbar-left" }))
+                        {
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="keyword" placeholder="Search">
+                            </div>
+                        }
+                    </div>
+                    <!-- /.navbar-collapse -->
+                    <!-- Navbar Right Menu -->
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            @{
+                                Instructor currentUser = (Instructor)System.Web.HttpContext.Current.Session["currentUser"];
+                                ViewBag.Instructor = currentUser;
+                                if (ViewBag.Instructor != null)
+                                {
+                                    <li class="dropdown user user-menu">
+                                        <!-- Menu Toggle Button -->
+                                        <a href="@Url.Action("Profile", "User")" style="min-width: 150px;">
+                                            <!-- The user image in the navbar-->
+                                            <img src="@ViewBag.Instructor.SmAvatar" onerror="this.src = 'https://d1xwtr0qwr70yv.cloudfront.net/assets/elements/logo-mobile-5597add42dbadaf5a6db51e8546cb282.svg';" class="user-image" alt="User Image">
+                                            <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                                            <span class="hidden-xs">@ViewBag.Instructor.FirstName @ViewBag.Instructor.LastName</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("SignOut", "Auth")" data-toggle="control-sidebar"><i class="fa fa-sign-out"></i></a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                    <!-- /.navbar-custom-menu -->
+                </div>
+                <!-- /.container-fluid -->
+            </nav>
+        </header>
+        <!-- Full Width Column -->
+        <div class="content-wrapper" style="min-height: 537px;">
+            <div class="container">
+                @RenderBody()
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <div class="container">
+                <div class="pull-right hidden-xs">
+                    <b>Version</b> 1.0.0
+                </div>
+                <strong>Copyright © 2014-2016 <a href="http://www.sflircs.com">Sflircs Studio</a>.</strong> All rights
+                reserved.
+            </div>
+            <!-- /.container -->
+        </footer>
+    </div>
+</body>
+</html>

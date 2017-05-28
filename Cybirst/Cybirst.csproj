@@ -149,12 +149,18 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Experts\Controllers\AuthController.cs" />
+    <Compile Include="Areas\Experts\Controllers\CourseController.cs" />
+    <Compile Include="Areas\Experts\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Experts\Controllers\LessonController.cs" />
+    <Compile Include="Areas\Experts\Controllers\UserController.cs" />
+    <Compile Include="Areas\Experts\ExpertsAreaRegistration.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\ErrorPageController.cs" />
     <Compile Include="Controllers\InstructorController.cs" />
     <Compile Include="Controllers\LandingPageController.cs" />
-    <Compile Include="Controllers\LessionController.cs" />
+    <Compile Include="Controllers\LessonController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\TechnologyController.cs" />
     <Compile Include="DAL\DataAdapter.cs" />
@@ -178,12 +184,13 @@
     <Content Include="Content\assets\application-d204f4216a9aa3b551b9e89541e73b80.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\egg-vendor.css" />
+    <Content Include="Content\students.css" />
     <Content Include="favicon.ico" />
     <Content Include="folder-structure.txt" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\experts.css" />
+    <Content Include="Images\15355719_386396191696787_1357761904338457074_n.jpg" />
     <Content Include="Images\956631.jpeg" />
     <Content Include="Images\9VsY9i09.jpeg" />
     <Content Include="Images\andre_500.jpg" />
@@ -244,6 +251,25 @@
       <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Areas\Experts\Views\web.config" />
+    <Content Include="Areas\Experts\Views\Auth\SignIn.cshtml" />
+    <Content Include="Areas\Experts\Views\Auth\SignUp.cshtml" />
+    <Content Include="Areas\Experts\Views\Course\Edit.cshtml" />
+    <Content Include="Areas\Experts\Views\Course\Index.cshtml" />
+    <Content Include="Areas\Experts\Views\Home\Faq.cshtml" />
+    <Content Include="Areas\Experts\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Experts\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\Experts\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Experts\Views\User\Profile.cshtml" />
+    <Content Include="Areas\Experts\Views\User\UpdateProfile.cshtml" />
+    <Content Include="Areas\Experts\Views\Course\Create.cshtml" />
+    <Content Include="Areas\Experts\Views\Course\Update.cshtml" />
+    <Content Include="Areas\Experts\Views\Lesson\Index.cshtml" />
+    <Content Include="Areas\Experts\Views\Lesson\Edit.cshtml" />
+    <Content Include="Areas\Experts\Views\Lesson\Create.cshtml" />
+    <None Include="DataClasses1.dbml.layout">
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
+    </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\egg-vendor.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -268,7 +294,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Lession\Index.cshtml" />
+    <Content Include="Views\Lesson\Index.cshtml" />
     <Content Include="Views\LandingPage\Index.cshtml" />
     <Content Include="Views\Course\All.cshtml" />
     <Content Include="Views\Technology\Detail.cshtml" />
@@ -293,8 +319,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Experts\Models\" />
+    <Folder Include="Assets\" />
     <Folder Include="Images\people\" />
     <Folder Include="Scripts\Models\" />
+    <Folder Include="Videos\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -306,11 +335,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="DataClasses1.dbml.layout">
-      <DependentUpon>DataClasses1.dbml</DependentUpon>
-    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

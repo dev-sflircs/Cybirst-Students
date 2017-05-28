@@ -41,7 +41,7 @@
                             <div class="card-course">
                                 <img class="course-author-avatar" src="@course.Instructor.SmAvatar">
                                 <div class="card-course-inner">
-                                    <h4 class="course-subtitle">WATCH @course.Instructor.FirstName @course.Instructor.LastName's COURSE</h4>
+                                    <h4 class="course-subtitle">@course.Instructor.FirstName @course.Instructor.LastName</h4>
                                     <h3 class="course-title">@course.Name</h3>
                                     <div class="card-content">
                                         <div class="course-image-holder">
@@ -49,7 +49,17 @@
                                         </div>
                                         <div class="course-description-holder">
                                             <div class="description-text">
-                                                <p>@course.Intro.Substring(0, 150)....</p>
+                                                @{
+                                                    if (course.Intro.Length < 150)
+                                                    {
+                                                        <p>@course.Intro....</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        <p>@course.Intro.Substring(0, 150)....</p>
+                                                    }
+
+                                                }                                                
                                             </div>
                                             <div class="lessons-in-course-number-holder">
                                                 <div class="progress-bar-row">
@@ -61,7 +71,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a class="link-overlay" id="tech_page_course_react-fundamentals" href="@Url.Action("Detail", "Course")"></a>
+                                <a class="link-overlay" id="tech_page_course_react-fundamentals" href="@Url.Action("Detail", "Course", new {uid=@course.ID})"></a>
                             </div>
                         </div>
                     }

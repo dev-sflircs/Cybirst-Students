@@ -8,6 +8,110 @@ namespace Cybirst.DAL.Adapters
 {
     public class DataAdapter
     {
+        public DAL.Models.Student Chain(Cybirst.Student item)
+        {
+            DAL.Models.Student student = new Models.Student();
+            student.ID = item.ID;
+
+            student.UID = item.UID;
+
+            student.FirstName = item.FirstName;
+
+            student.LastName = item.LastName;
+
+            student.Intro = item.Intro;
+
+            student.GooglePlus = item.GooglePlus;
+
+            student.Twitter = item.Twitter;
+
+            student.Facebook = item.Facebook;
+
+            student.Blog = item.Blog;
+
+            student.Email = item.Email;
+
+            student.Password = item.Password;
+
+            student.Phone = item.Phone;
+
+            student.Address = item.Address;
+
+            student.SmAvatar = item.SmAvatar;
+
+            student.MdAvatar = item.MdAvatar;
+
+            student.LgAvatar = item.LgAvatar;
+
+            student.ExpiredProTime = item.ExpiredProTime;
+
+            student.Enrollments = this.Convert(item.Enrollments.ToList());
+            
+            return student;
+        }
+
+
+        public DAL.Models.Enrollment Chain(Cybirst.Enrollment item)
+        {
+            DAL.Models.Enrollment enrollment = new Models.Enrollment();
+            enrollment.ID = item.ID;
+
+            enrollment.IsComplete = item.IsComplete;
+
+            enrollment.TimeStart = item.TimeStart;
+
+            enrollment.OrderState = item.OrderState;
+
+            enrollment.LastActive = item.LastActive;
+
+            enrollment.Course = this.Chain(item.Course);
+
+            return enrollment;
+        }
+
+        public DAL.Models.Lesson Chain(Cybirst.Lesson item)
+        {
+            DAL.Models.Lesson lesson = new Models.Lesson();
+
+            lesson.ID = item.ID;
+
+            lesson.Name = item.Name;
+
+            lesson.Intro = item.Intro;
+
+            lesson.Video = item.Video;
+
+            lesson.EstimatedTime = item.EstimatedTime;
+
+            lesson.Order = item.Order;
+
+            lesson.IsPro = item.IsPro;
+
+            lesson.Image = item.Course.Technology.MdImage;
+
+            lesson.Course = new Models.Course();
+
+            lesson.Course.ID = item.Course.ID;
+
+            lesson.Course.Name = item.Course.Name;
+
+            lesson.Course.Technology = new Models.Technology();
+
+            lesson.Course.Technology.ID = item.Course.Technology.ID;
+
+            lesson.Course.Technology.Name = item.Course.Technology.Name;
+
+            lesson.Course.Instructor = new Models.Instructor();
+
+            lesson.Course.Instructor.ID = item.Course.Instructor.ID;
+
+            lesson.Course.Instructor.FirstName = item.Course.Instructor.FirstName;
+
+            lesson.Course.Instructor.LastName = item.Course.Instructor.LastName;
+
+            return lesson;
+        }
+
         /// <summary>
         /// Chain Cybirst.Instructor to DAL.Models.Instructor
         /// </summary>
@@ -147,11 +251,25 @@ namespace Cybirst.DAL.Adapters
 
             course.Instructor.LgAvatar = item.Instructor.LgAvatar;
 
+            course.Instructor.Intro = item.Instructor.Intro;
+
+            course.Instructor.ShortIntro = item.Instructor.ShortIntro;
+
+            course.Instructor.Twitter = item.Instructor.Twitter;
+
+            course.Instructor.Facebook = item.Instructor.Facebook;
+
+            course.Instructor.GitHub = item.Instructor.GitHub;
+
             course.Technology = new Models.Technology();
 
             course.Technology.ID = item.Technology.ID;
 
             course.Technology.Name = item.Technology.Name;
+
+            course.Technology.MdImage = item.Technology.MdImage;
+
+            course.Lessons = this.Convert(item.Lessons.ToList());
 
             return course;
         }
@@ -164,6 +282,17 @@ namespace Cybirst.DAL.Adapters
         public List<DAL.Models.Course> Convert(List<Cybirst.Course> inputs)
         {
             List<DAL.Models.Course> temp = new List<Models.Course>();
+
+            foreach (var item in inputs)
+            {
+                temp.Add(this.Chain(item));
+            }
+            return temp;
+        }
+
+        public List<DAL.Models.Enrollment> Convert(List<Cybirst.Enrollment> inputs)
+        {
+            List<DAL.Models.Enrollment> temp = new List<Models.Enrollment>();
 
             foreach (var item in inputs)
             {
@@ -187,6 +316,18 @@ namespace Cybirst.DAL.Adapters
         public List<DAL.Models.Instructor> Convert(List<Cybirst.Instructor> inputs)
         {
             List<DAL.Models.Instructor> temp = new List<Models.Instructor>();
+
+            foreach (var item in inputs)
+            {
+                temp.Add(this.Chain(item));
+            }
+
+            return temp;
+        }
+
+        public List<DAL.Models.Lesson> Convert(List<Cybirst.Lesson> inputs)
+        {
+            List<DAL.Models.Lesson> temp = new List<Models.Lesson>();
 
             foreach (var item in inputs)
             {
