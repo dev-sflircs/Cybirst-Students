@@ -67,17 +67,9 @@
                                     <ul class="dropdown-menu dropdown-menu-right">
                                         <li>
                                             <a href="@Url.Action("Index", "Profile", new { uid=ViewBag.Student.UID})">User</a>
-                                            @*<a href="/profile/@ViewBag.Student.UID">User</a>*@
                                         </li>
                                         <li>
-                                            <a href="@Url.Action("Index", "Profile", new { uid=ViewBag.Student.UID})">Membership</a>
-                                        </li>
-                                        <li>
-                                            <a href="@Url.Action("Index", "Profile", new { uid=ViewBag.Student.UID})">Watch Later Playlist</a>
-                                        </li>
-                                        <li><a href="@Url.Action("Index", "Profile", new { uid=ViewBag.Student.UID})">All Playlists</a></li>
-                                        <li>
-                                            <a class="btn-nav btn-nav-secondary" rel="nofollow" href="@Url.Action("Index", "Profile", new { uid=ViewBag.Student.UID})">Sign Out</a>
+                                            <a class="btn-nav btn-nav-secondary" rel="nofollow" href="@Url.Action("SignOut", "Auth")">Sign Out</a>
                                         </li>
                                     </ul>
                                 </li>

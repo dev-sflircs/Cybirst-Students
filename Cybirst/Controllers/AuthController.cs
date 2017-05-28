@@ -118,5 +118,12 @@ namespace Cybirst.Controllers
             }
             return View();
         }
+
+        public ActionResult SignOut()
+        {
+            System.Web.HttpContext.Current.Session["currentUser"] = null;
+            FormsAuthentication.SignOut();
+            return RedirectToAction("SignIn");
+        }
     }
 }
