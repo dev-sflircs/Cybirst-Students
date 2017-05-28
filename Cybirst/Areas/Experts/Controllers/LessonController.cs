@@ -29,6 +29,7 @@ namespace Cybirst.Areas.Experts.Controllers
     public class LessonController : Controller
     {
         private DataClasses1DataContext dbContext = new DataClasses1DataContext();
+        private static int CourseID { get; set; }
 
         // GET: Experts/Lesson
         public ActionResult Index(int id)
@@ -45,25 +46,64 @@ namespace Cybirst.Areas.Experts.Controllers
         }
 
         // GET: Experts/Lesson/Create
-        public ActionResult Create()
+        public ActionResult Create(int courseid)
         {
-            return View();
+            LessonModel lm = new LessonModel();
+            lm.CourseID = courseid;
+            LessonController.CourseID = courseid;
+            return View(lm);
         }
 
         // POST: Experts/Lesson/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(LessonModel lm, HttpPostedFileBase Video)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                if (Video != null)
+                {
+                    Video.SaveAs(HttpContext.Server.MapPath("~/Assets/Videos/") + Video.FileName);
+                    lm.Video = "~/Assets/Videos/" + Video.FileName;
+                }
 
-                return RedirectToAction("Index");
+                var lessonToUpdate = new Lesson();
+                if (lessonToUpdate != null)
+                {
+                    // found it
+                    try
+                    {
+                        lessonToUpdate.CourseID = LessonController.CourseID;
+
+                        lessonToUpdate.Name = lm.Name;
+
+                        lessonToUpdate.Intro = lm.Intro;
+
+                        lessonToUpdate.Video = lm.Video;
+
+                        lessonToUpdate.EstimatedTime = lm.EstimatedTime;
+
+                        lessonToUpdate.IsPro = lm.IsPro;
+
+                        lessonToUpdate.Order = dbContext.Lessons.Where(x => x.CourseID == LessonController.CourseID).Count() + 1;
+
+                        dbContext.Lessons.InsertOnSubmit(lessonToUpdate);
+
+                        dbContext.SubmitChanges();
+
+                        return RedirectToAction("Index", new { id = lessonToUpdate.ID });
+                    }
+                    catch (Exception e)
+                    {
+                        return View();
+                    }
+                }
+                else
+                {
+                    return View();
+                }
+
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
         // GET: Experts/Lesson/Edit/5

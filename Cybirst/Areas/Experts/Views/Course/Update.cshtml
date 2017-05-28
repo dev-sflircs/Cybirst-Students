@@ -18,7 +18,7 @@
                     <h3 class="box-title">@Model.Name
                     </h3>
                     <div class="box-tools pull-right">
-                        <a class="badge bg-green" style="font-size: 12px; border: none; padding: 6px 10px;">New lesson</a>
+                        <a href="@Url.Action("Create", "Lesson", new { courseid = Model.ID })" class="badge bg-green" style="font-size: 12px; border: none; padding: 6px 10px;">New lesson</a>
                     </div>
                 </div>
                 <div class="box-body">
@@ -56,7 +56,7 @@
                             <div class="attachment-block text-center" style="padding: 150px 0;">
                                 <h3>You have no lessons in this course.</h3>
                                 <p>Let create the first one!</p>
-                                <a class="badge bg-green" style="font-size: 12px; border: none; padding: 6px 10px;">New lesson</a>
+                                <a href="@Url.Action("Create", "Lesson", new { courseid = Model.ID })"  class="badge bg-green" style="font-size: 12px; border: none; padding: 6px 10px;">New lesson</a>
                             </div>
                         }
                     }

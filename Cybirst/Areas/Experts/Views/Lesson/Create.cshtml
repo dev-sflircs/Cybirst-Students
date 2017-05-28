@@ -1,0 +1,85 @@
+﻿@model Cybirst.Areas.Experts.Controllers.LessonModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Experts/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        <a href="@Url.Action("Update", "Course", new { id = Model.ID })"><i class="fa fa-arrow-left"></i> Edit</a>
+    </h1>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            @using (Html.BeginForm("Create", "Lesson", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="Name">Name</label>
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @autofocus = "autofocus"})
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="Name">Intro</label>
+                        <div class="col-md-10">
+                            @Html.TextArea("Intro", "", new { rows = 10, @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IsPro, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.IsPro)
+                                @Html.ValidationMessageFor(model => model.IsPro, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2">
+                            Video
+                        </label>
+                        <div class="col-md-10">
+                            <div class="col-md-12" style="text-align: center; background: #f9f9f9; border: dashed 3px #bdbdbd;">
+                                <video height="300">
+                                    <source id="containerVideo" src="" type="video/mp4" />
+                                </video>
+                                <input type="file" id="btnVideo" name="Video" accept="video/mp4" />
+                                <script>
+                                    $("#btnVideo").change(function () {
+                                        var reader = new FileReader();
+
+                                        reader.onload = function (e) {
+                                            // get loaded data and render thumbnail.
+                                            $("#containerVideo").attr('src', e.target.result);
+                                        };
+
+                                        // read the image file as a data URL.
+                                        reader.readAsDataURL(this.files[0]);
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="Name">Video time</label>
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.EstimatedTime, new { @class = "form-control", @placeholder = "seconds" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-primary btn-block" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+
